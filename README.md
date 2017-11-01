@@ -3,4 +3,6 @@ This a HSG student project for the course Software Engineering for Economists (7
 
 The goal of this application goal is to:
 
-Teammembers: Alen
+Teammembers: 
+Alen
+Joel

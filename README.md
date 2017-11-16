@@ -10,9 +10,9 @@ The goal of this application goal is to:
 * Coindesk
 
 ## Authors
-Teammembers and github accountnames: 
+Teammembers and github accountnames:
 * Alen Stepic - BarabaA
 * Joel Sonderegger - joelsonderegger
 * Severin Kranz - krasevi
-* (insert name)
+* Dimitrios Koumnakes - DimitrisKoumnakes
 * (insert name)

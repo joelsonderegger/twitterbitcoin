@@ -17,7 +17,7 @@ Use this command at the location (in your terminal) where you want to have the p
 
 Use git fetch to retrieve new work done by other people. Fetching from a repository grabs all the new remote-tracking branches and tags without merging those changes into your own branches.
 
-``` 
+```
 git fetch remotename
 # Fetches updates made to a remote repository
 ```
@@ -53,7 +53,7 @@ git pull remotename branchname
 
 Example:
 ```
-git pull origin master 
+git pull origin master
 ```
 
 ## Push
@@ -65,15 +65,20 @@ The git push command takes two arguments:
 - A branch name, for example, master
 
 ```
-git push  <REMOTENAME> <BRANCHNAME> 
+git push  <REMOTENAME> <BRANCHNAME>
 ```
 
 Example:
 ```
-git push origin master 
+git push origin master
 ```
 
 Remember that you have to first commit changes before being able to push them.
 
+## CD
 
+To use all the above mentioned functions you need to make sure, that you are in the right directionary. CD stands for change directionary. Make sure that you are in the right folder.
 
+```
+git cd desktop
+```

@@ -77,8 +77,9 @@ Remember that you have to first commit changes before being able to push them.
 
 ## CD
 
-To use all the above mentioned functions you need to make sure, that you are in the right directionary. CD stands for change directionary. Make sure that you are in the right folder.
+To use all the above mentioned functions you need to make sure, that you are in the right directionary. CD stands for change direction. Make sure that you are in the right folder.
 
+Example:
 ```
 git cd desktop
 ```

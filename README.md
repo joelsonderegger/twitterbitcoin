@@ -9,6 +9,7 @@ Quantify the effects of Twitter bullishness on the Bitcoin price index.
 
 ## Used APIs
 * Coindesk
+* Twitter
 
 ## Authors
 Teammembers and github accountnames:

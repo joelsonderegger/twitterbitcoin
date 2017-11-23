@@ -11,6 +11,7 @@ import urllib2
 import numpy as np
 import json
 import datetime
+import csv
 
 startDate = datetime.datetime.strptime('01/11/2017','%d/%m/%Y').date()
 endDate = datetime.datetime.strptime('05/11/2017','%d/%m/%Y').date()
@@ -57,13 +58,38 @@ def getEnrichedBPI(bpi):
 
 		# save price for following day price caluclations
 		prevDayPriceStorage = value['price']
+
 	return enrichedBPI
 
-# Get BPI for a specific period
-bpi = getBPI(startDate, endDate)
 
-# Calculate some values for BPI (e.g. change in percentage)
-bpiEnriched = getEnrichedBPI(bpi)
+# Generate the output in form of a CSV-File. Takes in a JSON with BPI data.
+def generateCSV():
+
+	# This is the final array which contains the BPI data that is outputed in the csv-file
+	bpiData = [['Date', 'Price'], ['11/12/2017', 134.00], ['11/12/2017', 134.00], ['11/12/2017', 134.00]]  
+
+	# Defines to with file the data should be writen
+	csvFile = open('data/bpi.csv', 'w')  
+
+	# write the bpiData to csv-file
+	with csvFile:  
+	   writer = csv.writer(myFile)
+	   writer.writerows(bpiData)
+	return None
+
+# Begin the Python script that will do the workdef main():
+def main():
+	# Get BPI for a specific period
+	#bpi = getBPI(startDate, endDate)
+
+	# Calculate some values for BPI (e.g. change in percentage)
+	#bpiEnriched = getEnrichedBPI(bpi)
+
+	#print(bpiEnriched)
+
+	generateCSV()
 
 
-print(bpiEnriched)
+if __name__ == '__main__':
+	main()
+

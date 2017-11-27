@@ -8,9 +8,14 @@
 for the api credentials. A good tutorial can be found under
 https://www.youtube.com/watch?v=Ur2AQKoGbbA
 """
-twitter api =  "KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
+from tweepy import Stream
+from tweepy import OAuthHander
+from tweepy.streaming import StreamListener
 
-def Function():
+
+from tkinter import *
+
+def showTweets(x, num):
 	""" Discription of function
 	"""
 
@@ -21,6 +26,11 @@ def main():
 
 if __name__ == '__main__':
 	main()
+
+
+"""twitter api =  "KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
+
+
  ConsumerKey ANR2xCLJwM24NirkkFLlurkJY1
  Consumer Sectret  KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k1
 

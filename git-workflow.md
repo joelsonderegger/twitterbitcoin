@@ -79,7 +79,11 @@ Remember that you have to first commit changes before being able to push them.
 
 To use all the above mentioned functions you need to make sure, that you are in the right directionary. CD stands for change direction. Make sure that you are in the right folder.
 
-Example:
+Example for going forward:
 ```
-git cd desktop
+cd desktop
+```
+Example for going backward:
+```
+cd ..
 ```

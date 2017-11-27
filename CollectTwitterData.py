@@ -3,36 +3,38 @@
 
 """ This script gets tweets for a defined period that contain a certain word.
 	The output is a csv-file with the tweets.
-"""
-""" To use twitter APIs you have to open a twitteraccount on twitter application
+ To use twitter APIs you have to open a twitteraccount on twitter application
 for the api credentials. A good tutorial can be found under
-https://www.youtube.com/watch?v=Ur2AQKoGbbA
+https://pythonprogramming.net/twitter-api-streaming-tweets-python-tutorial/
 """
+
+import tweepy
 from tweepy import Stream
-from tweepy import OAuthHander
+from tweepy import OAuthHandler
 from tweepy.streaming import StreamListener
+import time
+import argparse
+import string
+import config
+import json
 
+#consumer key, consumer secret, access token, access secret.
+ckey="ANR2xCLJwM24NirkkFLlurkJY"
+csecret="KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
+atoken="933214447291604992-xWBg0xEPzsWvrXSVTe5mWEr5o4SVH2n"
+asecret="DRJUfwWxk8MqKUZILnq8zu0pcsKahtTWZCKB64C822VQv"
 
-from tkinter import *
+class listener(StreamListener):
 
-def showTweets(x, num):
-	""" Discription of function
-	"""
+    def on_data(self, data):
+        print(data)
+        return(True)
 
+    def on_error(self, status):
+        print(status)
 
-# Begin the Python script that will do the work
-def main():
+auth = OAuthHandler(ckey, csecret)
+auth.set_access_token(atoken, asecret)
 
-
-if __name__ == '__main__':
-	main()
-
-
-"""twitter api =  "KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
-
-
- ConsumerKey ANR2xCLJwM24NirkkFLlurkJY1
- Consumer Sectret  KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k1
-
- Access Token 933214447291604992-xWBg0xEPzsWvrXSVTe5mWEr5o4SVH2n1
- Access Token Secret  DRJUfwWxk8MqKUZILnq8zu0pcsKahtTWZCKB64C822VQv1
+twitterStream = Stream(auth, listener())
+twitterStream.filter(track=["car"])

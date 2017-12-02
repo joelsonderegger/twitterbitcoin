@@ -20,8 +20,8 @@ import json
 import csv
 
 #Build and write a writer
-handle=csv.wrier(open("file.csv","wb"))
-def on_status
+#handle=csv.writer(open("file.csv","wb"))
+#def on_status
 
 #consumer key, consumer secret, access token, access secret.
 ckey="ANR2xCLJwM24NirkkFLlurkJY"
@@ -35,7 +35,7 @@ class listener(StreamListener):
         print(data)
         return(True)
 #how to print into a csv??
-		handle.wrierow(data)
+		#handle.wrierow(data)
 
     def on_error(self, status):
         print(status)

@@ -14,7 +14,7 @@ import datetime
 import csv
 
 startDate = datetime.datetime.strptime('01/11/2017','%d/%m/%Y').date()
-endDate = datetime.datetime.strptime('05/11/2017','%d/%m/%Y').date()
+endDate = datetime.datetime.strptime('22/11/2017','%d/%m/%Y').date()
 
 
 # Get historical Bitcoin Price Index data. The index is returned in USD.
@@ -26,7 +26,6 @@ def getBPI(startDate, endDate):
 	r = urllib2.urlopen("https://api.coindesk.com/v1/bpi/historical/close.json?start=" + startDateString + "&end=" + endDateString).read()
 	r = json.loads(r)["bpi"]
 
-
 	bpi = {}
 
 	for day in r:
@@ -34,6 +33,11 @@ def getBPI(startDate, endDate):
 		# add a day to the bpi dict
 		bpi[day] = {'price': r.get(day)}
 
+	print(r)
+
+	ordered = OrderedDict(sorted(bpi.items(), key=lambda t: t[0]))
+	
+	print(ordered)
 	return bpi
 
 
@@ -52,7 +56,6 @@ def getEnrichedBPI(bpi):
 		else:
 			changeInPercentage = 0
 
-		print(str(prevDayPriceStorage) + " - " + str(value['price']))
 
 		enrichedBPI[key] = {'price': value['price'], 'changeInPercentage': changeInPercentage, 'changeInAbsolute': changeInAbsolute }
 
@@ -63,8 +66,15 @@ def getEnrichedBPI(bpi):
 
 
 # Generate the output in form of a CSV-File. Takes in a JSON with BPI data.
-def generateCSV():
+def generateCSV(bpi):
 
+	dictlist = []
+
+	for key, value in bpi.iteritems():
+	    temp = [key,value['price']]
+	    dictlist.append(temp)
+
+	print(dictlist)
 	# This is the final array which contains the BPI data that is outputed in the csv-file
 	bpiData = [['Date', 'Price'], ['11/12/2017', 134.00], ['11/12/2017', 134.00], ['11/12/2017', 134.00]]  
 
@@ -73,21 +83,21 @@ def generateCSV():
 
 	# write the bpiData to csv-file
 	with csvFile:  
-	   writer = csv.writer(myFile)
-	   writer.writerows(bpiData)
+	   writer = csv.writer(csvFile)
+	   writer.writerows(dictlist)
 	return None
 
 # Begin the Python script that will do the workdef main():
 def main():
-	# Get BPI for a specific period
-	#bpi = getBPI(startDate, endDate)
+	#Get BPI for a specific period
+	bpi = getBPI(startDate, endDate)
 
 	# Calculate some values for BPI (e.g. change in percentage)
-	#bpiEnriched = getEnrichedBPI(bpi)
+	bpiEnriched = getEnrichedBPI(bpi)
 
-	#print(bpiEnriched)
+	
 
-	generateCSV()
+	generateCSV(bpi)
 
 
 if __name__ == '__main__':

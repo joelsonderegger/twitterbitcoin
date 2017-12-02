@@ -19,6 +19,13 @@ import config
 import json
 import csv
 
+<<<<<<< HEAD
+=======
+#Build and write a writer
+#handle=csv.writer(open("file.csv","wb"))
+#def on_status
+
+>>>>>>> origin
 #consumer key, consumer secret, access token, access secret.
 ckey="ANR2xCLJwM24NirkkFLlurkJY"
 csecret="KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
@@ -28,6 +35,14 @@ asecret="DRJUfwWxk8MqKUZILnq8zu0pcsKahtTWZCKB64C822VQv"
 
 class listener(StreamListener):
 
+<<<<<<< HEAD
+=======
+    def on_data(self, data):
+        print(data)
+        return(True)
+#how to print into a csv??
+		#handle.wrierow(data)
+>>>>>>> origin
 
  def on_data(self, data):
 	 try:

@@ -13,6 +13,7 @@ import json
 import datetime
 import csv
 
+
 startDate = datetime.datetime.strptime('01/11/2017','%d/%m/%Y').date()
 endDate = datetime.datetime.strptime('22/11/2017','%d/%m/%Y').date()
 
@@ -29,15 +30,15 @@ def getBPI(startDate, endDate):
 	bpi = {}
 
 	for day in r:
-
-		# add a day to the bpi dict
+		# add a day to the bpi dict. However correct order by date is not garanteed. 
 		bpi[day] = {'price': r.get(day)}
 
-	print(r)
+		print day
 
-	ordered = OrderedDict(sorted(bpi.items(), key=lambda t: t[0]))
+	# order the list of bpi by date. starting with the oldest date, ending with the most recent date.
+	print(sorted(bpi,key=lambda x:datetime.datetime.strptime(x[1],"%Y-%m-%d")))
 	
-	print(ordered)
+	
 	return bpi
 
 
@@ -68,13 +69,12 @@ def getEnrichedBPI(bpi):
 # Generate the output in form of a CSV-File. Takes in a JSON with BPI data.
 def generateCSV(bpi):
 
-	dictlist = []
+	bpi_list = []
 
 	for key, value in bpi.iteritems():
 	    temp = [key,value['price']]
-	    dictlist.append(temp)
+	    bpi_list.append(temp)
 
-	print(dictlist)
 	# This is the final array which contains the BPI data that is outputed in the csv-file
 	bpiData = [['Date', 'Price'], ['11/12/2017', 134.00], ['11/12/2017', 134.00], ['11/12/2017', 134.00]]  
 
@@ -84,7 +84,7 @@ def generateCSV(bpi):
 	# write the bpiData to csv-file
 	with csvFile:  
 	   writer = csv.writer(csvFile)
-	   writer.writerows(dictlist)
+	   writer.writerows(bpi_list)
 	return None
 
 # Begin the Python script that will do the workdef main():

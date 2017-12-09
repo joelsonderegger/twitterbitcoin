@@ -30,7 +30,7 @@ class listener(StreamListener):
     def on_data(self, data):
         # Twitter returns data in JSON format - we need to decode it first
         decodedTweet = json.loads(data)
-        user_data = json.loads('user')
+        # user_data = json.loads('user')
          # prints data for one tweet
         print("===========")
         #print(decodedTweet)

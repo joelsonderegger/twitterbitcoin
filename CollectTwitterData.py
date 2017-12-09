@@ -33,6 +33,7 @@ class listener(StreamListener):
 
          # prints data for one tweet
         print("===========")
+        print(decodedTweet)
 
         # defines where the data is saved. Opening the file 'a' stands for appending
         saveFile = open('data/twitterData.csv', 'a')
@@ -42,7 +43,7 @@ class listener(StreamListener):
         text = decodedTweet['text'].encode('utf-8')
 
         # Create a row that contains all relevant twitter data
-        tweet = [created_at, text]
+        tweet = [created_at, text, user_id]
 
         # print out what is saved to the file
         print(tweet)

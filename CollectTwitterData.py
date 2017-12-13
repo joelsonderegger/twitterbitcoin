@@ -30,10 +30,10 @@ class listener(StreamListener):
     def on_data(self, data):
         # Twitter returns data in JSON format - we need to decode it first
         decodedTweet = json.loads(data)
-
-         # prints data for one tweet
+   
+        # prints data for one tweet
         print("===========")
-        print(decodedTweet)
+        #print(decodedTweet)
 
         # defines where the data is saved. Opening the file 'a' stands for appending
         saveFile = open('data/twitterData.csv', 'a')
@@ -41,20 +41,29 @@ class listener(StreamListener):
         # gets relevant data from data object
         created_at = decodedTweet['created_at']
         text = decodedTweet['text'].encode('utf-8')
+        user_id = decodedTweet['user']['id']
+         # tweet_id = decodedTweet['id']
+         # tweet_id_str = decodedTweet['id_str'].encode('utf-8')
+         # in_reply_to_status_id = decodedTweet['in_reply_to_status_id']
+         # in_reply_to_user_id = ['in_reply_to_user_id']
+        # user =['id', 'id_str', 'name', 'location', 'verified', 'followers_count', 'friends_count', 'listed_count','favourites_count', 'statuses_count','lang']
+        # reply_Tweet_count = ['reply_count']
+         # favorite_count = ['favorite_count']
+         # language = ['lang'].encode('utf-8')
+        #coordinatesTweet = ['coordinates']
+        #place = ['place']
 
         # Create a row that contains all relevant twitter data
+         # tweet = [created_at, text, tweet_id, tweet_id_str, in_reply_to_status_id, in_reply_to_user_id, user, reply_Tweet_count, favorite_count, language,]
         tweet = [created_at, text, user_id]
-
+        
         # print out what is saved to the file
         print(tweet)
 
         # appends the tweet to the  csv-file
-        with saveFile:  
+        with saveFile:
            writer = csv.writer(saveFile)
            writer.writerow(tweet)
-
-        #saveFile.write(tweet)
-        #saveFile.write('\n')
         saveFile.close()
         return(True)
 
@@ -64,5 +73,4 @@ class listener(StreamListener):
 auth = OAuthHandler(ckey, csecret)
 auth.set_access_token(atoken, asecret)
 twitterStream = Stream(auth, listener())
-
 twitterStream.filter(track=["bitcoin"])

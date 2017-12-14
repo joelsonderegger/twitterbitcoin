@@ -32,7 +32,6 @@ class listener(StreamListener):
         decodedTweet = json.loads(data)
          # prints data for one tweet
         print("===========")
-        #print(decodedTweet)
 
         # defines where the data is saved. Opening the file 'a' stands for appending
         saveFile = open('data/twitterData.csv', 'a')

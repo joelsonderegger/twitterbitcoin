@@ -18,6 +18,8 @@ import string
 import config
 import json
 import csv
+import pprint
+from pathlib import Path
 
 #consumer key, consumer secret, access token, access secret.
 ckey="ANR2xCLJwM24NirkkFLlurkJY"
@@ -47,7 +49,8 @@ class listener(StreamListener):
             tweet = [created_at, text]
 
             # print out what is saved to the file
-            print(tweet)
+            pp = pprint.PrettyPrinter(indent=4)
+            pprint.pprint(tweet)
 
             # appends the tweet to the  csv-file
             with tweets_file:
@@ -70,7 +73,49 @@ class listener(StreamListener):
     def on_error(self, status):
         print(status)
 
-auth = OAuthHandler(ckey, csecret)
-auth.set_access_token(atoken, asecret)
-twitterStream = Stream(auth, listener())
-twitterStream.filter(track=["bitcoin"])
+
+# create csv file with headers with it does not exist in data folder
+def create_tweet_csv():
+    print("Checking if csv-file for collecting tweets exists...")
+
+     # defines where the csv should be.
+    tweets_file = Path('data/twitterData.csv')
+
+    if tweets_file.is_file():
+        print("csv-file for collecting tweets exists.")
+        # file exists
+        return(False)
+    else:
+        print("csv-file for collecting tweets does not exists yet.")
+        
+        # opens the csv-file. 'w' stands for write
+        tweets_file = open('data/twitterData.csv', 'w')
+
+        # header for csv-file
+        header = ["created_at", "text"]
+
+        # header for csv-file
+        with tweets_file:
+            writer = csv.writer(tweets_file)
+            writer.writerow(header)
+        tweets_file.close()
+
+        print("csv-file with header successfully created.")
+        return(True)
+
+
+# Main function
+def main():
+    auth = OAuthHandler(ckey, csecret)
+    auth.set_access_token(atoken, asecret)
+
+    # create csv file with headers with it does not exist in data folder
+    create_tweet_csv()
+
+    twitterStream = Stream(auth, listener())
+    twitterStream.filter(track=["bitcoin"])
+
+
+if __name__ == '__main__':
+    main()
+

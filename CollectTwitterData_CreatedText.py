@@ -29,28 +29,42 @@ asecret="DRJUfwWxk8MqKUZILnq8zu0pcsKahtTWZCKB64C822VQv"
 class listener(StreamListener):
     def on_data(self, data):
         # Twitter returns data in JSON format - we need to decode it first
-        decodedTweet = json.loads(data)
-         # prints data for one tweet
-        print("===========")
+        decoded_tweet = json.loads(data)
+        
+        # Exception handling for KeyError. LookupError is the base class for the exceptions that are raised when a key or index used on a mapping or sequence is invalid: IndexError, KeyError
+        try:
+            # prints data for one tweet
+            print("===========")
 
-        # defines where the data is saved. Opening the file 'a' stands for appending
-        saveFile = open('data/twitterData.csv', 'a')
+            # defines where the data is saved. Opening the file 'a' stands for appending
+            tweets_file = open('data/twitterData.csv', 'a')
 
-        # gets relevant data from data object
-        created_at = decodedTweet['created_at']
-        text = decodedTweet['text'].encode('utf-8')
+            # gets relevant data from data object
+            created_at = decoded_tweet['created_at']
+            text = decoded_tweet['text'].encode('utf-8')
 
-        # Create a row that contains all relevant twitter data
-        tweet = [created_at, text]
+            # Create a row that contains all relevant twitter data
+            tweet = [created_at, text]
 
-        # print out what is saved to the file
-        print(tweet)
+            # print out what is saved to the file
+            print(tweet)
 
-        # appends the tweet to the  csv-file
-        with saveFile:
-           writer = csv.writer(saveFile)
-           writer.writerow(tweet)
-        saveFile.close()
+            # appends the tweet to the  csv-file
+            with tweets_file:
+               writer = csv.writer(tweets_file)
+               writer.writerow(tweet)
+            tweets_file.close()
+
+        except LookupError:
+            print('LookupError for tweet with content (decoded_tweet):' + decoded_tweet)
+
+            # write the tweet data into a log file
+            error_log_file = open('data/tweet_collection_error_log.csv', 'a')
+            with tweets_file:
+               writer = csv.writer(error_log_file)
+               writer.writerow(decoded_tweet)
+            error_log_file.close()
+
         return(True)
 
     def on_error(self, status):

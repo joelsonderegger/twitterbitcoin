@@ -4,59 +4,58 @@
 """ This script calculates the correlation between tweets containing 'bearish' or 'bullish' and the bitcoin price
 """
 
+import pandas as pd
 import numpy as np
+import pprint
 import csv
+import io
 
 
 # Gets tweets from CSV-File. Returns a list of tweets (of type dict)
-def getTweets():
+def load_tweets():
+    df = pd.read_csv('data/twitterData.csv')
 
-    # create an empty list that will contain all tweets
-    tweets = []
-
-    with open('data/twitterData.csv') as csvfile:
-        readCSV = csv.reader(csvfile, delimiter=',')
-        for row in readCSV:
-
-            tweet = {}
-            tweet['created_at'] = row[0]
-            tweet['text'] = row[1]
-
-            tweets.append(tweet)
-
-        csvfile.close()
-
-
-    # return a list of tweets (of type dict)
-    return tweets
+    return df
 
 
 # Order Tweets by Date and return as list of dicts. For each day there is one dict that contains (1) a date and (2) a list of containing all tweets
 # {'date': '23-23-4302', "tweets" : ["bla","bla","bla"]}
-def orderTweetsByDay(tweets)
-    tweets_ordered_by_day = []
 
-    return tweets_ordered_by_day
+def count_tweets_per_hour(tweets):
+
+    # drop the tweet text as the timestamp are enough to count the number of tweets
+    tweets.drop('text', axis=1, inplace=True)
+
+    # use create_at as the index of the df tweets
+    times = tweets.set_index(pd.DatetimeIndex(tweets['created_at']))
+
+    #group by year, month, day and hour
+    grouped_tweets_per_hour = tweets.groupby([times.index.year, times.index.month, times.index.day, times.index.hour]).count()
+    
+    # set correct index names for Y, M, D, H
+    grouped_tweets_per_hour.index = grouped_tweets_per_hour.index.set_names('Y', level=0)
+    grouped_tweets_per_hour.index = grouped_tweets_per_hour.index.set_names('M', level=1)
+    grouped_tweets_per_hour.index = grouped_tweets_per_hour.index.set_names('D', level=2)
+    grouped_tweets_per_hour.index = grouped_tweets_per_hour.index.set_names('H', level=3)
+
+    # set correct column names nr_tweets (replaced value: created_at)
+    grouped_tweets_per_hour.rename(columns = {'created_at':'nr_tweets'}, inplace = True)
+   
+    # output of results
+    print(grouped_tweets_per_hour)
+
+    # return df 
+    return grouped_tweets_per_hour
 
 
 def main():
 
-    tweets = getTweets()
-    print(tweets)
+    # load tweets for csv-file
+    tweets = load_tweets()
 
-    tweets_ordered_by_day = orderTweetsByDay(tweets)
+    # count number of tweets per hour
+    tweets_per_hour = count_tweets_per_hour(tweets)
 
-    # for each day
-    number_of_bea
-
-    # output: daily_bearish_bullish_numbers = [{'day':'23-11-2017', 'bearish': 11, 'bullish': 25}, {'day':'24-11-2017', 'bearish': 15, 'bullish': 21}]
-
-    mystring = "I belive the bitcoin is going up bearish"
-    # find tweets that contain 'bearish'
-    word = 'bearish'
-
-    if word in mystring: 
-        print 'success'
 
 
 if __name__ == '__main__':

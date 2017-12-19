@@ -21,11 +21,33 @@ import csv
 import pprint
 from pathlib import Path
 
+# Import smtplib for the email sending function
+import smtplib
+
+
+
 #consumer key, consumer secret, access token, access secret.
 ckey="ANR2xCLJwM24NirkkFLlurkJY"
 csecret="KFAiqNSVErT7QzAlBYSkUmhGaCoEJJLnfmnG0x7SJJbDT2Qe1k"
 atoken="933214447291604992-xWBg0xEPzsWvrXSVTe5mWEr5o4SVH2n"
 asecret="DRJUfwWxk8MqKUZILnq8zu0pcsKahtTWZCKB64C822VQv"
+
+# function to send email with error
+def send_email(sbjt, msg):
+    fromaddr = 'twitterbitcoinanalysis@gmail.com'
+    toaddrs = 'joel.sonderegger@googlemail.com'
+    bodytext = 'From: %s\nTo: %s\nSubject: %s\n\n%s' %(fromaddr, toaddrs, sbjt, msg)
+   
+    # Credentials (if needed)
+    username = 'twitterbitcoinanalysis@gmail.com'
+    password = 'wNvfuXAiek9i' 
+  
+    # The actual mail sent
+    server = smtplib.SMTP('smtp.gmail.com:587')
+    server.starttls()
+    server.login(username,password)
+    server.sendmail(fromaddr, toaddrs, bodytext)
+    server.quit()
 
 
 class listener(StreamListener):
@@ -38,28 +60,42 @@ class listener(StreamListener):
             # prints data for one tweet
             print("===========")
 
-            # defines where the data is saved. Opening the file 'a' stands for appending
-            tweets_file = open('data/twitterData.csv', 'a')
+            # check if text has key created_at (there where tweets without crashing the program)
+            if 'created_at' in decoded_tweet:
 
-            # gets relevant data from data object
-            created_at = decoded_tweet['created_at']
-            text = decoded_tweet['text'].encode('utf-8')
+                # defines where the data is saved. Opening the file 'a' stands for appending
+                tweets_file = open('data/twitterData.csv', 'a')
 
-            # Create a row that contains all relevant twitter data
-            tweet = [created_at, text]
 
-            # print out what is saved to the file
-            pp = pprint.PrettyPrinter(indent=4)
-            pprint.pprint(tweet)
+                # gets relevant data from data object
+                created_at = decoded_tweet['created_at']
+                text = decoded_tweet['text'].encode('utf-8')
+            
+            
+                # Create a row that contains all relevant twitter data
+                tweet = [created_at, text]
+                print(tweet)
 
-            # appends the tweet to the  csv-file
-            with tweets_file:
-               writer = csv.writer(tweets_file)
-               writer.writerow(tweet)
-            tweets_file.close()
+                # print out what is saved to the file
+                #pp = pprint.PrettyPrinter(indent=4)
+                #pprint.pprint(tweet)
+
+                # appends the tweet to the  csv-file
+                with tweets_file:
+                   writer = csv.writer(tweets_file)
+                   writer.writerow(tweet)
+                tweets_file.close()
 
         except LookupError:
-            print('LookupError for tweet with content (decoded_tweet):' + decoded_tweet)
+
+            # The error message
+            error_msg = 'LookupError for tweet with content (var decoded_tweet):\n' + text
+
+            # send error email
+            send_email('Twitter Collector Script Error:', error_msg)
+
+            # print out error message
+            print(error_msg)
 
             # write the tweet data into a log file
             error_log_file = open('data/tweet_collection_error_log.csv', 'a')
@@ -67,6 +103,19 @@ class listener(StreamListener):
                writer = csv.writer(error_log_file)
                writer.writerow(decoded_tweet)
             error_log_file.close()
+            pass
+
+        # This will catch any exception
+        except:
+             # The error message
+            error_msg = 'unexpected error for tweet with content (var decoded_tweet):\n' + text + '\n\n' + "system error log:\n" + sys.exc_info()[0]
+
+            # send error email
+            send_email('Twitter Collector Script Error:', error_msg)
+
+            # print out error message
+            print(error_msg)
+            pass
 
         return(True)
 
@@ -106,6 +155,7 @@ def create_tweet_csv():
 
 # Main function
 def main():
+
     auth = OAuthHandler(ckey, csecret)
     auth.set_access_token(atoken, asecret)
 

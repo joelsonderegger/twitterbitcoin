@@ -20,4 +20,4 @@ Teammembers and github accountnames:
 * Joel Sonderegger - joelsonderegger
 * Severin Kranz - krasevi
 * Dimitrios Koumnakes - DimitrisKoumnakes
-* (insert name)
+* Chi Xu - himself

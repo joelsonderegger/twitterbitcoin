@@ -13,25 +13,34 @@ import json
 import datetime
 import csv
 
+# library for pretty printing
+import pprint
 
-startDate = datetime.datetime.strptime('01/11/2017','%d/%m/%Y').date()
-endDate = datetime.datetime.strptime('25/11/2017','%d/%m/%Y').date()
+# libraries required for bitcoinaverage api
+import hashlib
+import hmac
+import requests
+import time
 
+secret_key = 'ZTIyNDc2YjE2NmViNGZmMTllZGRkYzM2YWM4MWY4NTk4NTFjZjNiOTI2ZTY0ODQ0OTQzMWNmNzE0ZTU0ODU0YQ'
+public_key = 'NzhlNjI2YjY2MTI2NGEzZmEwN2U2ZDExZGY4NDZiNzk'
+timestamp = int(time.time())
+payload = '{}.{}'.format(timestamp, public_key)
+hex_hash = hmac.new(secret_key.encode(), msg=payload.encode(), digestmod=hashlib.sha256).hexdigest()
+signature = '{}.{}'.format(payload, hex_hash)
 
-# Get historical Bitcoin Price Index data. The index is returned in USD.
-def getBPI(startDate, endDate):
-    startDateString = startDate.strftime('%Y-%m-%d')
-    endDateString = endDate.strftime('%Y-%m-%d')
+# Get daily bitcoin price index (BPI) data from bitcoinaverage's API
+def getHourlyBPI():
+    url = 'https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json'
+    headers = {'X-Signature': signature}
+    result = requests.get(url=url, headers=headers)
 
-    # API Infos: https://www.coindesk.com/api/
-    r = urllib2.urlopen("https://api.coindesk.com/v1/bpi/historical/close.json?start=" + startDateString + "&end=" + endDateString).read()
-    date_price_combination = json.loads(r)["bpi"]
-    
-    return date_price_combination
+    bpi_data = result.json()
 
+    return bpi_data
 
+# not used so far
 def getEnrichedBPI(bpi):
-
     enrichedBPI = {}
     prevDayPriceStorage = 0
 
@@ -55,35 +64,47 @@ def getEnrichedBPI(bpi):
 
 
 # Generate the output in form of a CSV-File. Takes in a JSON with BPI data.
-def generateCSV(date_price_combination):
+def generateCSV(bpi_data):
     
-    # This is the final array which contains the BPI data that is outputed in the csv-file
-    bpiData = [['Date', 'Price']] 
+    # This is the header for the list which will contain all bpi data
+    header = ['time', 'average', 'high', 'low', 'open']
 
-    # sort because data is not sorted by date until here
-    for key, value in sorted(date_price_combination.iteritems()):
-        temp = [key,value]
-        bpiData.append(temp)
+    # creating list that will contain all bpi data
+    bpi_data_array = []
+    
 
-    # Defines to with file the data should be writen
-    csvFile = open('data/bpi.csv', 'w')  
+    # loop through bpi_data(json) and create a list(day_array) which is appended to the list that contains all bpi data(bpi_data_array)
+    for day in bpi_data:
+        day_array = [day['time'],day['average'],day['high'],day['low'],day['open']]
+        
+        bpi_data_array.append(day_array)
 
-    # write the bpiData to csv-file
-    with csvFile:  
+    # reversing the list of daily bitcoin data so the list starts with the oldest entry and ends with the most recent
+    bpi_data_array.reverse()
+
+    # addind the header to the list which contains all bpi data
+    bpi_data_array = [header] + bpi_data_array
+
+    # Defines the path where the data should be written
+    csvFile = open('data/bpi.csv', 'w')
+
+    # write the the list which contains all bpi data (bpi_data_array) to the csv-file
+    with csvFile:
        writer = csv.writer(csvFile)
-       writer.writerows(bpiData)
+       writer.writerows(bpi_data_array)
+
+    # (bpi_data_array) - 1 because we don't want to count the header
+    print("Added " + str(len(bpi_data_array)-1) + " entries to data/bpi.csv")
+
     return None
 
 # Begin the Python script that will do the workdef main():
 def main():
-    #Get BPI for a specific period
-    date_price_combination = getBPI(startDate, endDate)
-    
-    # Calculate some values for BPI (e.g. change in percentage)
-    # bpiEnriched = getEnrichedBPI(bpi)
+    # Get daily bitcoin price index (BPI) data
+    bpi_data = getHourlyBPI()
 
-
-    generateCSV(date_price_combination)
+    # Generate the output in form of a CSV-File
+    generateCSV(bpi_data)
 
 
 if __name__ == '__main__':

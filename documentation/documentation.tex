@@ -10,6 +10,31 @@
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parskip}{1em}
 
+%% package for formatting and highlighting source code
+\usepackage{listings}
+\usepackage{color}
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+
+\lstset{frame=tb,
+  language=Python,
+  aboveskip=3mm,
+  belowskip=3mm,
+  showstringspaces=false,
+  columns=flexible,
+  basicstyle={\small\ttfamily},
+  numbers=none,
+  numberstyle=\tiny\color{gray},
+  keywordstyle=\color{blue},
+  commentstyle=\color{dkgreen},
+  stringstyle=\color{mauve},
+  breaklines=true,
+  breakatwhitespace=true,
+  tabsize=3
+}
+
 %% Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
@@ -18,7 +43,6 @@
 \usepackage{csquotes}
 \usepackage{graphicx}
 \usepackage{setspace}
-
 
 % Abkuerzungsverzeichnis
 \usepackage{acronym}
@@ -100,13 +124,39 @@
 \subsection{Subsection 1}
 \clearpage
 \section{Data Collection}
+Here, we provide a detailed description of how the data for the sequential analysis is gathered.
 \subsection{Tweets Data}
 \subsubsection{Python Script}
 (Alan's Part)
 \subsubsection{Hardware Setup}
 (Severin's Part)
+
 \subsection{Bitcoin Price Data}
-(Joel's Part)
+We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index Data for the time period in which we gather the Tweets data.
+\subsubsection{Execution}
+By executing the python script \verb|CollectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
+\begin{lstlisting}[language=bash]
+    $ python CollectCryptocurrencyData.py
+\end{lstlisting}
+
+\subsubsection{Output}
+After successfully running the python script \verb|CollectCryptocurrencyData.py| the file \verb|bpi.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|bpi.csv| file.
+
+The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one month on an hourly basis. Each data point consists of the following parameters:
+\begin{itemize}
+    \item time: Time
+    \item average: Average price (in USD)
+    \item high: Highest price (in USD)
+    \item low: Lowest price (in USD)
+    \item open: Opening price (in USD)
+\end{itemize}
+
+\subsubsection{API: Bitcoinaverage.com}
+Bitcoinaverage.com offers a free API that provides historical Bitcoin Price Index data. The following requests delivers data for an per hour monthly sliding window.
+\begin{lstlisting}[language=bash]
+https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
+\end{lstlisting}
+
 \section{Data Aggregation}
 (Joel's Part)
 \section{Data Analysis}

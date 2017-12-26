@@ -163,7 +163,7 @@ After successfully running the python script \verb|CollectCryptocurrencyData.py|
 
 The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one month on an hourly basis. Each data point consists of the following parameters:
 \begin{itemize}
-    \item time: Time
+    \item time: Timestamp on an hourly basis
     \item average: Average price (in USD)
     \item high: Highest price (in USD)
     \item low: Lowest price (in USD)
@@ -175,6 +175,8 @@ Bitcoinaverage.com offers a free API that provides historical Bitcoin Price Inde
 \begin{lstlisting}[language=bash]
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
+
+The time timestamps is UTC time.
 
 \section{Data Aggregation}
 (Joel's Part)

@@ -104,7 +104,7 @@ def main():
 
     # count number of tweets per hour
     tweets_per_hour = count_tweets_per_hour(tweets)
-    print('Counting the number of tweets. This can take a while...')
+    print('Counting the number of tweets. This can take some minutes...')
     
     # merge number of tweets per hour with bitcoin price index (bpi) data
     df_merged = tweets_per_hour.join(bpi_data, how='left')

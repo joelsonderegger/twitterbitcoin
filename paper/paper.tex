@@ -1,10 +1,9 @@
 \documentclass[a4paper,american,12pt]{article}
 \usepackage{graphicx}
-\graphicspath{ {images/} }
+\graphicspath{{images/}}
 
 %% Language and font encodings
 \usepackage[utf8]{inputenc}
-
 
 %% Sets page size and margins
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
@@ -24,7 +23,7 @@
 \usepackage{acronym}
 
 % Specify bibliography package
-\usepackage{csquotes}% Recommended
+\usepackage{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{references.bib}
@@ -36,65 +35,55 @@
 \titlespacing*{\subsection}
 {0pt}{1.4ex}{0pt}
 
-    
 \title{Review of Assigned Readings}
 \author{Your Name Goes Here}
     
+
+\begin{document}
     
-    \begin{document}
     \begin{titlepage}
-        \centering
-        {\scshape\LARGE University of St.Gallen \\ \large School of Management, Economics, Law, Social Schiences and International Affairs \par}
-        \vspace{2cm}
-        {\huge\bfseries The effect of Twitter activity on Bitcoin price fluctuation  \par}
-		
-        \vspace{1.5cm}
-        {\scshape\Large Software Engineering for Economists \\(7,610,1.00) \par}
-        \vspace{1.5cm}
-        {\itshape\large Alen Stepic - XX-XXX-XXX \\Chi Xu - XX-XXX-XXX \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - XX-XXX-XX \par}
-        
-        \begin{spacing}{1}
-        \vspace{1cm}
-        {Fall Term 2017 \par}
-        \vspace{1cm}
-        Supervisor:\\
-        {Prof. Dr. Philipp Zahn\\ FGN HSG\\ Varnbüelstrasse 19\\ 9000 St. Gallen \par} 
-        \end{spacing}
-        \vfill
-        
-        % Bottom of the page
-         {\large \today\par}
+    \centering
+    {\scshape\LARGE University of St.Gallen \\ \large School of Management, Economics, Law, Social Schiences and International Affairs \par}
+    \vspace{2.0cm}
+    {\huge\bfseries The effect of Twitter activity on Bitcoin price fluctuation  \par}
+	\vspace{2.0cm}
+    {\scshape\Large Software Engineering for Economists \\(7,610,1.00) \par}
+    \vspace{2.0cm}
+    {\itshape\large Alen Stepic - XX-XXX-XXX \\Chi Xu - XX-XXX-XXX \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - XX-XXX-XX \par}
+    	\begin{spacing}{1}
+    	\vspace{1.2cm}
+    	{Fall Term 2017 \par}
+    	\vspace{1.2cm}
+    	Supervisor:\\
+    	{Prof. Dr. Philipp Zahn\\ FGN HSG\\ Varnbüelstrasse 19\\ 9000 St. Gallen \par} 
+    	\end{spacing}
+	\vfill
+	{\large \today\par}
     \end{titlepage}
     
     \begin{abstract}
     \pagenumbering{Roman}
-    \begin{spacing}{1.5}
-    
-  (Insert text)
-
-    \end{spacing}
-    
+    	\begin{spacing}{1.5}
+    	(Insert text)
+    	\end{spacing}
     \end{abstract}
 
-    \clearpage
-    \tableofcontents
-    
-    \clearpage
-    
-    \listoffigures
-    
-    \clearpage
-
-\begin{spacing}{1.2}
-\cleardoublepage\pagenumbering{arabic}
-\section{Section 1}
-
-\subsection{Subsection 1}
-
-
-\end{spacing}
+\clearpage
+\tableofcontents
 \clearpage
 
+	\begin{spacing}{1.2}
+	\cleardoublepage\pagenumbering{arabic}
+		\section{Research Question}
+		\clearpage
+		\section{Brief Background and Data Collection}
+		\clearpage
+		\section{Econometric Modelling and Results}
+		\clearpage
+		\section{Conclusion}
+	\end{spacing}
+
+\clearpage
 \printbibliography
 
 \end{document}

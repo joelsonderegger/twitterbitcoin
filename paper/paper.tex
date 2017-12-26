@@ -2,14 +2,14 @@
 \usepackage{graphicx}
 \graphicspath{{images/}}
 
-%% Language and font encodings
+%************************** Language and font encodings **************************
 \usepackage[utf8]{inputenc}
 
-%% Sets page size and margins
+%************************** Sets page size and margins **************************
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parskip}{1em}
 
-%% Useful packages
+%************************** Useful packages **************************
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
@@ -19,28 +19,28 @@
 \usepackage{setspace}
 \usepackage[noconfigs,british]{babel} 
 
-% Abkuerzungsverzeichnis
+%************************** List of abbreviations **************************
 \usepackage{acronym}
 
-% Specify bibliography package
+%************************** Specify bibliography package **************************
 \usepackage{csquotes}
 \usepackage[style=apa,backend=biber]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{references.bib}
 
-% Section Title Margins
+%************************** Section Title Margins **************************
 \usepackage{titlesec}
 \titlespacing*{\section}
 {0pt}{3.0ex plus 1ex minus .2ex}{0.7ex}
 \titlespacing*{\subsection}
 {0pt}{1.4ex}{0pt}
-
 \title{Review of Assigned Readings}
 \author{Your Name Goes Here}
     
-
+%************************** DOCUMENT-START **************************
 \begin{document}
-    
+
+%************************** Title Page **************************   
     \begin{titlepage}
     \centering
     {\scshape\LARGE University of St.Gallen \\ \large School of Management, Economics, Law, Social Schiences and International Affairs \par}
@@ -61,6 +61,9 @@
 	{\large \today\par}
     \end{titlepage}
     
+\clearpage
+    
+%************************** Abstract Page ************************** 
     \begin{abstract}
     \pagenumbering{Roman}
     	\begin{spacing}{1.5}
@@ -69,21 +72,53 @@
     \end{abstract}
 
 \clearpage
-\tableofcontents
+
+%************************** Contenttable Page ************************** 
+	\tableofcontents
+
 \clearpage
 
+%************************** Chapters 1-4 **************************
 	\begin{spacing}{1.2}
 	\cleardoublepage\pagenumbering{arabic}
+		
 		\section{Research Question}
+			\begin{spacing}{1.5}
+			(Insert text)
+			\end{spacing}
 		\clearpage
+		
 		\section{Brief Background and Data Collection}
+			\begin{spacing}{1.5}
+			Bitcoin\\
+			Twitter\\
+			Data Collection\\
+			\end{spacing}		
 		\clearpage
+		
 		\section{Econometric Modelling and Results}
+			\begin{spacing}{1.5}
+			Stationarity\\
+			Lag Specification\\
+			VAR Regression Model\\
+			Granger Causality\\
+			Impulse Response Analysis\\
+			\end{spacing}		
 		\clearpage
+		
 		\section{Conclusion}
+			\begin{spacing}{1.5}
+			(Insert text)
+			\end{spacing}
+		\clearpage
+		
 	\end{spacing}
 
 \clearpage
-\printbibliography
 
+%************************** Bibliography **************************
+\printbibliography
+\clearpage
+
+%************************** DOCUMENT-END **************************
 \end{document}

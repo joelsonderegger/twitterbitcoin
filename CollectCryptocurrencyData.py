@@ -36,6 +36,7 @@ def getHourlyBPI():
     result = requests.get(url=url, headers=headers)
 
     bpi_data = result.json()
+    print(bpi_data)
 
     return bpi_data
 

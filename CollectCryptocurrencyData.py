@@ -7,7 +7,7 @@
 """
 
 
-import urllib2
+
 import numpy as np
 import json
 import datetime

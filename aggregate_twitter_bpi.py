@@ -15,8 +15,7 @@ from dateutil.parser import parse
 
 # Gets tweets from CSV-File. Returns a data frame with tweets
 def load_tweets():
-    df = pd.read_csv('data/twitterData.csv')
-
+    df = pd.read_csv('data/20171223_0056_twitterData.csv')
     return df
 
 # Gets bpi data from CSV-File. Returns a data frame with bpi data
@@ -105,6 +104,7 @@ def main():
 
     # count number of tweets per hour
     tweets_per_hour = count_tweets_per_hour(tweets)
+    print('Counting the number of tweets. This can take a while...')
     
     # merge number of tweets per hour with bitcoin price index (bpi) data
     df_merged = tweets_per_hour.join(bpi_data, how='left')

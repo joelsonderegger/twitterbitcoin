@@ -2,6 +2,10 @@
 \defcounter {refsection}{0}\relax 
 \select@language {british}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1}Section 1}{1}{section.1}
+\contentsline {section}{\numberline {1}Research Question}{1}{section.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {1.1}Subsection 1}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Brief Background and Data Collection}{2}{section.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3}Econometric Modelling and Results}{3}{section.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4}Conclusion}{4}{section.4}

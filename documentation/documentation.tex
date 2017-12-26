@@ -59,29 +59,28 @@
 {0pt}{3.0ex plus 1ex minus .2ex}{0.7ex}
 \titlespacing*{\subsection}
 {0pt}{1.4ex}{0pt}
-
-
     
     
 \title{Review of Assigned Readings}
 \author{Your Name Goes Here}
-    
-    
+        
     \begin{document}
     \begin{titlepage}
+      	\begin{figure}
+      	\centering
+        \includegraphics[scale=0.35]{logohsg}
+        \end{figure}
         \centering
-        {\scshape\LARGE University of St.Gallen \par}
-        \vspace{1cm}
-        {\scshape\Large Software Engineering for Economists \par}
+        School of Management, Economics, Law, Social Schiences and International Affairs \par
+        \vspace{2.5cm}
+        {\huge\bfseries The effect of Twitter activity on
+Bitcoin price\par}      
+        {\Huge\itshape Documentation\par}
+        \vspace{1.5cm}     
+        {Software Engineering for Economists \\ (7,610,1.00) \par}
         \vspace{1.3cm}
-        {\huge\bfseries Name of Project  \par}
-        {\Large\itshape Documentation\par}
-        \vspace{3cm}
-        {\Large\itshape Joël Sonderegger\par}
-        \begin{spacing}{1.2}
-        joel.sonderegger{@}student.unisg.ch\linebreak
-        11-495-488\linebreak
-        
+        {Dimitrios Koumnakes - 10-613-370 \\ Severin Kranz - 13-606-355 \\ Joël Sonderegger - 11-495-488 \\
+       	Alen Stepic - 11-475-258 \\Chi Xu - XX-XXX-XXX \par}
         \vspace{1cm}
         Fall Term 2017
         \vfill
@@ -90,14 +89,12 @@
         Prof. Dr. Philipp \textsc{Zahn}
         \linebreak
         Department of Economics
-        \end{spacing}
-    
-        \vfill
-    
+          
     % Bottom of the page
-     {\large \today\par}
+     {\centering \today\par}
     
     \end{titlepage}
+    
     \begin{abstract}
     \pagenumbering{Roman}
     \begin{spacing}{1.5}
@@ -120,14 +117,28 @@
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
+In academics accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated, as many new ways of data collection and processing exist. Examples of academic papers, which are often cited exist where the initial computation are not reproducible and contain errors. Even though just replicating data or existing results do not provide any new knowledge at all, it gives a good indication about the quality of the work done and hence increases trustworthiness. This explains why reproduction is of great relevance and point out the existing problems.
 
-\subsection{Subsection 1}
-\clearpage
+\subsection{Goal of the paper}
+The goal of this documentation paper is to provide a description how the data discussed in the separate paper have been gathered, stored, aggregated and analysed. By reading the documentation the reader should be able to reproduce the results.
+
+\subsection{Methodology}
+This documentation consists out of four chapters. The first chapters contains a short introduction and provides the reader with an overview about the topic. Furthermore it points out the relevance of documentation. The second chapter contains an description how the twitter tweets were collected and stored. The third chapter discusses how the bitcoin data is gathered. Finally the fifth chapter discusses how the analysis has been conducted.
+
+\subsection{Scope}
+The scope of the documentation is provide an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate academic paper. It is not a deep description of the code as the code itself was documented separately. Nevertheless, important lines of code are discussed. 
+\clearpage 
+
+
 \section{Data Collection}
-Here, we provide a detailed description of how the data for the sequential analysis is gathered.
+Here, we provide a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
 \subsection{Tweets Data}
+To collect the needed twitter data a python script has been written and the real-time twitter data were streamed and stored by the usage of a raspberry pi.
 \subsubsection{Python Script}
-(Alan's Part)
+Twitter offers different Application Programming Interfaces (API) for collecting data. Based on twitter, the four most relevant API's are (1) Ads API, (2) Filter realtime Tweets, (3) Search Tweets and (3)Direct Message API. However, the timeframe for gathering data for free is limited to 7 day's.
+....
+....
+
 \subsubsection{Hardware Setup}
 (Severin's Part)
 

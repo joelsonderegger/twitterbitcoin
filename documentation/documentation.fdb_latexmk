@@ -1,10 +1,10 @@
 # Fdb version 3
-["biber documentation"] 1514386959 "documentation.bcf" "documentation.bbl" "documentation" 1514387371
-  "documentation.bcf" 1514387352 100359 11fec491051c73873e4ee6d62605c63f ""
+["biber documentation"] 1514387444 "documentation.bcf" "documentation.bbl" "documentation" 1514387444
+  "documentation.bcf" 1514387416 94851 17f9b6bda1d8ea30db6b35bd74e4b0ef ""
   "references.bib" 1514385715 426 a68873cf207eb2792d0a30ca2984f894 ""
   (generated)
-  "documentation.blg"
   "documentation.bbl"
+  "documentation.blg"
 ["pdflatex"] 1514387371 "/Users/joelsonderegger/Dropbox/Education/HSG/Software Engineering for Economists/twitterbitcoin/documentation/documentation.tex" "documentation.pdf" "documentation" 1514387371
   "/Users/joelsonderegger/Dropbox/Education/HSG/Software Engineering for Economists/twitterbitcoin/documentation/documentation.tex" 1514387370 10326 44ec3d5f355e8beb6ad2fc41f8c99ec2 ""
   "/usr/local/texlive/2016/texmf-dist/fonts/map/fontname/texfonts.map" 1272929888 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
@@ -131,10 +131,10 @@
   "logohsg.jpg" 1514321594 20780 414eea642aac7c73363707f372eb5f88 ""
   (generated)
   "documentation.aux"
+  "documentation.pdf"
+  "documentation.bcf"
+  "documentation.lof"
+  "documentation.toc"
   "documentation.out"
   "documentation.run.xml"
   "documentation.log"
-  "documentation.lof"
-  "documentation.toc"
-  "documentation.pdf"
-  "documentation.bcf"

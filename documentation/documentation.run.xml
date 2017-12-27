@@ -58,7 +58,6 @@
       <file>standard.bbx</file>
       <file>apa.cbx</file>
       <file>biblatex.cfg</file>
-      <file>american-apa.lbx</file>
       <file>american.lbx</file>
       <file>english.lbx</file>
     </requires>

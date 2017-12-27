@@ -151,7 +151,7 @@ Stream - push then pull, easier
 (Severin's Part)
 
 \subsection{Bitcoin Price Data}
-We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index Data for the time period in which we gather the Tweets data.
+We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.
 \subsubsection{Execution}
 By executing the python script \verb|CollectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
 \begin{lstlisting}[language=bash]

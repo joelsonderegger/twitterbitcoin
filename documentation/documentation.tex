@@ -118,6 +118,7 @@ Bitcoin price\par}
 	\acro{CSECRET}{Consumer Secret}
 	\acro{ATOKEN}{Access Token}
 	\acro{ASECRET}{Access Token Secret}
+	\acro{JSON}{Java Script Object Notation}
 	\end{acronym}
     \clearpage
     
@@ -141,19 +142,19 @@ The scope of the documentation is the provision of an overview about the differe
 
 
 \section{Data Collection}
-Here, we provide a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
+This section contains a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
 \subsection{Tweets Data}
 Whit the python script real-time twitter data are streamed and stored. This happens with help of a raspberry pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a free base is limited to 7 days. On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
+Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base is limited to 7 days. On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
-Tweepy can be installed very simple by running following commands in the command prompt. 
+Tweepy is installed very simply by running following commands in the command prompt. 
 \begin{lstlisting}[language=bash]
 pip install tweepy
 \end{lstlisting}
 
-If the previous downloaded python installation package does not contain the tweepy library, the tweepy library has to be downloaded. The package can be downloaded for free from the following link:
+If the previous downloaded python installation package does not contain the tweepy library, the tweepy package has to be downloaded. The package can be downloaded for free from the following link:
 \begin{lstlisting}[language=bash]
 https://pypi.python.org/pypi/tweepy
 \end{lstlisting}
@@ -161,12 +162,12 @@ https://pypi.python.org/pypi/tweepy
 \paragraph{Twitter Authentication}\mbox{}\\{}
 To access the twitter data, twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (ckey), (2) consumer secret (csecret), (3) access token (atoken) and (4) access token secret (asecret).
 
-To get the mentioned key and tokens a twitter account is needed. Once, an twitter account exist an application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
+To obtain the mentioned keys and tokens a twitter account is needed. Once, a twitter account exist a application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
 \begin{lstlisting}[language=bash]
 https://apps.twitter.com/
 \end{lstlisting}
 
-After the creation of an application the keys and tokens can be extracted. Figure 1 illustrates how to retrieve the keys and tokens.
+After the creation of a application, the keys and tokens can be extracted. Figure 1 illustrates how to retrieve the keys and tokens.
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.6]{twitteraccess}
@@ -174,17 +175,39 @@ After the creation of an application the keys and tokens can be extracted. Figur
 \end{figure}
 
 \paragraph{Twitter Streaming API}\mbox{}\\{}
-By running the python script \verb|collectTwitterData.py| real-time twitter data is pushed in a JSON format. Tweets are pushed just in case the tweet contains the defined key word \verb|bitcoin|.
+By running the python script \verb|collectTwitterData.py| real-time twitter data is pushed in a Java Script Object Notation (JSON) format. Tweets are just pushed in case a tweet contains the defined key word \verb|bitcoin|.
 \begin{lstlisting}[language=bash]
 $ python collectTwitterData.py
 \end{lstlisting}
 
-From the JSON format the following parameters are decoded
+From the JSON format the following parameters are decoded:
 \begin{itemize}
     \item created at: Timestamp of the created tweet
     \item text: text of the tweet
 \end{itemize}
-The time timestamps is UTC time.
+The time timestamps are in UTC time.
+
+After a successfully decoding the parameters the data is appended to the \verb|twitterData.csv| file in a new row and saved in the folder \verb|/data|.
+
+An excerpt of an example response looks like the following:
+\begin{lstlisting}
+[
+    {
+        "created_at": Tue Dec 19 20:40:48 +0000 2017, 
+        "text": "RT @WhiteBitcoin: New Bitcoin White. Effective, Flexible, Reliable", 
+    }, 
+    {
+        "created_at": Tue Dec 19 20:40:49 +0000 2017 ,
+        "text": "As #bitcoin prices surge, #xrp remains affordable and FAST!",
+    }, 
+    {
+        "created_at": Tue Dec 19 20:40:49 +0000 2017, 
+        "text": "Singapore issues bitcoin warning after price rise - #BTC #Bitcoin #Crypto", 
+    }
+]
+\end{lstlisting}
+
+Furthermore to ensure a high quality data set an exception has been integrated into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Furthermore the logfile will be  appended to \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
 (Severin's Part)

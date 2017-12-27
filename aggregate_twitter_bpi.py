@@ -1,4 +1,4 @@
-# Script: CollectCrypocurrencyData.py
+# Script: collectCrypocurrencyData.py
 # Authors: Joel Sonderegger
 
 """ This script calculates the correlation between tweets containing 'bearish' or 'bullish' and the bitcoin price
@@ -44,7 +44,6 @@ def load_bpi():
     bpi_data.index = bpi_data.index.set_names('M', level=1)
     bpi_data.index = bpi_data.index.set_names('D', level=2)
     bpi_data.index = bpi_data.index.set_names('H', level=3)
-
 
     return bpi_data
 
@@ -165,20 +164,21 @@ def main():
 
     # enrich BPI data frame with first difference and log first difference
     bpi_data = first_difference_bpi(bpi_data)
+    print(bpi_data)
 
     # count number of tweets per hour
-    print('Counting the number of tweets. This can take some minutes...')
-    tweets_per_hour = count_tweets_per_hour(tweets)
+    #print('Counting the number of tweets. This can take some minutes...')
+    #tweets_per_hour = count_tweets_per_hour(tweets)
     
     # enrich tweets_per_hour data frame with first difference and log first difference
-    tweets_per_hour = first_difference_tweets(tweets_per_hour)
+    #tweets_per_hour = first_difference_tweets(tweets_per_hour)
 
     # merge number of tweets per hour with bitcoin price index (bpi) data
-    df_merged = tweets_per_hour.join(bpi_data, how='left')
+    #df_merged = tweets_per_hour.join(bpi_data, how='left')
 
-    print(df_merged)
+    #print(df_merged)
     # Write out to csv
-    generate_csv(df_merged)
+    #generate_csv(df_merged)
 
 if __name__ == '__main__':
     main()

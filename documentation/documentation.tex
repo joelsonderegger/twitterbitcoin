@@ -117,16 +117,16 @@ Bitcoin price\par}
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
-In academics accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated, as many new ways of data collection and processing exist. Examples of academic papers, which are often cited exist where the initial computation are not reproducible and contain errors. Even though just replicating data or existing results do not provide any new knowledge at all, it gives a good indication about the quality of the work done and hence increases trustworthiness. This explains why reproduction is of great relevance and point out the existing problems.
+In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated. New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Academic paper, which were often cited exist, where the initial computation is not reproducible. Furthermore, some academic paper even contain errors. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce increases trustworthiness and indicate the quality of the conducted work. This explains why reproduction is of great relevance.
 
 \subsection{Goal of the paper}
-The goal of this documentation paper is to provide a description how the data discussed in the separate paper have been gathered, stored, aggregated and analysed. By reading the documentation the reader should be able to reproduce the results.
+The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
 
 \subsection{Methodology}
-This documentation consists out of four chapters. The first chapters contains a short introduction and provides the reader with an overview about the topic. Furthermore it points out the relevance of documentation. The second chapter contains an description how the twitter tweets were collected and stored. The third chapter discusses how the bitcoin data is gathered. Finally the fifth chapter discusses how the analysis has been conducted.
+This documentation consists out of four chapters. The first chapter contains a short introduction and provides the reader with an overview about the topic. Furthermore it points out the relevance of documentation. The second chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The third chapter discusses how the data is aggregated by pointing out the core model and its parameters. Finally the fifth chapter discusses how the analysis has been conducted.
 
 \subsection{Scope}
-The scope of the documentation is provide an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate academic paper. It is not a deep description of the code as the code itself was documented separately. Nevertheless, important lines of code are discussed. 
+The scope of the documentation is the provision of an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
 \clearpage 
 
 
@@ -135,7 +135,7 @@ Here, we provide a detailed description of how the data for the sequential analy
 \subsection{Tweets Data}
 To collect the needed twitter data a python script has been written. Whit the python script real-time twitter data are streamed and stored by the usage of a raspberry pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. Based on twitter, the biggest an probably most relevant API's are (1) Ads API, (2) Filter realtime Tweets, (3) Search Tweets and (3)Direct Message API. (How to add a reference???) However, the timeframe for gathering data for free is limited to 7 day's. As python offers different libaries tweepy a open-source libary is been used for streaming the data. By using tweepy twitter can be reached in two way's (??) or by the streaming API. The latter has been used in contex of the assignment.
+Twitter offers different Application Programming Interfaces (API) for collecting data. Based on twitter, the biggest and probably most relevant API's are (1) Ads API, (2) Filter realtime Tweets, (3) Search Tweets and (3)Direct Message API. (How to add a reference???) However, the timeframe for gathering data for free is limited to 7 day's. As python offers different libraries tweepy a open-source library is been used for streaming the data. By using tweepy twitter can be reached in two way's (??) or by the streaming API. The latter has been used in context of the assignment.
 
 Stream - push then pull, easier
 - authentic

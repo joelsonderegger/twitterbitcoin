@@ -153,9 +153,9 @@ Stream - push then pull, easier
 \subsection{Bitcoin Price Data}
 We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.
 \subsubsection{Execution}
-By executing the python script \verb|CollectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
+By executing the python script \verb|collectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
 \begin{lstlisting}[language=bash]
-    $ python CollectCryptocurrencyData.py
+    $ python collectCryptocurrencyData.py
 \end{lstlisting}
 
 \subsubsection{Output}
@@ -171,10 +171,13 @@ The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one mon
 \end{itemize}
 
 \subsubsection{API: Bitcoinaverage.com}
-Bitcoinaverage.com offers a free API that provides historical Bitcoin Price Index data. The following requests delivers data for an per hour monthly sliding window.
+Bitcoinaverage.com offers a free API that provides real-time and historical price data for a range of crypto-currencies including Bitcoin. The following requests delivers data for an per hour monthly sliding window.
+\paragraph{Request}\mbox{}\\
+The request to get the data for an per hour monthly sliding window looks as follows. This request require authentication that requires registration and the generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The collectCryptocurrencyData.py already contains the necessary keys. This means that you need no register or generate keys to execute the script collectCryptocurrencyData.py.  
 \begin{lstlisting}[language=bash]
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
+\paragraph{Response}
 
 The time timestamps is UTC time.
 

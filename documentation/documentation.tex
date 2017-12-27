@@ -44,8 +44,10 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 
-% Abkuerzungsverzeichnis
+% List of abbreviations
 \usepackage{acronym}
+
+
 
 % Specify bibliography package
 \usepackage{csquotes}% Recommended
@@ -110,14 +112,24 @@ Bitcoin price\par}
     
     \clearpage
     
-    \listoffigures
-    
+    \listoffigures 	
+    \section*{List of Abbreviation} 
+	\begin{acronym}[ASECRETTT] 
+	\acro{API}{Application Programming Interface}
+	\acro{CKEY}{Consumer Key}
+	\acro{CSECRET}{Consumer Secret}
+	\acro{ATOKEN}{Access Token}
+	\acro{ASECRET}{Access Token Secret}
+	\end{acronym}
     \clearpage
+    
+
+
 
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
-In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated. New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Academic paper, which were often cited exist, where the initial computation is not reproducible. Furthermore, some academic paper even contain errors. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce increases trustworthiness and indicate the quality of the conducted work. This explains why reproduction is of great relevance.
+In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated. New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible. Furthermore, some academic paper even contain computational errors. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce increases trustworthiness and indicate the quality of the conducted work. This explains why reproduction is of great relevance.
 
 \subsection{Goal of the paper}
 The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
@@ -133,25 +145,54 @@ The scope of the documentation is the provision of an overview about the differe
 \section{Data Collection}
 Here, we provide a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
 \subsection{Tweets Data}
-To collect the needed twitter data a python script has been written. Whit the python script real-time twitter data are streamed and stored by the usage of a raspberry pi.
+Whit the python script real-time twitter data are streamed and stored. This happens with help of a raspberry pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. Based on twitter, the biggest and probably most relevant API's are (1) Ads API, (2) Filter realtime Tweets, (3) Search Tweets and (3)Direct Message API. (How to add a reference???) However, the timeframe for gathering data for free is limited to 7 day's. As python offers different libraries tweepy a open-source library is been used for streaming the data. By using tweepy twitter can be reached in two way's (??) or by the streaming API. The latter has been used in context of the assignment.
+Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a free base is limited to 7 days. On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
 
-Stream - push then pull, easier
-- authentic
-\paragraph{Twitter Authentification}
-- printscreens and how to proceed
-- pip install??
+\paragraph{Installing Tweepy}\mbox{}\\{}
+Tweepy can be installed very simple by running following commands in the command prompt. 
+\begin{lstlisting}[language=bash]
+pip install tweepy
+\end{lstlisting}
 
-\paragraph{Twitter Streaming API}
-....
-....
+If the previous downloaded python installation package does not contain the tweepy library, the tweepy library has to be downloaded. The package can be downloaded for free from the following link:
+\begin{lstlisting}[language=bash]
+https://pypi.python.org/pypi/tweepy
+\end{lstlisting}
+
+\paragraph{Twitter Authentication}\mbox{}\\{}
+To access the twitter data, twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (ckey), (2) consumer secret (csecret), (3) access token (atoken) and (4) access token secret (asecret).
+
+To get the mentioned key and tokens a twitter account is needed. Once, an twitter account exist an application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
+\begin{lstlisting}[language=bash]
+https://apps.twitter.com/
+\end{lstlisting}
+
+After the creation of an application the keys and tokens can be extracted. Figure 1 illustrates how to retrieve the keys and tokens.
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.6]{twitteraccess}
+\caption{Twitter Keys and Access Tokens}
+\end{figure}
+
+\paragraph{Twitter Streaming API}\mbox{}\\{}
+By running the python script \verb|collectTwitterData.py| real-time twitter data is pushed in a JSON format. Tweets are pushed just in case the tweet contains the defined key word \verb|bitcoin|.
+\begin{lstlisting}[language=bash]
+$ python collectTwitterData.py
+\end{lstlisting}
+
+From the JSON format the following parameters are decoded
+\begin{itemize}
+    \item created at: Timestamp of the created tweet
+    \item text: text of the tweet
+\end{itemize}
+The time timestamps is UTC time.
 
 \subsubsection{Hardware Setup}
 (Severin's Part)
 
 \subsection{Bitcoin Price Data}
-We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index Data for the time period in which we gather the Tweets data.
+We wrote a Python script which collects Bitcoin price data as there was no preexisting data collection that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.
 \subsubsection{Execution}
 By executing the python script \verb|CollectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
 \begin{lstlisting}[language=bash]

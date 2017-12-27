@@ -210,37 +210,88 @@ An excerpt of an example response looks like the following:
 Furthermore to ensure a high quality data set an exception has been integrated into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Furthermore the logfile will be  appended to \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
-As explained in the previous section the twitter API was used to filter tweets in realtime based on the buzzword "bitcoin". The python program was running for seven days without interruption (to be checked!!!!!!!!!!!) on a raspberry pi (rpi) which was accessed with a secure shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless anywhere and anytime. Furthermore due to a low energy consumption of the rpi the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the rpi, ssh, git and python3.\newline The following steps were conducted by using a Raspberry Pi 2, a micro SD card and Python3.
+As explained in the previous section the twitter API was used to filter tweets in realtime based on the buzzword "bitcoin". The python program was running for seven days without interruption (to be checked!!!!!!!!!!!) on a raspberry pi (rpi) which was accessed with a secure shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless anywhere and anytime. Furthermore due to a low energy consumption of the rpi the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the rpi, ssh, git and python3.\newline The following steps were conducted by using a Raspberry Pi 2, a micro SD card and Python3 and Windows 10 64Bit.
 
+\begin{enumerate}
+\item Setup of the Raspberry Pi
+\begin{enumerate}
+\item Burn image 2017-11-29-raspbian-stretch.zip to micro SD card available from
+\begin{lstlisting}[language=bash]
+https://www.raspberrypi.org/downloads/raspbian/
+\end{lstlisting}
+\item Boot image from micro SD card 
+\item Open SSH session using PuTTY SSH client for Windows available from
+\begin{lstlisting}[language=bash] 
+https://www.chiark.greenend.org.uk/~sgtatham/putty/latest.html
+\end{lstlisting}
+\item Login to server with credentials 
+\end{enumerate}
 
-\paragraph{(1)Setup of the Raspberry Pi}\mbox{}\\
-- Burn image 2017-11-29-raspbian-stretch.zip to micro SD card available from \newline https://www.raspberrypi.org/downloads/raspbian/ \newline
-- Boot image from micro SD card \newline
-- Open SSH session using PuTTY SSH client for Windows available from \newline https://www.chiark.greenend.org.uk/\~sgtatham/putty/latest.html \newline
-- Login to server with credentials \newline
+\item Update system to the newest software
+\begin{enumerate}
+\item Update list of applications with the command
+\begin{lstlisting}[language=bash]
+sudo apt-get update
+\end{lstlisting}
+\item Update applications with the command
+\begin{lstlisting}[language=bash]
+sudo apt-get upgrade
+\end{lstlisting}
+\end{enumerate}
 
-\paragraph{(3) Update system to the newest software}\mbox{}\\
-- Update list of applications with the command: sudo apt-get update \newline
-- Update applications with the command: sudo apt-get upgrade \newline
+\item Setup Git
+\begin{enumerate}
+\item Install Git using the command
+\begin{lstlisting}[language=bash]
+ sudo apt-get install git
+\end{lstlisting}
+\item Clone Git repository from
+\begin{lstlisting}[language=bash] 
+https://github.com/joelsonderegger/twitterbitcoin.git
+\end{lstlisting}
+\end{enumerate}
 
-\paragraph{(4) Setup Git}\mbox{}\\
-- Install git using the command: sudo apt-get install git \newline
-- Clone git repository from https://github.com/joelsonderegger/twitterbitcoin.git \newline
+\item Setup Pyhton3
+\begin{enumerate}
+\item Install Python3 using the command: sudo apt-get install Python3 \newline
+\item Install the tweepy module for python using the command
+\begin{lstlisting}[language=bash]
+pip install tweepy
+\end{lstlisting}
+\end{enumerate}
 
-\paragraph{(5) Setup Pyhton3}\mbox{}\\
-- Install Python3 using the command: sudo apt-get install Python3 \newline
-- Install the tweepy module for python using the command: pip install tweepy \newline
+\item Collect Twitter Data
+\begin{enumerate}
+\item Open a new screen using the command
+\begin{lstlisting}[language=bash] 
+screen -S 'name' 
+\end{lstlisting}
+\item Start python program using the command
+\begin{lstlisting}[language=bash]
+python3 CollectTwitterData.py
+\end{lstlisting}
+\item Detach the screen to keep the program running after secure shell connection has been terminated using the commands
+\begin{lstlisting}[language=bash]
+Ctrl+A
+Ctrl+D
+\end{lstlisting}
+\item Re-attach the screen to check whether the script is still running using the command
+\begin{lstlisting}[language=bash]
+screen -r 'name'
+\end{lstlisting}
+\end{enumerate}
 
-\paragraph{(6) Collect Twitter Data}\mbox{}\\
-- Open a new screen using the command: screen -S 'name' \newline
-- start python program using the command: python3 CollectTwitterData.py \newline
-- Detach the screen to keep the program running after secure shell connection has been terminated using the commands: Ctrl+A , Ctrl+D \newline
-- Re-attach the screen to check whether the script is still running using the command: screen -r 'name' \newline
+\item Download the collected data
+\begin{enumerate}
+\item Install FileZilla available from
+\begin{lstlisting}[language=bash] 
+https://filezilla-project.org/
+\end{lstlisting}
+\item Connect to rpi and navigate to data location \newline
+\item Download data manually \newline \newline \end{enumerate}
+\end{enumerate}
+In summary, this approach worked quite well and run smoothly after all bugs have been resolved from the file CollectTwitterData.py A clean setup is crucial to ensure continuous data collection over a longer period.
 
-\paragraph{(7) Download the collected data}\mbox{}\\
-- Install FileZilla available https://filezilla-project.org/ \newline
-- Connect to rpi and navigate to data location \newline
-- Download data manually \newline \newline In summary, this approach worked quite well and run smoothly after all bugs have been resolved from the file CollectTwitterData.py A clean setup is crucial to ensure continuous data collection over a longer period.
 
 \subsection{Bitcoin Price Data}
 We wrote a Python script which collects Bitcoin price data as there was no preexisting data set that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.

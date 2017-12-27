@@ -42,14 +42,18 @@
 
 %************************** Title Page **************************   
     \begin{titlepage}
+      	\begin{figure}
+      	\centering
+        \includegraphics[scale=0.35]{logohsg}
+        \end{figure}    
     \centering
-    {\scshape\LARGE University of St.Gallen \\ \large School of Management, Economics, Law, Social Schiences and International Affairs \par}
+    {\scshape\large School of Management, Economics, Law, Social Schiences and International Affairs \par}
     \vspace{2.0cm}
     {\huge\bfseries The effect of Twitter activity on Bitcoin price fluctuation  \par}
 	\vspace{2.0cm}
     {\scshape\Large Software Engineering for Economists \\(7,610,1.00) \par}
     \vspace{2.0cm}
-    {\itshape\large Alen Stepic - XX-XXX-XXX \\Chi Xu - XX-XXX-XXX \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - XX-XXX-XX \par}
+    {\itshape\large Alen Stepic - 11-475-258 \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - 13-606-355 \\Chi Xu - XX-XXX-XXX \par}
     	\begin{spacing}{1}
     	\vspace{1.2cm}
     	{Fall Term 2017 \par}
@@ -66,9 +70,7 @@
 %************************** Abstract Page ************************** 
     \begin{abstract}
     \pagenumbering{Roman}
-    	\begin{spacing}{1.5}
-    	(Insert text)
-    	\end{spacing}
+    This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results. This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
     \end{abstract}
 
 \clearpage
@@ -83,33 +85,48 @@
 	\cleardoublepage\pagenumbering{arabic}
 		
 		\section{Research Question}
-			\begin{spacing}{1.5}
-			(Insert text)
-			\end{spacing}
+		\textnormal {In this paper, we aim to examine the existence of a correlation between the price development of bitcoin and how much people talk about bitcoin online on Twitter. We have been inspired by the large fluctuation of the bitcoin prices in the last year (mostly increasing) and the fact that Twitter has become a very popular social network where people interact. For orientation, we used the paper by Mao, Counts and Bollen (2015), who claim that sentiment analysis using Twitter data can significantly predict Market prices. We want to examine if this statement holds when we look at a specific asset like bitcoin.}\\
+		
 		\clearpage
 		
 		\section{Brief Background and Data Collection}
-			\begin{spacing}{1.5}
-			Bitcoin\\
-			Twitter\\
-			Data Collection\\
-			\end{spacing}		
+		\itshape\textbf {Bitcoin}\\
+		\textnormal {(Text for Bitcoin)}\\
+		
+		\itshape\textbf {Twitter}\\
+		\textnormal {(Text for Twitter)}\\
+		
+		\itshape\textbf {Data Collection}\\
+		\textnormal {For our dataset, we used 2 different sources. We first collected historical data on bitcoin prices to USD and secondly, we gathered twitter massages related to bitcoin. We fulfil this relationship by selecting tweets that contain the term “bitcoin” in the text message. The time period for both collected data sets was from 21.12.2017 16:00:00 UTC to 26.12.2017 16:00:00 in an hourly basis. We chose an hourly basis to be able to do a statistical analysis with a certain amount of observation for the restricted processing time of this homework.\\
+For the bitcoin prices, a publicly available API from CoinDesk was used (Source? See documentation?). The prices collected represent the final price level of bitcoin before every hour changes. For example, our first listed price of bitcoin was on 21.12.2017 at 16:59:59 and our last value on 26.12.2017 at 15:59:59. These values construct our first time series data set and are shown in the following graph.\\}
+				
 		\clearpage
 		
 		\section{Econometric Modelling and Results}
-			\begin{spacing}{1.5}
-			Stationarity\\
-			Lag Specification\\
-			VAR Regression Model\\
-			Granger Causality\\
-			Impulse Response Analysis\\
-			\end{spacing}		
+		\textnormal {As stated in the beginning, we want to examine the underlying relationship between twitter activity and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the VAR (Vector Autoregression) approach. In this approach the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (Lütkepohl, 2005, p. 4-5).\\
+To generate the econometric results that follow we used the statistical software STATA.}
+
+		\itshape\textbf {Stationarity}\\
+		\textnormal {Before estimating a VAR model, the time series data must be checked for stationary. Thus, the means and variances are constant over time and the datasets do not show any trending behavior. Non-stationary data can lead to an inaccurate model which is undesirable. To test for stationarity, we use the Augmented Dickey-Fuller (ADF) test and get following results from STATA.\\
+Interpreting the results and accepting or rejecting stationarity.}
+
+		\itshape\textbf {Lag Specification}\\
+		\textnormal {To select the optimal number of lags in our VAR regression we check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving use the optimal number of lag to use (Brandt and Williams, 2007, p. 27). The calculations of these criteria for our given data set is easily done by a statistical software and given in the following table.\\}
+		
+		\itshape\textbf {VAR Regression Model}\\
+		\textnormal {In this paper, we use a basic unrestricted VAR model which consists of two endogenous variables, T for aggregate tweets and B for bitcoin prices. The selected time lag is 3 and this choice will be discussed later. Given that the model equations can be written as follows:\\}
+		
+		\itshape\textbf {Granger Causality}\\
+		\textnormal {To assess the causal relationship between our two endogenous variables and interpret the result we use the Granger causality. This test confirms if one variable is statistically useful to predict the other variable. If this is given the dynamics stated by the calculated coefficient above can be assumed to be valuable.\\
+A second analysis to interpret our results is the impact response analysis. This evaluates the impact of changes in the one variable to the other variable. This is also provided by STATA and the results can be seen in the following graphs.}
+
+		\itshape\textbf {Impulse Response Analysis}\\
+					
 		\clearpage
 		
 		\section{Conclusion}
-			\begin{spacing}{1.5}
-			(Insert text)
-			\end{spacing}
+		\textnormal {(Insert text)}
+		
 		\clearpage
 		
 	\end{spacing}

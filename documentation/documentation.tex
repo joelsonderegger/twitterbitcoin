@@ -178,6 +178,33 @@ The request to get the data for an per hour monthly sliding window looks as foll
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
 \paragraph{Response}
+An excerpt of an example response looks like the following:
+\begin{lstlisting}
+[
+    {
+        "high": 8271.04, 
+        "average": 8247.83, 
+        "open": 8242.39,
+        "low": 8217.72, 
+        "time": '2017-11-22 15:00:00'
+    }, 
+    {
+        "high': 8246.82,
+        "average": 8203.19,
+        'open': 8203.81,
+        'low': 8157.25,
+        'time': '2017-11-22 14:00:00'
+    }, 
+    {
+        'high': 8267.27, 
+        "average": 8238.62, 
+        'open': 8248.77, 
+        'low': 8198.54, 
+        'time': '2017-11-22 13:00:00'
+    }
+]
+\end{lstlisting}
+
 
 The time timestamps is UTC time.
 

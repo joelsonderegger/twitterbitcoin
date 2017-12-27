@@ -6,6 +6,12 @@
 \usepackage[utf8]{inputenc}
 \usepackage[american]{babel}
 
+% Specify bibliography package
+\usepackage{csquotes}% Recommended
+\usepackage[style=apa]{biblatex}
+%\DeclareLanguageMapping{american}{american-apa}
+\addbibresource{references.bib}
+
 %% Sets page size and margins
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parskip}{1em}
@@ -26,11 +32,6 @@
 % Abkuerzungsverzeichnis
 \usepackage{acronym}
 
-% Specify bibliography package
-\usepackage{csquotes}% Recommended
-\usepackage[style=apa]{biblatex}
-%\DeclareLanguageMapping{american}{american-apa}
-\addbibresource{references.bib}
 
 % Section Title Margins
 \usepackage{titlesec}
@@ -152,8 +153,8 @@ Stream - push then pull, easier
 
 \subsection{Bitcoin Price Data}
 We wrote a Python script which collects Bitcoin price data as there was no preexisting data set that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.
+
 \subsubsection{Execution}
-\cite{Twitter}
 By executing the python script \verb|collectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
 \begin{lstlisting}[language=bash]
     $ python collectCryptocurrencyData.py
@@ -207,13 +208,31 @@ An excerpt of an example response looks like the following:
 \end{lstlisting}
 
 
-\section{Data Aggregation}
-After the two data sets (tweets and Bitcoin Price Index) are gathered
+\section{Data Aggregation and Data Wrangling}
+Before the collected data sets can be analyzed they need to be aggregated. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. 
+
+\subsubsection{Execution}
+By executing the python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
+\begin{lstlisting}[language=bash]
+    $ python aggregateTwitterBpi.py
+\end{lstlisting}
+
+\subsubsection{Output}
+After successfully running the python script \verb|aggregateTwitterBpi.py| the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
+
+The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin Price Index data. Each data point consists of the following parameters:
+\begin{itemize}
+    \item time: Timestamp on an hourly basis in UTC time
+    \item {nr\_of\_tweets}: 
+    \item {df\_nr\_of\_tweets}: 
+    \item {log\_df\_nr\_of\_tweets}: 
+    \item {df\_bpi\_closing\_price}: 
+    \item {log\_df\_bpi\_closing\_price}: 
+\end{itemize}
 
 
 \section{Data Analysis}
 (Dimitri's Part)
-
 
 \end{spacing}
 \clearpage

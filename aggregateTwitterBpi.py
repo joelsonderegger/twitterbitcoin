@@ -1,12 +1,11 @@
-# Script: collectCrypocurrencyData.py
-# Authors: Joel Sonderegger
+# Script: aggregateTwitterBpi.py
+# Author: Joel Sonderegger
 
-""" This script calculates the correlation between tweets containing 'bearish' or 'bullish' and the bitcoin price
+""" This script aggregates the Tweets and BPI data. Bascially, it (1) takes the two data sets, (2) drops unnecessary data, (3) counts the nr of tweets of each hour, and (4) merges the remaining data. Additionally, (5) the first differences (+ log first differences) of the nr of tweets and BPI is part of the output.
 """
 
 import pandas as pd
 import numpy as np
-import pprint
 import csv
 import io
 
@@ -21,7 +20,7 @@ def load_tweets():
     df = pd.read_csv('data/20171223_0056_twitterData.csv')
     return df
 
-# Gets bpi data from CSV-File. Returns a data frame with bpi data
+# Gets bpi data from CSV-File. Returns a data frame with bpi data.
 def load_bpi():
     bpi_data = pd.read_csv('data/bpi.csv')
 
@@ -30,13 +29,12 @@ def load_bpi():
     bpi_data.drop('high', axis=1, inplace=True)
     bpi_data.drop('low', axis=1, inplace=True)
 
-    # create new column 'close'. The close price is the open price of the previous hour
+    # create new column 'close'. The close price is the open price of the previous hour (thus, shifting the open price -1 to get the close price)
     bpi_data['close'] = bpi_data['open']
     bpi_data['close'] = bpi_data['close'].shift(-1)
     
     # Set time as DataFrame index.
     times = bpi_data.set_index(pd.DatetimeIndex(bpi_data['time']))
-    
     bpi_data = bpi_data.set_index([times.index.year, times.index.month, times.index.day, times.index.hour])
  
     # set correct index names for Y, M, D, H
@@ -113,7 +111,6 @@ def count_tweets_per_hour(tweets):
 
     #group by year, month, day and hour
     grouped_tweets_per_hour = tweets.groupby([times.index.year, times.index.month, times.index.day, times.index.hour]).count()
-    
 
     # set correct index names for Y, M, D, H
     grouped_tweets_per_hour.index = grouped_tweets_per_hour.index.set_names('Y', level=0)
@@ -129,6 +126,13 @@ def count_tweets_per_hour(tweets):
 
 
 def generate_csv(df_merged):
+
+    # deleting the df values of the first row. A requirement for the following analysis.
+    df_merged.ix[0,'df_nr_of_tweets'] = ""
+    df_merged.ix[0,'log_df_nr_of_tweets'] = ""
+    df_merged.ix[0,'df_btc_close'] = ""
+    df_merged.ix[0,'log_df_btc_close'] = ""
+
     # This is the header for the list that contains nr of tweets and the bpi closing price for every hour
     header = ['time', 'nr_of_tweets', 'df_nr_of_tweets', 'log_df_nr_of_tweets', 'bpi_closing_price', 'df_bpi_closing_price', 'log_df_bpi_closing_price']
 
@@ -164,21 +168,22 @@ def main():
 
     # enrich BPI data frame with first difference and log first difference
     bpi_data = first_difference_bpi(bpi_data)
-    print(bpi_data)
 
     # count number of tweets per hour
-    #print('Counting the number of tweets. This can take some minutes...')
-    #tweets_per_hour = count_tweets_per_hour(tweets)
+    print('Counting the number of tweets. This can take some minutes...')
+    tweets_per_hour = count_tweets_per_hour(tweets)
+    print('Done counting the number of tweets.')
     
     # enrich tweets_per_hour data frame with first difference and log first difference
-    #tweets_per_hour = first_difference_tweets(tweets_per_hour)
+    tweets_per_hour = first_difference_tweets(tweets_per_hour)
 
     # merge number of tweets per hour with bitcoin price index (bpi) data
-    #df_merged = tweets_per_hour.join(bpi_data, how='left')
+    df_merged = tweets_per_hour.join(bpi_data, how='left')
+    print('Tweets and BPI data is merged.')
 
-    #print(df_merged)
     # Write out to csv
-    #generate_csv(df_merged)
+    generate_csv(df_merged)
+    print("File successfully generated.")
 
 if __name__ == '__main__':
     main()

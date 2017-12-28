@@ -1,12 +1,10 @@
 
-# Script: CollectCrypocurrencyData.py
+# Script: collectCrypocurrencyData.py
 # Authors: Joel Sonderegger
 
 """ This script gets crypocurrency data.
     The output is a csv-file with the crypocurrency prices.
 """
-
-
 
 import numpy as np
 import json
@@ -22,6 +20,7 @@ import hmac
 import requests
 import time
 
+# keys and variables required for bitcoinaverage api
 secret_key = 'ZTIyNDc2YjE2NmViNGZmMTllZGRkYzM2YWM4MWY4NTk4NTFjZjNiOTI2ZTY0ODQ0OTQzMWNmNzE0ZTU0ODU0YQ'
 public_key = 'NzhlNjI2YjY2MTI2NGEzZmEwN2U2ZDExZGY4NDZiNzk'
 timestamp = int(time.time())
@@ -39,7 +38,7 @@ def getHourlyBPI():
     print(bpi_data)
     return bpi_data
 
-# not used so far
+# Enriching the prices with % changes. not used so far.
 def getEnrichedBPI(bpi):
     enrichedBPI = {}
     prevDayPriceStorage = 0
@@ -48,12 +47,11 @@ def getEnrichedBPI(bpi):
         
         changeInAbsolute = value['price'] - prevDayPriceStorage
 
-        # prevent a division by 0 (would happen on first day)
+        # prevent a division by 0 (would happen for first data point)
         if (prevDayPriceStorage != 0):
             changeInPercentage = (changeInAbsolute / prevDayPriceStorage) * 100
         else:
             changeInPercentage = 0
-
 
         enrichedBPI[key] = {'price': value['price'], 'changeInPercentage': changeInPercentage, 'changeInAbsolute': changeInAbsolute }
 
@@ -72,7 +70,6 @@ def generateCSV(bpi_data):
     # creating list that will contain all bpi data
     bpi_data_array = []
     
-
     # loop through bpi_data(json) and create a list(day_array) which is appended to the list that contains all bpi data(bpi_data_array)
     for day in bpi_data:
         day_array = [day['time'],day['average'],day['high'],day['low'],day['open']]

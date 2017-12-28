@@ -440,7 +440,58 @@ The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin P
 \end{itemize}
 
 \section{Data Analysis}
-(Dimitri's Part)
+The data analysis was performed with the statistical software STATA. The corresponding stata file and .do file are stored in the folder statistical\_analysis\_stata. Following we describe all the commands used to produce our econometric model.
+
+\smallskip Step 1:\\
+After starting data the first step was to import the data file (.csv file) into stata. We did so by following command (be carefull your location of the .csv file may differ):\\
+	\begin{lstlisting}[language=bash]
+    import delimited "your_location.csv"
+	\end{lstlisting}
+
+\smallskip Step 2:\\
+STATA is not recognizing our variable "time" as a date variable and therefore we create a new variable "time2" and giving it the same values as "time" and giving it the same format as "time" has. At the end we define "time2" to be a time series with an hourly progress\\
+	\begin{lstlisting}[language=bash]
+    gen double time2 = clock(time, "YMD hms")\\
+	format time2 %tcNN-DD-CCYY_HH:MM:SS\\
+	order time2, after(time)\\
+	tsset time2, format(%tcNN-DD-CCYY_HH:MM:SS) delta(1 hours)
+	\end{lstlisting}
+
+\smallskip Step 3:\\
+Checking for stationarity for all variables by using the Augmented Dickey-Fuller (ADF) test with a time delay of 0 periods (lag 0).\\
+	\begin{lstlisting}[language=bash]
+	dfuller nr_of_tweets, lags(0)
+	dfuller df_nr_of_tweets, lags(0)
+	dfuller log_df_nr_of_tweets, lags(0)
+	dfuller bpi_closing_price, lags(0)
+	dfuller df_bpi_closing_price, lags(0)
+	dfuller log_df_bpi_closing_price, lags(0)
+	\end{lstlisting}
+
+\smallskip Step 4:\\
+Calling the lag-order selection criteria statistics for our VAR model. The maximum amount of lags is 7 and the variables that we chose for the latter VAR model are df\_nr\_of\_tweets and df\_btc\_closing\_price.\\
+	\begin{lstlisting}[language=bash]
+	varsoc df_nr_of_tweets df_btc_closing_price, maxlag(7)
+	\end{lstlisting}
+
+\smallskip Step 5:\\
+Running the VAR regression for our two variables and recommended lag of 2 (from Results of Step 4).\\
+	\begin{lstlisting}[language=bash]
+	var df_nr_of_tweets df_btc_closing_price, lags(1/2)
+	\end{lstlisting}
+
+\smallskip Step 6:\\
+Calling the granger causality test with lag length 2.\\
+	\begin{lstlisting}[language=bash]
+	Vargranger
+	\end{lstlisting}
+
+\smallskip Additionally:\\
+The Regression Results were exportet to a latex format by instaling and using the outreg2 package. This piece of latex code was then inserted into in the paper. All other results we edited with an image software and inserted them as .png file into the paper\\
+	\begin{lstlisting}[language=bash]
+	ssc install outreg2
+	outreg2 using var_gegression_results.tex, replace
+	\end{lstlisting}
 
 \end{spacing}
 \clearpage

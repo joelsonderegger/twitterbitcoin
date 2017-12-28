@@ -1,7 +1,7 @@
 # Script: aggregateTwitterBpi.py
 # Author: Joel Sonderegger
 
-""" This script aggregates the Tweets and BPI data. Bascially, it (1) takes the two data sets, (2) drops unnecessary data, (3) counts the nr of tweets of each hour, and (4) merges the remaining data. Additionally, (5) the first differences (+ log first differences) of the nr of tweets and BPI is part of the output.
+""" This script aggregates Tweets and BPI data. Bascially, it (1) takes the two data sets, (2) drops unnecessary columns, (3) counts the number of tweets for each hour, and (4) merges the remaining data. Additionally, (5) the first differences (+ log first differences) of the number of tweets and BPI is part of the output.
 """
 
 import pandas as pd
@@ -160,14 +160,14 @@ def generate_csv(df_merged):
 
 def main():
 
-    # load tweets from csv-file
-    tweets = load_tweets()
-
     # load bitcoin price index (bpi) data from csv-file
     bpi_data = load_bpi()
 
     # enrich BPI data frame with first difference and log first difference
     bpi_data = first_difference_bpi(bpi_data)
+
+    # load tweets from csv-file
+    tweets = load_tweets()
 
     # count number of tweets per hour
     print('Counting the number of tweets. This can take some minutes...')

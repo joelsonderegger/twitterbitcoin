@@ -90,9 +90,6 @@ def generateCSV(bpi_data):
        writer = csv.writer(csvFile)
        writer.writerows(bpi_data_array)
 
-    # (bpi_data_array) - 1 because we don't want to count the header
-    print("Added " + str(len(bpi_data_array)-1) + " entries to data/bpi.csv")
-
     return None
 
 # Begin the Python script that will do the workdef main():

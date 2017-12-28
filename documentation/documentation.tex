@@ -29,6 +29,16 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 
+
+%% packages for tikz diagrams
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
+
+%% styling for tikz diagrams
+\tikzstyle{startstop} = [rectangle, rounded corners, minimum width=10cm, minimum height=1cm,text centered, text width=10cm, draw=black, fill=gray!10]
+\tikzstyle{process} = [rectangle, minimum width=10cm, minimum height=1cm, text centered, text width=10cm, draw=black, fill=orange!30]
+\tikzstyle{arrow} = [thick,->,>=stealth]
+
 % List of abbreviations
 \usepackage{acronym}
 
@@ -212,7 +222,7 @@ An excerpt of an example response looks like the following:
 Furthermore to ensure a high quality data set an exception has been integrated into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Furthermore the logfile will be  appended to \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
-As explained in the previous section the twitter API was used to filter tweets in realtime based on the buzzword "bitcoin". The python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless anywhere and anytime. Furthermore due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\newline 
+As explained in the previous section the twitter API was used to filter tweets in realtime based on the buzzword "bitcoin". The Python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless anywhere and anytime. Furthermore due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\newline 
 
 \begin{enumerate}
 \item Setup of the Raspberry Pi
@@ -253,7 +263,7 @@ https://github.com/joelsonderegger/twitterbitcoin.git
 \end{lstlisting}
 \end{enumerate}
 
-\item Setup Pyhton3
+\item Setup Python3
 \begin{enumerate}
 \item Install Python3 using the command: sudo apt-get install Python3 \newline
 \item Install the tweepy module for python using the command
@@ -268,9 +278,9 @@ pip install tweepy
 \begin{lstlisting}[language=bash] 
 screen -S 'name' 
 \end{lstlisting}
-\item Start python program using the command
+\item Start Python program using the command
 \begin{lstlisting}[language=bash]
-python3 CollectTwitterData.py
+python3 collectTwitterData.py
 \end{lstlisting}
 \item Detach the screen to keep the program running after secure shell connection has been terminated using the commands
 \begin{lstlisting}[language=bash]
@@ -353,27 +363,70 @@ An excerpt of an example response looks like the following:
 
 
 \section{Data Aggregation and Data Wrangling}
-Before the collected data sets can be analyzed they need to be aggregated. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. 
+After the tweets and BPI data set is generated needs to be aggregated before it can be analyzed. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. The script \verb|aggregateTwitterBpi.py| does all this.
+
+\subsubsection{Process}
+The process of the script \verb|aggregateTwitterBpi.py| works as follows:
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}[node distance=1.6cm]
+        \node (start) [startstop] {Start};
+        \node (pro1) [process, below of=start] {Load BPI data set};
+        \node (pro2) [process, below of=pro1] {Calculate first differences for BPI data};
+        \node (pro3) [process, below of=pro2] {Load tweets data set};
+        \node (pro4) [process, below of=pro3] {Count number of tweets on an hourly basis};
+        \node (pro5) [process, below of=pro4] {Calculate first differences for number of tweets on an hourly basis};
+        \node (pro6) [process, below of=pro5] {Merge number of tweets with BPI data (incl. first differences)};
+        \node (pro7) [process, below of=pro6] {Generate and save CSV file};
+        \node (stop) [startstop, below of=pro7] {Stop};
+        
+        \draw [arrow] (start) -- (pro1);
+        \draw [arrow] (pro1) -- (pro2);
+        \draw [arrow] (pro2) -- (pro3);
+        \draw [arrow] (pro3) -- (pro4);
+        \draw [arrow] (pro4) -- (pro5);
+        \draw [arrow] (pro5) -- (pro6);
+        \draw [arrow] (pro6) -- (pro7);
+        \draw [arrow] (pro7) -- (stop);
+    \end{tikzpicture}
+    \caption{Data aggregation and data wrangling process} \label{fig:dataaggregation}
+\end{figure}
+
+Here a short description of what happens at the various steps: 
+\linebreak\linebreak
+\textbf{Load BPI data set} The script takes the BPI data set that is located at \verb|data/bpi.csv|.
+\linebreak\linebreak
+\textbf{Calculate first differences for BPI data} The first differences of the BPI closing prices and the natural logarithm of the first differences of the BPI closing prices are calculated. The reason for calculating these values is given in the data analysis section.
+\linebreak\linebreak
+\textbf{Load tweets data set} The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
+\linebreak\linebreak
+\textbf{Count number of tweets on an hourly basis} 
+\linebreak\linebreak
+\textbf{Calculate first differences for number of tweets on an hourly basis} 
+\linebreak\linebreak
+\textbf{Merge number of tweets with BPI data (incl. first differences)} 
+\linebreak\linebreak
+\textbf{Generate and save CSV file}
 
 \subsubsection{Execution}
-By executing the python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
+By executing the Python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
 \begin{lstlisting}[language=bash]
     $ python aggregateTwitterBpi.py
 \end{lstlisting}
 
 \subsubsection{Output}
-After successfully running the python script \verb|aggregateTwitterBpi.py| the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
+After successfully running the Python script \verb|aggregateTwitterBpi.py| the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
 
 The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin Price Index data. Each data point consists of the following parameters:
 \begin{itemize}
     \item time: Timestamp on an hourly basis in UTC time
-    \item {nr\_of\_tweets}: 
-    \item {df\_nr\_of\_tweets}: 
-    \item {log\_df\_nr\_of\_tweets}: 
-    \item {df\_bpi\_closing\_price}: 
-    \item {log\_df\_bpi\_closing\_price}: 
+    \item {nr\_of\_tweets}: Sum of tweets
+    \item {df\_nr\_of\_tweets}: First difference of the sum of tweets
+    \item {log\_df\_nr\_of\_tweets}: Natural logarithm of the first difference of the sum of tweets
+    \item {bpi\_closing\_price}: BPI closing price
+    \item {df\_bpi\_closing\_price}: First difference of the BPI closing price
+    \item {log\_df\_bpi\_closing\_price}: Natural logarithm of the first difference of the BPI closing price
 \end{itemize}
-
 
 \section{Data Analysis}
 (Dimitri's Part)

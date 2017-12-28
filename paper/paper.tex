@@ -68,33 +68,58 @@
 \clearpage
     
 %************************** Abstract Page ************************** 
-    \begin{abstract}
-    \pagenumbering{Roman}
-    This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results. This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
+\begin{abstract}
+\pagenumbering{Roman}
+    This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results. 
+    
+    INPUT ALEN: ADD JUST KEY FINDING THE REST I LIKE
+    
+    This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
     \end{abstract}
 
 \clearpage
 
 %************************** Contenttable Page ************************** 
 	\tableofcontents
+	\clearpage
+%************************** List of Figures ************************** 	
+    \listoffigures
+%************************** List of Figures ************************** 	   
+    \section*{List of Abbreviation} 
+	\begin{acronym}[ASECRETTT] 
+	\acro{VAR}{Vector Autoregression}
+	\acro{EMH}{Efficient Market Hypothesis}
+	\end{acronym}
 
 \clearpage
 
 %************************** Chapters 1-4 **************************
-	\begin{spacing}{1.2}
-	\cleardoublepage\pagenumbering{arabic}
-		
-		\section{Research Question}
-		\textnormal {In this paper, we aim to examine the existence of a correlation between the price development of bitcoin and how much people talk about bitcoin online on Twitter. We have been inspired by the large fluctuation of the bitcoin prices in the last year (mostly increasing) and the fact that Twitter has become a very popular social network where people interact. For orientation, we used the paper by Mao, Counts and Bollen (2015), who claim that sentiment analysis using Twitter data can significantly predict Market prices. We want to examine if this statement holds when we look at a specific asset like bitcoin.}\\
-		
-		\clearpage
+\begin{spacing}{1.2}
+\cleardoublepage\pagenumbering{arabic}
+\section{Introduction}
+Malkil and Fama introduced in 1970 the Efficient Market Hypothesis (EMH), where actual prices include all information and investors act rational. This hypothesis is broadly accepted in the financial world. However, the digitalisation leads to an increased network effect where information can be share within second over the globe. Furthermore, the EMH fails to address the behavioural and emotional role of investors. The large fluctuation of the bitcoin prices in the last year (mostly increasing) and the fact that Twitter has become a very popular social network, where people interact, led to different research in the field of sentimental analysis with the focus on bitcoin and twitter. Mao, Counts and Bollen (2015), claim that sentiment analysis using twitter tweets which contain the buzzword bullishness can indeed be used as an sentiment indicator for bitcoin prices. As digitalization is expected to continue in the future, crypotocurrencies will hypothetical get more important. Thus, the topic is relevant.
+
+\subsection{Research Question and Goal of the Paper}
+As existing research focus mostly on the sentimental analyses of tweet content, this paper aims to examine existence of a correlation between the price development of bitcoin and the amount people talk about bitcoin on twitter. The goal should be reached by answering the following research question:
+
+In what extend does the amount of twitter tweets influence the price of bitcoin?
+
+\subsection{Methodology}
+To answer the above mentioned research question a scientific approach has been applied. The paper consists out of three parts. The first part contains an introduction into the topic by pointing out the relevance of the topic, the research question, methodology and the scope. This is conducted in chapter 1. The second part is characterized as the theory part. The theory aims to provide to the reader the necessary background information by an introduction of relevant bitcoin and twitter information in context of the paper. The conducted research is based on forward research and using relevant sources. Furthermore, it contains a short introduction into the Vector Autoregression approach (VAR) and the constrains in context with the paper. Chapter XYZ The third part contains the discussion of the results and a conclusion. The conclusion is based on the theory and the own conducted mathematical computation. Those computations are based on a data set, which was gathered by own coded python scripts for the timeperiod ADD TIME PERIOD. The data set contains out of two data sources (1) twitter tweets which contain the buzzword "bitcoin" and (2) historical bitcoin prices. Those two sources has been aggregated with a separate python script. The output of aggregation was further proceeded with stata to conduct the VAR on a daily basis. Chapter 4 and 5
+
+INPUT: IS IT NOW DAILY? WHAT IS THE REASON?
+
+\subsection{Scope}
+The paper's focus lies on the scientific discussion and answer of the research question mentioned above. The research question has consciously been design very tiny, as the focus of the course Software Engineering for Economists is the application of different tools, the documentation and reproducibility of the results, rather than writing a high quality scientifc paper. The approach and technical issues (like code scripts etc.) are not addressed. Those points are explained in the separate documentation paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
+	
+\clearpage
 		
 		\section{Brief Background and Data Collection}
 		\itshape\textbf {Bitcoin}\\
-		\textnormal {(Text for Bitcoin)}\\
+		\textnormal {(Text for Bitcoin) Input Alen: Explain why bitcoin is of relevance, short intro what bitcoin is}\\
 		
 		\itshape\textbf {Twitter}\\
-		\textnormal {(Text for Twitter)}\\
+		\textnormal {(Text for Twitter) Input Alen: Explain why twitter is the right source and and some facts about it}\\
 		
 		\itshape\textbf {Data Collection}\\
 		\textnormal {For our dataset, we used 2 different sources. We first collected historical data on bitcoin prices to USD and secondly, we gathered twitter massages related to bitcoin. We fulfil this relationship by selecting tweets that contain the term “bitcoin” in the text message. The time period for both collected data sets was from 21.12.2017 16:00:00 UTC to 26.12.2017 16:00:00 in an hourly basis. We chose an hourly basis to be able to do a statistical analysis with a certain amount of observation for the restricted processing time of this homework.\\

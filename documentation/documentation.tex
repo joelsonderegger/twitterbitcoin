@@ -9,8 +9,10 @@
 % Specify bibliography package
 \usepackage{csquotes}% Recommended
 \usepackage[style=apa]{biblatex}
-%\DeclareLanguageMapping{american}{american-apa}
+\DeclareLanguageMapping{american}{american-apa}
+
 \addbibresource{references.bib}
+
 
 %% Sets page size and margins
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
@@ -19,7 +21,6 @@
 %% package for formatting and highlighting source code
 \usepackage{listings}
 \usepackage{color}
-
 
 %% Useful packages
 \usepackage{amsmath}
@@ -187,12 +188,12 @@ To obtain the mentioned keys and tokens a twitter account is needed. Once, a twi
 %https://apps.twitter.com/
 \end{lstlisting}
 
-After the creation of a application, the keys and tokens can be extracted. Figure \ref{Fig:Keys and Tokens} illustrates how to retrieve the keys and tokens.
-\begin{figure}[h]
+After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.
+\begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{twitteraccess}
 \caption{Twitter Keys and Access Tokens, based on \cite{twitterinc2017c}.}
-\label{Fig:Keys and Tokens}
+\label{figkeysandtokens}
 \end{figure}
 
 \paragraph{Twitter Streaming API}\mbox{}\\{}
@@ -501,3 +502,4 @@ The Regression Results were exportet to a latex format by instaling and using th
 
 %************************** DOCUMENT-END **************************
 \end{document}
+

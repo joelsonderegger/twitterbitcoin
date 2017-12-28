@@ -246,6 +246,9 @@ INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/titlesec/titlesec.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/listings/lstlang1.sty
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
+INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex-apa/american-apa.lbx
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/lbx/american.lbx
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/lbx/american.lbx
 INPUT /usr/local/texlive/2016/texmf-dist/tex/latex/biblatex/lbx/english.lbx

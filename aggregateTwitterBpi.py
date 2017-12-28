@@ -147,16 +147,10 @@ def generate_csv(df_merged):
     # addind the header to the list which contains contains nr of tweets and the bpi closing price for every hour
     data_array = [header] + data_array
 
-    # Defines the path where the data should be written
-    #csvFile = open('data/nr_of_tweets_bpi_closing_price.csv', 'w')
-
     # write the the list which contains nr of tweets and the bpi closing price for every hour (inkl. header) to csv-file
     with open('data/nr_of_tweets_bpi_closing_price.csv', 'w', newline='') as outfile:
         writer = csv.writer(outfile)
         writer.writerows(data_array)
-
-   
-       
 
     return None
 
@@ -180,6 +174,8 @@ def main():
     # enrich tweets_per_hour data frame with first difference and log first difference
     tweets_per_hour = first_difference_tweets(tweets_per_hour)
 
+    print(tweets_per_hour)
+    print(bpi_data)
     # merge number of tweets per hour with bitcoin price index (bpi) data
     df_merged = tweets_per_hour.join(bpi_data, how='left')
     print('Tweets and BPI data is merged.')

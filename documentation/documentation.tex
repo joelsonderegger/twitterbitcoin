@@ -143,8 +143,24 @@ This documentation consists out of four chapters. The first chapter contains a s
 
 \subsection{Scope}
 The scope of the documentation is the provision of an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
-\clearpage 
+\clearpage
 
+\section{Setup}
+\subsection{Requirements to run Python scripts}
+Before you go any further, make sure that at least Python version 3.0.0 available from your command line. You can check this by running:
+\begin{lstlisting}[language=bash]
+    python --version
+\end{lstlisting}
+You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.
+\newline
+On top you need various packages. We created a the requirements file \verb|requirements.txt|, which contains all required packages to run Python scripts of the project. The list of packages to be installed using pip install like so:
+\begin{lstlisting}[language=bash]
+    pip install -r requirements.txt
+\end{lstlisting}
+Now you should be ready to run the Python scripts.
+
+\subsection{Stata}
+(Dimitri's Part: stata version and anything else required to do your calculations)
 
 \section{Data Collection}
 This section contains a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
@@ -359,7 +375,7 @@ An excerpt of an example response looks like the following:
 \section{Data Aggregation and Data Wrangling}
 After the tweets and BPI data set is generated needs to be aggregated before it can be analyzed. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. The script \verb|aggregateTwitterBpi.py| does all this.
 
-\subsubsection{Process}
+\subsection{Process}
 The process of the script \verb|aggregateTwitterBpi.py| works as follows:
 \begin{figure}[H]
     \centering
@@ -394,21 +410,22 @@ Here a short description of what happens at the various steps:
 \linebreak\linebreak
 \textbf{Load tweets data set} The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
 \linebreak\linebreak
-\textbf{Count number of tweets on an hourly basis} 
+\textbf{Count number of tweets on an hourly basis} First, groups the tweets by hour. Second, counts the number of tweets for every hour.
 \linebreak\linebreak
-\textbf{Calculate first differences for number of tweets on an hourly basis} 
+\textbf{Calculate first differences for number of tweets on an hourly basis} The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in the data analysis section.
 \linebreak\linebreak
 \textbf{Merge number of tweets with BPI data (incl. first differences)} 
+Insert Image
 \linebreak\linebreak
-\textbf{Generate and save CSV file}
+\textbf{Generate and save CSV file} Finally, a CSV file is generated with the merged data. 
 
-\subsubsection{Execution}
+\subsection{Execution}
 By executing the Python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
 \begin{lstlisting}[language=bash]
     $ python aggregateTwitterBpi.py
 \end{lstlisting}
 
-\subsubsection{Output}
+\subsection{Output}
 After successfully running the Python script \verb|aggregateTwitterBpi.py| the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
 
 The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin Price Index data. Each data point consists of the following parameters:

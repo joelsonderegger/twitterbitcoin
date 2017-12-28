@@ -148,12 +148,15 @@ def generate_csv(df_merged):
     data_array = [header] + data_array
 
     # Defines the path where the data should be written
-    csvFile = open('data/nr_of_tweets_bpi_closing_price.csv', 'w')
+    #csvFile = open('data/nr_of_tweets_bpi_closing_price.csv', 'w')
 
     # write the the list which contains nr of tweets and the bpi closing price for every hour (inkl. header) to csv-file
-    with csvFile:
-       writer = csv.writer(csvFile)
-       writer.writerows(data_array)
+    with open('data/nr_of_tweets_bpi_closing_price.csv', 'w', newline='') as outfile:
+        writer = csv.writer(outfile)
+        writer.writerows(data_array)
+
+   
+       
 
     return None
 

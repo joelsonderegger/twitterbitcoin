@@ -17,7 +17,7 @@ import math
 
 # Gets tweets from CSV-File. Returns a data frame with tweets
 def load_tweets():
-    df = pd.read_csv('data/20171223_0056_twitterData.csv')
+    df = pd.read_csv('data/twitterData.csv')
     return df
 
 # Gets bpi data from CSV-File. Returns a data frame with bpi data.

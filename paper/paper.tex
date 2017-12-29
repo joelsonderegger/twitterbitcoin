@@ -37,64 +37,67 @@
 \title{Review of Assigned Readings}
 \author{Your Name Goes Here}
     
-%************************** DOCUMENT-START **************************
+    
+%************************** DOCUMENT_STARTS_HERE **************************
 \begin{document}
 
 %************************** Title Page **************************   
-    \begin{titlepage}
-      	\begin{figure}
-      	\centering
-        \includegraphics[scale=0.35]{logohsg}
-        \end{figure}    
-    \centering
-    {\scshape\large School of Management, Economics, Law, Social Schiences and International Affairs \par}
-    \vspace{2.0cm}
-    {\huge\bfseries The effect of Twitter activity on Bitcoin price fluctuation  \par}
-	\vspace{2.0cm}
-    {\scshape\Large Software Engineering for Economists \\(7,610,1.00) \par}
-    \vspace{2.0cm}
-    {\itshape\large Alen Stepic - 11-475-258 \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - 13-606-355 \\Chi Xu - XX-XXX-XXX \par}
-    	\begin{spacing}{1}
-    	\vspace{1.2cm}
-    	{Fall Term 2017 \par}
-    	\vspace{1.2cm}
-    	Supervisor:\\
-    	{Prof. Dr. Philipp Zahn\\ FGN HSG\\ Varnbüelstrasse 19\\ 9000 St. Gallen \par} 
-    	\end{spacing}
-	\vfill
-	{\large \today\par}
-    \end{titlepage}
+\begin{titlepage}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.32]{logohsg}
+	\end{figure}
+\centering
+{\scshape\large School of Management, Economics, Law, Social Sciences and International Affairs \par}
+\vspace{2.0cm}
+{\huge\bfseries The effect of Twitter activity on Bitcoin price fluctuation  \par}
+\vspace{2.0cm}
+{\scshape\Large Software Engineering for Economists \\(7,610,1.00) \par}
+\vspace{2.0cm}
+{\itshape\large Alen Stepic - 11-475-258 \\Dimitrios Koumnakes - 10-613-370 \\Joël Sonderegger - 11-495-488 \\Severin Kranz - 13-606-355 \\Chi Xu - XX-XXX-XXX \par}
+	\begin{spacing}{1}
+	\vspace{1.2cm}
+	{Fall Term 2017 \par}
+	\vspace{1.2cm}
+	Supervisor:\\
+	{Prof. Dr. Philipp Zahn\\ FGN HSG\\ Varnbüelstrasse 19\\ 9000 St. Gallen \par}
+	\end{spacing}
+\vfill
+{\large \today\par}
+\end{titlepage}
     
 \clearpage
     
-%************************** Abstract Page ************************** 
+%************************** Abstract ************************** 
 \begin{abstract}
 \pagenumbering{Roman}
-    This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results. 
-    
-INPUT ALEN @DIMI: ADD JUST KEY FINDING THE REST I LIKE
-    
-    This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
-    \end{abstract}
+This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results.\\
+
+***INPUT ALEN @DIMI: ADD JUST KEY FINDING THE REST I LIKE***\\
+
+This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
+\end{abstract}
 
 \clearpage
 
 %************************** Contenttable Page ************************** 
-	\tableofcontents
-	\clearpage
-%************************** List of Figures ************************** 	
-    \listoffigures\bigskip\bigskip 
-%************************** List of Figures ************************** 	   
-    \section*{List of Abbreviation} 
-	\begin{acronym}[ASECRETTT] 
-	\acro{VAR}{Vector Autoregression}
-	\acro{EMH}{Efficient Market Hypothesis}
-	\acro{etc}{et cetera}
-	\end{acronym}
+\tableofcontents
 
 \clearpage
 
-%************************** Chapters 1-4 **************************
+%************************** List of Figures ************************** 	
+\listoffigures\bigskip\bigskip 
+ 	   
+\section*{List of Abbreviation} 
+\begin{acronym}[ASECRETTT]
+\acro{VAR}{Vector Autoregression}
+\acro{EMH}{Efficient Market Hypothesis}
+\acro{etc}{et cetera}
+\end{acronym}
+
+\clearpage
+
+%************************** Chapters 1 - Introduction **************************
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
@@ -103,9 +106,8 @@ INPUT ALEN @DIMI: ADD JUST KEY FINDING THE REST I LIKE
 
 \subsection{Research Question and Goal of the Paper}
 \label{sec:ResearchQandGoal}
-As existing research focus mostly on the sentimental analyses of tweet content, this paper aims to examine existence of a correlation between the price development of bitcoin and the amount people talk about bitcoin on twitter. The goal should be reached by answering the following research question:
-
-In what extend does the amount of twitter tweets influence the price of bitcoin?
+As existing research focus mostly on the sentimental analyses of tweet content, this paper aims to examine existence of a correlation between the price development of bitcoin and the amount people talk about bitcoin on twitter. The goal should be reached by answering the following research question: \\
+In what extend does the amount of twitter tweets about bitcoin has an effect on the price movement of bitcoin?
 
 \subsection{Methodology}
 \label{sec:Methodology}
@@ -113,83 +115,183 @@ To answer the above mentioned research question a scientific approach has been a
 
 \subsection{Scope}
 \label{sec:Scope}
-The paper's focus lies on the scientific discussion and answer of the research question mentioned above. The research question has consciously been design very tiny, as the focus of the course Software Engineering for Economists is the application of different tools, the documentation and reproducibility of the results, rather than writing a high quality scientific paper. As already mentioned above, the results have to be interpreted carefully because of the limited observation time of seven days. The approach and technical issues (like code scripts etc.) are not addressed. Those points are explained in the separate documentation paper.	
+The paper's focus lies on the scientific discussion and answer of the research question mentioned above. The research question has consciously been design very tiny, as the focus of the course Software Engineering for Economists is the application of different tools, the documentation and reproducibility of the results, rather than writing a high quality scientific paper. As already mentioned above, the results have to be interpreted carefully because of the limited observation time of seven days. The approach and technical issues (like code scripts etc.) are not addressed. Those points are explained in the separate documentation paper.
+
+\clearpage
+
+%************************** Chapters 2 - Background and Data Collection **************************
+\section{Background and Data Collection}
+\label{sec:Background}
+\subsection{Bitcoin}
+After the global financial crisis, Satoshi Nakamoto (2008, p. 1) claimed, that a purely peer-to-peer version of electronic cash could bypass financial institutions as third parties for commercial transactions. Starting from his whitepaper, Bitcoin – the first electronic payment system that relies on the cryptographic concatenation of ongoing transactions (blockchain) has been developed (Nakamoto, 2008, p. 1).\\
+
+Today, Bitcoin is the most popular of over 1300 so-called cryptocurrencies worldwide and increased in value over 1700 percent within the last year according to Coinmarketcap (https://coinmarketcap.com/). Even if the daily transaction volume increased rapidly over time (https://coinmarketcap.com/), this does not necessarily mean that Bitcoin is used for payment purposes. Even more, several authors argue that the Bitcoin price and transaction volumes are mainly pushed by speculative investments rather than actual usage as a currency (Corbet, Lucey \& Yarovya, 2017; Forbes, 2017; Yermack, 2013). Kristoufek (2015) points out that there are other influencing factors such as usage in trade, money supply and price level, that influence the Bitcoin price in the long term. However, evidence shows that the level of Bitcoin prices are clearly driven by investors’ interest in the digital currency. Kristoufek (2015) further explains the correlation is most evident in the long run.  During explosive increases or rapid declines of the price higher investors’ interest further boosts the movement in the direction (Kristoufek, 2015). These findings are in line with other researchers (see Garcia, Tessone, Mayrodiev \& Perony, 2014; Kondor, Posfai, Csabai, \&Vattay, 2014).\\
+
+One core assumption of behavioural finance is that investors’ interests influence their behaviour and therefore stock prices. (Mao et al., 2015, p. 3) A widely used approach to measure investors’ interests is the sentiment analysis of Twitter data. Based on analysis of the influence of twitter bullishness on the stock market by Mao et al. (2015), this paper further elaborates on the concept by applying the approach to Bitcoin prices.
+		
+\subsection{Twitter}
+Outline: Growth of Social Media, Opinion Mining, Twitter -> micro-blogging platform, tweets, functionalities, etc. ; Why good for measuring opinions ?  "gold mine"; Sentiment Analysis, What we do.
+Comment Severin: This part will contain the following steps and will be mostly based on Stenqvist et al. Predicting Bitcoin price fluctuation with Twitter sentiment analysis  (sections 2.2, 2.3)\\
+
+1) Introduction sentence -> growth of social media https://www.statista.com/statistics/278414/number-of-worldwide-social-network-users/\\
+2) Twitter as a "gold mine" to gather opinions -> What is twitter, Why is it valuable -> length of messages etc.\\
+3) Sentiment Analysis -> what is a sentiment analysis\\
+4) Sentiment Analysis of the term bitcoin based on twitter -> explain what we do \\
+		
+\subsection{Data Collection}
+For our dataset, we used 2 different sources.\\
+We first collected historical data on bitcoin prices to USD and secondly, we gathered twitter massages related to bitcoin. We fulfil this relationship by selecting tweets that contain the term “bitcoin” in the text message. The time period for both collected data sets was from 19.12.2017 20:00:00 UTC to 28.12.2017 10:00:00 in an hourly basis. We chose an hourly basis to be able to do a statistical analysis with a certain amount of observation for the restricted processing time of this homework.\\
+
+For the bitcoin prices, a publicly available API from CoinDesk was used (Source? See documentation?). The prices collected represent the final price level of bitcoin before every hour changes. For example, our first listed price of bitcoin was on 19.12.2017 at 19:59:59 and our last value on 28.12.2017 at 09:59:59. These values construct our first time series data set and are shown in the following graph.\\
+
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_nr_tweets.png}
+	\end{figure}
+	
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_df_nr_tweets.png}
+	\end{figure}
+	
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_log_df_nr_tweets.png}
+	\end{figure}
+	
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_bpi.png}
+	\end{figure}
+
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_df_bpi.png}
+	\end{figure}
+	
+	\begin{figure}[H]
+	\graphicspath{ {stata_export_graphs/} }
+	\includegraphics[scale=0.45]{graph_plot_log_df_bpi.png}
+	\end{figure}
+	
+\clearpage
+
+%************************** Chapters 3 - Econometric Modelling and Results **************************
+\section{Econometric Modelling and Results}
+\label{sec:EconometricModellingandResults}
+As stated in the beginning, we want to examine the underlying relationship between twitter activity and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the VAR (Vector Autoregression) approach. In this approach the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (Lütkepohl, 2005, p. 4-5).\\
+To generate the econometric results that follow we used the statistical software STATA.
+
+\subsection{Stationarity}
+Before estimating a VAR model, the time series data must be checked for stationary. Thus, the means and variances are constant over time and the dataset do not show any trending behavior. Non-stationary data can lead to an inaccurate model which is undesirable. To test for stationarity, we use the Augmented Dickey-Fuller (ADF) test.\\
+First, we check for stationarity of the number of tweets (variable name in data set: nr\_of\_tweets). Because there this variable may not be stationary we have also vreated the first difference of the number of tweets (variable name: df\_nr\_of\_tweets) and the logarithmic first difference of the number of tweets (variable name: log\_df\_nr\_of\_tweets). The augmented Dickey-Fuller test for these variables gives the following results (via STATA):\\
+
+\begin{figure}[H]
+\centering
+\graphicspath{ {stata_export_graphs/} }
+\includegraphics[scale=0.85]{ADF_twitter_variables.png}
+\end{figure}
+	
+From these result we can see that only the first variable in not stationary. This is because the absolute value of the test statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475). The second variable is stationary (14.167 $>$ 3.475) and from here onwards we are going to continuous the analysis by using this first difference transformetion of the variable number of tweets, which fulfils stationarity.\\
+
+Secondly, we have to check for stationarity for our second variable, the bitcoin prices (variable name in data set: bpi\_closing\_price). Here we also included the first difference (variable name: df\_bpi\_closing\_price) and the logarithmic first difference (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
+
+\begin{figure}[H]
+\centering
+\graphicspath{ {stata_export_graphs/} }
+\includegraphics[scale=0.85]{ADF_bpi_variables.png}
+\end{figure}
+	
+These result also suggest to use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
+
+\subsection{Lag-Specification}
+To select the optimal number of lags in our VAR regression we check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving use the optimal number of lag to use (Brandt and Williams, 2007, p. 27). The calculations of these criteria for our given data set are shown in the following table.\\
+
+\begin{figure}[H]
+\centering
+\graphicspath{ {stata_export_graphs/} }
+\includegraphics[scale=0.85]{LAG_crit_df_nr_tweets_df_bpi.png}
+\end{figure}
+
+As can be seen on the table, STATA calculates and presents various information criteria (AIC, HQIC, SBIC). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag lenght of 1.
+		
+\subsection{Regression Model}
+After determining the optimal lag gength the next step is to build the vector autoregression model (VAR model).
+For this analysis, we use a basic unrestricted VAR model which consists of two endogenous variables, T which repesents the variable df\_nr\_of\_tweets and B which represents bpi\_closing\_price. As defined in the previous section the selected otpimal time lag is 1. Given these information, the model equations can be written as follows:
+
+\begin{equation}
+\begin{split}
+T_t = c_1 + a_{11}T_{t-1} + a_{12}B_{t-1} + \epsilon_1 \\
+B_t = c_2 + a_{21}T_{t-1} + a_{22}B_{t-1} + \epsilon_2
+\end{split}
+\end{equation}
+
+This model shows that the current value of our endogenous variavles is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning bitcoin in the past, has an effect on the bitcoin prices in the periods that follow. This question is pictured in the second equation of this model.\\
+
+After running the above VAR regression in STATA we get following results:
+	
+\begin{tabular}{lcc} \hline
+ & (T\textsubscript{t}) & (B\textsubscript{t}) \\
+VARIABLES & df\_nr\_of\_tweets & df\_bpi\_closing\_price \\ \hline
+ &  &  \\
+L.df\_nr\_of\_tweets (T\textsubscript{t-1}) & 0.00999 (a\textsubscript{11}) & 0.00463 (a\textsubscript{21}) \\
+ & (0.0693) & (0.0104) \\
+L.df\_bpi\_closing\_price (B\textsubscript{t-1}) & -0.675 (a\textsubscript{12}) & -0.125* (a\textsubscript{22}) \\
+ & (0.469) & (0.0707) \\
+Constant  & -88.34 (c\textsubscript{1}) & -18.48 (c\textsubscript{2}) \\
+ & (177.9) & (26.79) \\
+ &  &  \\
+ Observations & 205 & 205 \\ \hline
+\multicolumn{3}{c}{ Standard errors in parentheses} \\
+\multicolumn{3}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+\end{tabular}
+
+The equation of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one and it is listed on the second column (B\textsubscript{t}) in the above table. The coefficient of 0.00463 (a\textsubscript{21}) implies that an increase of tweets by 1 increases the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This means that based on our data set the amount of tweets have no significant effect on the price development of bitcoin.
+		
+\subsection{Granger Causality}
+To assess the reliability (causality) of the previous results we use the Granger causality test. This test confirms if the statements by the regression are valid. The following table shows the results of the Granger causality test\\
+
+\begin{figure}[H]
+\centering
+\graphicspath{ {stata_export_graphs/} }
+\includegraphics[scale=0.85]{granger_test.png}
+\end{figure}
+
+The Null hypothesis here is... In the second row the chi2 is greater then the Prob value which allows as to reject the Null hypothesis and conclude that the regression results are valid...\\
+
+...the Null hypothesis in our case is that lagged number of Tweets does not cause changes in bitcoin prices. As the Table shows, we can reject the Null hypothesis because the probability is around 1\%. Therefore, we accept the alternative hypothesis, which says that the lagged number of tweets does cause changes in bitcoin prices. How these changes look exactly we have discussed in the previous section. The granger causality confirmed that the effect is valid.
+
+\clearpage
+
+%************************** Chapters 4 - Conclusion **************************
+\section{Conclusion}
+\label{sec:Conclustion}
+(Insert text)
+
 \clearpage
 		
-		\section{Brief Background and Data Collection}
-		\label{sec:Background}
-		\itshape\textbf {Bitcoin}\\
-		\textnormal {After the global financial crisis, Satoshi Nakamoto (2008, p. 1) claimed, that a purely peer-to-peer version of electronic cash could bypass financial institutions as third parties for commercial transactions. Starting from his whitepaper, Bitcoin – the first electronic payment system that relies on the cryptographic concatenation of ongoing transactions (blockchain) has been developed (Nakamoto, 2008, p. 1).\newline
-Today, Bitcoin is the most popular of over 1300 so-called cryptocurrencies worldwide and increased in value over 1700 percent within the last year according to Coinmarketcap (https://coinmarketcap.com/). Even if the daily transaction volume increased rapidly over time (https://coinmarketcap.com/), this does not necessarily mean that Bitcoin is used for payment purposes. Even more, several authors argue that the Bitcoin price and transaction volumes are mainly pushed by speculative investments rather than actual usage as a currency (Corbet, Lucey \& Yarovya, 2017; Forbes, 2017; Yermack, 2013). Kristoufek (2015) points out that there are other influencing factors such as usage in trade, money supply and price level, that influence the Bitcoin price in the long term. However, evidence shows that the level of Bitcoin prices are clearly driven by investors’ interest in the digital currency. Kristoufek (2015) further explains the correlation is most evident in the long run.  During explosive increases or rapid declines of the price higher investors’ interest further boosts the movement in the direction (Kristoufek, 2015). These findings are in line with other researchers (see Garcia, Tessone, Mayrodiev \& Perony, 2014; Kondor, Posfai, Csabai, \&Vattay, 2014).\newline
-One core assumption of behavioural finance is that investors’ interests influence their behaviour and therefore stock prices. (Mao et al., 2015, p. 3) A widely used approach to measure investors’ interests is the sentiment analysis of Twitter data. Based on analysis of the influence of twitter bullishness on the stock market by Mao et al. (2015), this paper further elaborates on the concept by applying the approach to Bitcoin prices.
- }\\
-		
-		\itshape\textbf {Twitter}\\
-		\textnormal { Outline: Growth of Social Media, Opinion Mining, Twitter -> micro-blogging platform, tweets, functionalities, etc. ; Why good for measuring opinions ?  "gold mine"; Sentiment Analysis, What we do.
-Comment Severin: This part will contain the following steps and will be mostly based on Stenqvist et al. Predicting Bitcoin price fluctuation
-with Twitter sentiment analysis - sections 2.2, 2.3\newline
-1) Introduction sentence -> growth of social media https://www.statista.com/statistics/278414/number-of-worldwide-social-network-users/\newline
-2) Twitter as a "gold mine" to gather opinions -> What is twitter, Why is it valuable -> length of messages etc.\newline
-3) Sentiment Analysis -> what is a sentiment analysis\newline
-4) Sentiment Analysis of the term bitcoin based on twitter -> explain what we do }\\
-		
-		\itshape\textbf {Data Collection}\\
-		\textnormal {For our dataset, we used 2 different sources. We first collected historical data on bitcoin prices to USD and secondly, we gathered twitter massages related to bitcoin. We fulfil this relationship by selecting tweets that contain the term “bitcoin” in the text message. The time period for both collected data sets was from 21.12.2017 16:00:00 UTC to 26.12.2017 16:00:00 in an hourly basis. We chose an hourly basis to be able to do a statistical analysis with a certain amount of observation for the restricted processing time of this homework.\\
-For the bitcoin prices, a publicly available API from CoinDesk was used (Source? See documentation?). The prices collected represent the final price level of bitcoin before every hour changes. For example, our first listed price of bitcoin was on 21.12.2017 at 16:59:59 and our last value on 26.12.2017 at 15:59:59. These values construct our first time series data set and are shown in the following graph.\\}
-				
-		\clearpage
-		
-		\section{Econometric Modelling and Results}
-		\label{sec:EconometricModellingandResults}
-		\textnormal {As stated in the beginning, we want to examine the underlying relationship between twitter activity and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the VAR (Vector Autoregression) approach. In this approach the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (Lütkepohl, 2005, p. 4-5).\\
-To generate the econometric results that follow we used the statistical software STATA.}
-
-		\itshape\textbf {Stationarity}\\
-		\textnormal {Before estimating a VAR model, the time series data must be checked for stationary. Thus, the means and variances are constant over time and the datasets do not show any trending behavior. Non-stationary data can lead to an inaccurate model which is undesirable. To test for stationarity, we use the Augmented Dickey-Fuller (ADF) test and get following results from STATA.\\
-Interpreting the results and accepting or rejecting stationarity.}
-
-		\itshape\textbf {Lag Specification}\\
-		\textnormal {To select the optimal number of lags in our VAR regression we check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving use the optimal number of lag to use (Brandt and Williams, 2007, p. 27). The calculations of these criteria for our given data set is easily done by a statistical software and given in the following table.\\}
-		
-		\itshape\textbf {VAR Regression Model}\\
-		\textnormal {In this paper, we use a basic unrestricted VAR model which consists of two endogenous variables, T for aggregate tweets and B for bitcoin prices. The selected time lag is 3 and this choice will be discussed later. Given that the model equations can be written as follows:\\}
-		
-		\itshape\textbf {Granger Causality}\\
-		\textnormal {To assess the causal relationship between our two endogenous variables and interpret the result we use the Granger causality. This test confirms if one variable is statistically useful to predict the other variable. If this is given the dynamics stated by the calculated coefficient above can be assumed to be valuable.\\
-A second analysis to interpret our results is the impact response analysis. This evaluates the impact of changes in the one variable to the other variable. This is also provided by STATA and the results can be seen in the following graphs.}
-
-		\itshape\textbf {Impulse Response Analysis}\\
-					
-		\clearpage
-		
-		\section{Conclusion}
-		\label{sec:Conclustion}
-		\textnormal {(Insert text)}
-		
-		\clearpage
-		
-	\end{spacing}
+\end{spacing}
 
 \clearpage
 
 %************************** Bibliography **************************
 \section{References}
 \printbibliography[heading=none]
+
 \clearpage
+
 %************************** Declaration of Authorship **************************
 \section{Declaration of Authorship}
 We hereby declare,
 \begin{itemize}
-    \item that we have written this thesis without any help from others and without the use of documents and aids other than those stated above;
-    \item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
-    \item that we have acquired any immaterial rights to materials we may have used such as images or graphs, or that we have produced such materials ourself;
-    \item that the topic or parts of it are not already the object of any work or examination of another course unless this has been explicitly agreed on with the faculty member in advance and is referred to in the thesis;
-    \item that we will not pass on copies of this work to third parties or publish them without the University’s written consent if a direct connection can be established with the University of St.Gallen or its faculty members;
-    \item that we are aware that our work can be electronically checked for plagiarism and that we hereby grant the University of St.Gallen copyright in accordance with the Examination Regulations in so far as this is required for administrative action;
-    \item that we are aware that the University will prosecute any infringement of this declaration of authorship and, in particular, the employment of a ghostwriter, and that any such infringement may result in disciplinary and criminal consequences which may result in our expulsion from the University or us being stripped of our degree.
+\item that we have written this thesis without any help from others and without the use of documents and aids other than those stated above;
+\item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
+\item that we have acquired any immaterial rights to materials we may have used such as images or graphs, or that we have produced such materials ourself;
+\item that the topic or parts of it are not already the object of any work or examination of another course unless this has been explicitly agreed on with the faculty member in advance and is referred to in the thesis;
+\item that we will not pass on copies of this work to third parties or publish them without the University’s written consent if a direct connection can be established with the University of St.Gallen or its faculty members;
+\item that we are aware that our work can be electronically checked for plagiarism and that we hereby grant the University of St.Gallen copyright in accordance with the Examination Regulations in so far as this is required for administrative action;
+\item that we are aware that the University will prosecute any infringement of this declaration of authorship and, in particular, the employment of a ghostwriter, and that any such infringement may result in disciplinary and criminal consequences which may result in our expulsion from the University or us being stripped of our degree.
 \end{itemize}
-
-
 
 \begin{flushleft}
 ................................\\
@@ -203,11 +305,10 @@ Alen Stepic - 11-475-258\\\bigskip\bigskip
 ................................\\
 Chi Xu - XX-XXX-XXX
 
-
-
 By submitting this academic term paper, we confirm through my conclusive action that we are submitting the Declaration of Authorship, that we have read and understood it, and that it is true.
-
 \end{flushleft}
+
 \clearpage
-%************************** DOCUMENT-END **************************
+
 \end{document}
+%************************** DOCUMENT_ENDS_HERE **************************

@@ -133,27 +133,32 @@ Bitcoin price\par}
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
-In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science and non-reproducable work can not be characterized as science or used as a basis for policy making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
+In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. However, this creates also new challenges regarding traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science, and non-reproducible work can not be characterized as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
 
 \subsection{Goal of the paper}
-The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
+The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate (Comment Joel: suggesting-> accompanying paper ) paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
 
 \subsection{Methodology}
-This documentation consists out of four chapters. The first chapter contains a short introduction and provides the reader with an overview about the topic. Furthermore it points out the relevance of documentation. The second chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The third chapter discusses how the data is aggregated by pointing out the core model and its parameters. Finally the fifth chapter discusses how the analysis has been conducted.
+This documentation consists out of four chapters. The first chapter contains a short introduction and provides the reader with an overview of the topic. Furthermore, it points out the relevance of documentation. The second chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The third chapter discusses how the data is aggregated by pointing out the core model and its parameters. Finally, the fifth chapter explains how the analysis has been conducted.
 
 \subsection{Scope}
-The scope of the documentation is the provision of an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
+The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper (Comment Joel: suggesting-> accompanying paper ). It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
 \clearpage
 
 \section{Setup}
+This section goes through the setup that you need for exectuing the code that is discussed in this documentation.
+\subsection{Github Repository}
+All code is available on the following github repository:
+\newline
+\verb|https://github.com/joelsonderegger/twitterbitcoin/|
 \subsection{Requirements to run Python scripts}
-Before you go any further, make sure that at least Python version 3.0.0 available from your command line. You can check this by running:
+Before you go any further, make sure that at least Python version 3.0.0 is available from your command line. You can check this by running in your command line:
 \begin{lstlisting}[language=bash]
     python --version
 \end{lstlisting}
 You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.
-\newline
-On top you need various packages. We created a the requirements file \verb|requirements.txt|, which contains all required packages to run Python scripts of the project. The list of packages to be installed using pip install like so:
+\newline \newline
+On top you need various Python packages. We created a  requirements file \verb|requirements.txt|, which contains all required packages to run the Python scripts of this project. You can find the  \verb|requirements.txt| in the root directory of our github repository. The list of packages can be installed using pip install like so:
 \begin{lstlisting}[language=bash]
     pip install -r requirements.txt
 \end{lstlisting}
@@ -162,12 +167,16 @@ Now you should be ready to run the Python scripts.
 \subsection{Stata}
 For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed in your local computer and after starting the program you can follow the guidelines in chapter 4 (data analysis). 
 
+\clearpage
+
 \section{Data Collection}
-This section contains a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
+This section contains a detailed description of how the data for the sequential analysis is gathered and stored. Two separate data sets will be collected: (1) Tweets data and  (2) Bitcoin price index data.
 \subsection{Tweets Data}
-Whit the python script real-time twitter data are streamed and stored. This happens with help of a raspberry pi.
+Whit the Python script real-time Twitter data are streamed and stored. This happens with help of a Raspberry Pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
+Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
+
+(Comment Joel: I think we need a short paragraph about tweepy here. What is tweepy?)
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
 Tweepy is installed very simply by running following commands in the command prompt. 
@@ -196,40 +205,29 @@ After the creation of a application, the keys and tokens can be extracted. Figur
 	\label{figkeysandtokens}
 \end{figure}
 
-\paragraph{Twitter Streaming API}\mbox{}\\{}
-By running the python script \verb|collectTwitterData.py| real-time twitter data is pushed in a Java Script Object Notation (JSON) format. Tweets are just pushed in case a tweet contains the defined key word \verb|bitcoin|.
+\paragraph{Running the Python Scrupt}\mbox{}\\{}
+By running the Python script \verb|collectTwitterData.py| real-time twitter data is gathered on an ongoing basis until you stop the script forcefully.
 \begin{lstlisting}[language=bash]
-$ python collectTwitterData.py
-\end{lstlisting}
+    $ python collectTwitterData.py
+    \end{lstlisting}
 
-From the JSON format the following parameters are decoded:
+The Tweepy API provides the tweets data in a Java Script Object Notation (JSON) format. Tweets are only received in case a tweet contains the predefined key word \verb|bitcoin|. While a single tweet consists of many attributes we are only interested in two attributes:
 \begin{itemize}
-    \item created at: Timestamp of the created tweet
+    \item created\_at: Timestamp of the created tweet (in UTC time)
     \item text: Text of the tweet
 \end{itemize}
-The timestamps are in UTC time.
 
-After a successfully decoding the parameters the data is appended to the \verb|twitterData.csv| file in a new row and saved in the folder \verb|/data|.
-
-An excerpt of an example response looks like the following:
+An example for a response from the Tweepy API looks like this (of course this shows only the two attributes we are interested in):
 \begin{lstlisting}
-[
-    {
-        "created_at": Tue Dec 19 20:40:48 +0000 2017, 
-        "text": "RT @WhiteBitcoin: New Bitcoin White. Effective, Flexible, Reliable", 
-    }, 
-    {
-        "created_at": Tue Dec 19 20:40:49 +0000 2017 ,
-        "text": "As #bitcoin prices surge, #xrp remains affordable and FAST!",
-    }, 
     {
         "created_at": Tue Dec 19 20:40:49 +0000 2017, 
         "text": "Singapore issues bitcoin warning after price rise - #BTC #Bitcoin #Crypto", 
     }
-]
 \end{lstlisting}
 
-Furthermore to ensure a high quality data set an exception has been integrated into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Furthermore the logfile will be  appended to \verb|/data/tweet_collection_error_log.csv|.
+The \verb|text| attribute needs to be encoded from the raw JSON format into the UTF-8 format for further analysis. After successfully encoding the \verb|text| attribute a tweet is appended to the \verb|twitterData.csv| file as a new row and saved in the fo
+
+Furthermore, to ensure a high quality data set it needs to be complete without missing any data points for the observed period. Thus, we have built in an exception handler into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Additionaly, any exception that occurs during the exectuing of the script will be added to the log file \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
 As explained in the previous section the twitter API was used to filter tweets in real time based on the buzzword \"bitcoin\". The Python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\newline 
@@ -403,21 +401,41 @@ The process of the script \verb|aggregateTwitterBpi.py| works as follows:
 \end{figure}
 
 Here a short description of what happens at the various steps: 
-\linebreak\linebreak
-\textbf{Load BPI data set} The script takes the BPI data set that is located at \verb|data/bpi.csv|.
-\linebreak\linebreak
-\textbf{Calculate first differences for BPI data} The first differences of the BPI closing prices and the natural logarithm of the first differences of the BPI closing prices are calculated. The reason for calculating these values is given in the data analysis section.
-\linebreak\linebreak
-\textbf{Load tweets data set} The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
-\linebreak\linebreak
-\textbf{Count number of tweets on an hourly basis} First, groups the tweets by hour. Second, counts the number of tweets for every hour.
-\linebreak\linebreak
-\textbf{Calculate first differences for number of tweets on an hourly basis} The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in the data analysis section.
-\linebreak\linebreak
-\textbf{Merge number of tweets with BPI data (incl. first differences)} 
-Insert Image
-\linebreak\linebreak
-\textbf{Generate and save CSV file} Finally, a CSV file is generated with the merged data. 
+\paragraph{Load BPI data set}\mbox{}\\
+The script takes the BPI data set that is located at \verb|data/bpi.csv|.
+
+\paragraph{Calculate first differences for BPI data}\mbox{}\\
+The first differences of the BPI closing prices and the natural logarithm of the first differences of the BPI closing prices are calculated. The reason for calculating these values is given in the data analysis section.
+
+\paragraph{Load tweets data set}\mbox{}\\ 
+The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
+
+\paragraph{Count number of tweets on an hourly basis}\mbox{}\\ F
+irst, groups the tweets by hour. Second, counts the number of tweets for every hour.
+
+\paragraph{Calculate first differences for number of tweets on an hourly basis}\mbox{}\\ 
+The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in the data analysis section.
+
+\paragraph{Merge number of tweets with BPI data (incl. first differences)}\mbox{}\\
+Up to this point there are the two seperate data frames df\_tweets\_per\_hour and df\_bpi.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.52]{dfseperate.png}
+\end{figure}
+By using the \verb|pandas.DataFrame.join| function the columns of the  \verb|df_tweets_per_hour| are joined with  \verb|df_bpi| on the  \verb|MultiIndex(Y, M, D, H)|. The code snipped looks as following\:
+\begin{lstlisting}[language=bash]
+...
+df_merged = df_tweets_per_hour.join(df_bpi, how='left')
+...
+\end{lstlisting}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.52]{dfmerged.png}
+\end{figure}
+
+
+\paragraph{Generate and save CSV file}\mbox{}\\ Finally, a CSV file is generated with the merged data. 
 
 \subsection{Execution}
 By executing the Python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 

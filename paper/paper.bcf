@@ -2073,6 +2073,12 @@
     <bcf:datasource type="file" datatype="bibtex">references.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
+    <bcf:citekey order="1">malkiel1970efficient</bcf:citekey>
+    <bcf:citekey order="2">mao2015quantifying</bcf:citekey>
+    <bcf:citekey order="3">mao2015quantifying</bcf:citekey>
+    <bcf:citekey order="4">shiller2015irrational</bcf:citekey>
+    <bcf:citekey order="5">kahneman2013prospect</bcf:citekey>
+    <bcf:citekey order="6">mao2015quantifying</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

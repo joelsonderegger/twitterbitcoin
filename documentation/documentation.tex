@@ -102,27 +102,27 @@ Fall Term 2017 \\
 
 \clearpage
     
-    \listoffigures\bigskip 
-    \section*{List of Abbreviation} 
-	\begin{acronym}[ASECRETTT] 
-	\acro{API}{Application Programming Interface}
-	\acro{ATOKEN}{Access Token}
-	\acro{ASECRET}{Access Token Secret}
-	\acro{BPI}{Bitcoin Price Index}
-	\acro{BTC}{Bitcoin}
-	\acro{CKEY}{Consumer Key}
-	\acro{CSECRET}{Consumer Secret}
-	\acro{JSON}{Java Script Object Notation}
-	\acro{RPI}{Raspberry Pi}
-	\acro{SSH}{Secure Shell}
-	\acro{USD}{US Dollar}
-	\end{acronym}
-    \clearpage
+\listoffigures\bigskip 
+\section*{List of Abbreviation} 
+\begin{acronym}[ASECRETTT]
+\acro{API}{Application Programming Interface}
+\acro{ATOKEN}{Access Token}
+\acro{ASECRET}{Access Token Secret}
+\acro{BPI}{Bitcoin Price Index}
+\acro{BTC}{Bitcoin}
+\acro{CKEY}{Consumer Key}
+\acro{CSECRET}{Consumer Secret}
+\acro{JSON}{Java Script Object Notation}
+\acro{RPI}{Raspberry Pi}
+\acro{SSH}{Secure Shell}
+\acro{USD}{US Dollar}
+\end{acronym}
 
-
+\clearpage
 
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
+
 \section{Introduction}
 In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science and non-reproducable work can not be characterized as science or used as a basis for policy making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
 
@@ -134,6 +134,7 @@ This documentation consists out of four chapters. The first chapter contains a s
 
 \subsection{Scope}
 The scope of the documentation is the provision of an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
+
 \clearpage
 
 \section{Setup}
@@ -142,8 +143,7 @@ Before you go any further, make sure that at least Python version 3.0.0 availabl
 \begin{lstlisting}[language=bash]
     python --version
 \end{lstlisting}
-You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.
-\newline
+You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.\\
 On top you need various packages. We created a the requirements file \verb|requirements.txt|, which contains all required packages to run Python scripts of the project. The list of packages to be installed using pip install like so:
 \begin{lstlisting}[language=bash]
     pip install -r requirements.txt
@@ -152,6 +152,8 @@ Now you should be ready to run the Python scripts.
 
 \subsection{Stata}
 For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed in your local computer and after starting the program you can follow the guidelines in chapter 4 (data analysis). 
+
+\clearpage
 
 \section{Data Collection}
 This section contains a detailed description of how the data for the sequential analysis is gathered and stored. This includes two  subsections the (1) tweets data and the (2) bitcoin price data.
@@ -179,12 +181,12 @@ To obtain the mentioned keys and tokens a twitter account is needed. Once, a twi
 %https://apps.twitter.com/
 \end{lstlisting}
 
-After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.
+After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.\\
 \begin{figure}[H]
 \centering
-	\includegraphics[scale=0.6]{twitteraccess}
+\includegraphics[scale=0.6]{twitteraccess}
 \caption{Twitter Keys and Access Tokens, based on \textcite{twitterinc2017c}.}
-	\label{figkeysandtokens}
+\label{figkeysandtokens}
 \end{figure}
 
 \paragraph{Twitter Streaming API}\mbox{}\\{}
@@ -195,9 +197,10 @@ $ python collectTwitterData.py
 
 From the JSON format the following parameters are decoded:
 \begin{itemize}
-    \item created at: Timestamp of the created tweet
-    \item text: Text of the tweet
+\item created at: Timestamp of the created tweet
+\item text: Text of the tweet
 \end{itemize}
+
 The timestamps are in UTC time.
 
 After a successfully decoding the parameters the data is appended to the \verb|twitterData.csv| file in a new row and saved in the folder \verb|/data|.
@@ -223,9 +226,10 @@ An excerpt of an example response looks like the following:
 Furthermore to ensure a high quality data set an exception has been integrated into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Furthermore the logfile will be  appended to \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
-As explained in the previous section the twitter API was used to filter tweets in real time based on the buzzword \"bitcoin\". The Python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\newline 
+As explained in the previous section the twitter API was used to filter tweets in real time based on the buzzword \"bitcoin\". The Python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
 
 \begin{enumerate}
+
 \item Setup of the Raspberry Pi
 \begin{enumerate}
 \item Burn image 2017-11-29-raspbian-stretch.zip to micro SD card available from
@@ -303,6 +307,7 @@ https://filezilla-project.org/
 \item Connect to rpi and navigate to data location \newline
 \item Download data manually \newline \newline \end{enumerate}
 \end{enumerate}
+
 In summary, this approach worked well and ran smoothly. A clean setup is recommended to ensure a continuous data stream over a longer period.
 
 
@@ -329,11 +334,13 @@ The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one mon
 
 \subsubsection{API: Bitcoinaverage.com}
 Bitcoinaverage.com offers a free API that provides real-time and historical price data for a range of crypto-currencies including Bitcoin. The following requests delivers data for an per hour monthly sliding window.
+
 \paragraph{Request}\mbox{}\\
 The request to get the data for an per hour monthly sliding window looks as follows. This request require authentication that requires registration and the generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The collectCryptocurrencyData.py already contains the necessary keys. This means that you need no register or generate keys to execute the script collectCryptocurrencyData.py.  
 \begin{lstlisting}[language=bash]
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
+
 \paragraph{Response}
 An excerpt of an example response looks like the following:
 \begin{lstlisting}
@@ -362,6 +369,7 @@ An excerpt of an example response looks like the following:
 ]
 \end{lstlisting}
 
+\clearpage
 
 \section{Data Aggregation and Data Wrangling}
 After the tweets and BPI data set is generated needs to be aggregated before it can be analyzed. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. The script \verb|aggregateTwitterBpi.py| does all this.
@@ -369,7 +377,7 @@ After the tweets and BPI data set is generated needs to be aggregated before it 
 \subsection{Process}
 The process of the script \verb|aggregateTwitterBpi.py| works as follows:
 \begin{figure}[H]
-    \centering
+\centering
     \begin{tikzpicture}[node distance=1.6cm]
         \node (start) [startstop] {Start};
         \node (pro1) [process, below of=start] {Load BPI data set};
@@ -390,10 +398,10 @@ The process of the script \verb|aggregateTwitterBpi.py| works as follows:
         \draw [arrow] (pro6) -- (pro7);
         \draw [arrow] (pro7) -- (stop);
     \end{tikzpicture}
-    \caption{Data aggregation and data wrangling process} \label{fig:dataaggregation}
+\caption{Data aggregation and data wrangling process} \label{fig:dataaggregation}
 \end{figure}
 
-Here a short description of what happens at the various steps: 
+Here a short description of what happens at the various steps:
 \linebreak\linebreak
 \textbf{Load BPI data set} The script takes the BPI data set that is located at \verb|data/bpi.csv|.
 \linebreak\linebreak
@@ -429,6 +437,8 @@ The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin P
     \item {df\_bpi\_closing\_price}: First difference of the BPI closing price
     \item {log\_df\_bpi\_closing\_price}: Natural logarithm of the first difference of the BPI closing price
 \end{itemize}
+
+\clearpage
 
 \section{Data Analysis}
 The data analysis was performed with the statistical software STATA. The corresponding stata file and .do file are stored in the folder statistical\_analysis\_stata. Following we describe all the commands used to produce our econometric model.

@@ -2,7 +2,7 @@
 \usepackage{graphicx}
 \graphicspath{ {images/} }
 
-%% Language and font encodings
+% Language and font encodings
 \usepackage[utf8]{inputenc}
 \usepackage[american]{babel}
 
@@ -10,19 +10,17 @@
 \usepackage{csquotes}% Recommended
 \usepackage[style=apa]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
-
 \addbibresource{references.bib}
 
-
-%% Sets page size and margins
+% Sets page size and margins
 \usepackage[top=2cm,bottom=2cm,left=2cm,right=2cm,marginparwidth=1.75cm]{geometry}
 \setlength{\parskip}{1em}
 
-%% package for formatting and highlighting source code
+% package for formatting and highlighting source code
 \usepackage{listings}
 \usepackage{color}
 
-%% Useful packages
+% Useful packages
 \usepackage{amsmath}
 \usepackage{graphicx}
 \usepackage{float}
@@ -30,12 +28,11 @@
 \usepackage{graphicx}
 \usepackage{setspace}
 
-
-%% packages for tikz diagrams
+% packages for tikz diagrams
 \usepackage{tikz}
 \usetikzlibrary{shapes.geometric, arrows}
 
-%% styling for tikz diagrams
+% styling for tikz diagrams
 \tikzstyle{startstop} = [rectangle, rounded corners, minimum width=10cm, minimum height=1cm,text centered, text width=10cm, draw=black, fill=gray!10]
 \tikzstyle{process} = [rectangle, minimum width=10cm, minimum height=1cm, text centered, text width=10cm, draw=black, fill=orange!30]
 \tikzstyle{arrow} = [thick,->,>=stealth]
@@ -49,7 +46,6 @@
 {0pt}{3.0ex plus 1ex minus .2ex}{0.7ex}
 \titlespacing*{\subsection}
 {0pt}{1.4ex}{0pt}
-
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -68,48 +64,43 @@
   stringstyle=\color{mauve},
   breaklines=true,
   breakatwhitespace=true,
-  tabsize=3
-}
-    
-    
-\title{Review of Assigned Readings}
+  tabsize=3}
+
+\title{Your Title Goes Here}
 \author{Your Name Goes Here}
-        
-    \begin{document}
-    \begin{titlepage}
-      	\begin{figure}
-      	\centering
-        \includegraphics[scale=0.35]{logohsg}
-        \end{figure}
-        \centering
-        School of Management, Economics, Law, Social Schiences and International Affairs \par
-        \vspace{2.5cm}
-        {\huge\bfseries The effect of Twitter activity on
-Bitcoin price\par}      
-        {\Huge\itshape Documentation\par}
-        \vspace{1.5cm}     
-        {Software Engineering for Economists \\ (7,610,1.00) \par}
-        \vspace{1.3cm}
-        {Dimitrios Koumnakes - 10-613-370 \\ Severin Kranz - 13-606-355 \\ Joël Sonderegger - 11-495-488 \\
-       	Alen Stepic - 11-475-258 \\Chi Xu - XX-XXX-XXX \par}
-        \vspace{1cm}
-        Fall Term 2017
-        \vfill
-        Supervisor
-        \linebreak
-        Prof. Dr. Philipp \textsc{Zahn}
-        \linebreak
-        Department of Economics
-          
-    % Bottom of the page
-     {\centering \today\par}
-    
-    \end{titlepage}
-    
-    \clearpage
-    \tableofcontents
-    
-    \clearpage
+
+%************************** DOCUMENT_STARTS_HERE **************************
+\begin{document}
+
+\begin{titlepage}
+	\begin{figure}
+	\centering
+	\includegraphics[scale=0.32]{logohsg}
+	\end{figure}
+\centering
+\centering
+{\scshape\large School of Management, Economics, Law, Social Sciences and International Affairs \par}
+\vspace{1.7cm}
+{\huge\bfseries The effect of Twitter activity on \\ Bitcoin price\par}
+\vspace{1.0cm}
+{\Huge\itshape Documentation\par}
+\vspace{1.0cm}     
+{\Large Software Engineering for Economists \\ (7,610,1.00) \par}
+\vspace{1.2cm}
+{Alen Stepic - 11-475-258 \\ Dimitrios Koumnakes - 10-613-370 \\ Severin Kranz - 13-606-355 \\ Joël Sonderegger - 11-495-488 \\ Chi Xu - XX-XXX-XXX \par}
+\vspace{1.2cm}
+Fall Term 2017 \\
+\vspace{1.2cm}
+{Supervisor\\ Prof. Dr. Philipp Zahn\\ FGN HSG\\ Varnbüelstrasse 19\\ 9000 St. Gallen\\ Department of Economics\par}
+\vspace{0.8cm}
+{\centering\today\par}
+\end{titlepage}
+
+\clearpage
+
+\tableofcontents
+
+\clearpage
     
     \listoffigures\bigskip 
     \section*{List of Abbreviation} 

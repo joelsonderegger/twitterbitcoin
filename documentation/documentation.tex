@@ -443,23 +443,34 @@ The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin P
 \section{Data Analysis}
 The data analysis was performed with the statistical software STATA (version 14.2). The corresponding stata file and .do file are stored in the folder stata\_analysis. Following we describe all the commands used to produce our econometric model.
 
-\smallskip Step 1:\\
-After starting data the first step was to import the data file (.csv file) into stata. We did so by following command (be carefull your location of the .csv file may differ):\\
-	\begin{lstlisting}[language=bash]
-    import delimited "your_location.csv"
-	\end{lstlisting}
+Step 1:\\
+After starting stata the first step was to import the data file (.csv file) into stata. We did so by following command (be carefull your location of the .csv file will differ):\\
+\begin{lstlisting}[language=bash]
+    import delimited C:\Users\Dimi\Desktop\nr_of_tweets_bpi_closing_price.csv
+\end{lstlisting}
 
-\smallskip Step 2:\\
-STATA is not recognizing our variable "time" as a date variable and therefore we create a new variable "time2" and giving it the same values as "time" and giving it the same format as "time" has. At the end we define "time2" to be a time series with an hourly progress\\
+Step 2:\\
+STATA is not recognizing our variable "time" as a date variable. Therefore we create a new variable "time2" and giving it the same values as "time" in the same format as "time". At the end we define "time2" to be a time series with an hourly progress\\
 	\begin{lstlisting}[language=bash]
-    gen double time2 = clock(time, "YMD hms")\\
+	gen double time2 = clock(time, "YMD hms")\\
 	format time2 %tcNN-DD-CCYY_HH:MM:SS\\
 	order time2, after(time)\\
 	tsset time2, format(%tcNN-DD-CCYY_HH:MM:SS) delta(1 hours)
 	\end{lstlisting}
 
-\smallskip Step 3:\\
-Checking for stationarity for all variables by using the Augmented Dickey-Fuller (ADF) test with a time delay of 0 periods (lag 0).\\
+Step 3:\\
+Next we plotted all variables by the following commands and exported the produced graphs (and saved in local repository):\\
+	\begin{lstlisting}[language=bash]
+	twoway (tsline nr_of_tweets)
+	twoway (tsline df_nr_of_tweets)
+	twoway (tsline log_df_nr_of_tweets)
+	twoway (tsline bpi_closing_price)
+	twoway (tsline df_bpi_closing_price)
+	twoway (tsline log_df_bpi_closing_price)
+	\end{lstlisting}
+
+Step 4:\\
+To check for stationarity we run the Augmented Dickey-Fuller (ADF) test for all variables with a time delay of 0 periods (lag 0).\\
 	\begin{lstlisting}[language=bash]
 	dfuller nr_of_tweets, lags(0)
 	dfuller df_nr_of_tweets, lags(0)
@@ -469,26 +480,26 @@ Checking for stationarity for all variables by using the Augmented Dickey-Fuller
 	dfuller log_df_bpi_closing_price, lags(0)
 	\end{lstlisting}
 
-\smallskip Step 4:\\
-Calling the lag-order selection criteria statistics for our VAR model. The maximum amount of lags is 7 and the variables that we chose for the latter VAR model are df\_nr\_of\_tweets and df\_btc\_closing\_price.\\
+Step 5:\\
+Calling the lag-order selection criteria statistics for our VAR model. The maximum amount of lags is 7 and the variables that we chose for the later VAR model are df\_nr\_of\_tweets and df\_bpi\_closing\_price.\\
 	\begin{lstlisting}[language=bash]
-	varsoc df_nr_of_tweets df_btc_closing_price, maxlag(7)
+	varsoc df_nr_of_tweets df_bpi_closing_price, maxlag(7)
 	\end{lstlisting}
 
-\smallskip Step 5:\\
-Running the VAR regression for our two variables and recommended lag of 2 (from Results of Step 4).\\
+Step 6:\\
+Running the VAR regression for our two variables. With recommended lag of 1 (from Step 4).\\
 	\begin{lstlisting}[language=bash]
-	var df_nr_of_tweets df_btc_closing_price, lags(1/2)
+	var df_nr_of_tweets df_bpi_closing_price, lags(1/1)
 	\end{lstlisting}
 
-\smallskip Step 6:\\
-Calling the granger causality test with lag length 2.\\
+Step 7:\\
+Calling the granger causality test with lag length 1.\\
 	\begin{lstlisting}[language=bash]
 	Vargranger
 	\end{lstlisting}
 
-\smallskip Additionally:\\
-The Regression Results were exportet to a latex format by instaling and using the outreg2 package. This piece of latex code was then inserted into in the paper. All other results we edited with an image software and inserted them as .png file into the paper\\
+Additionally:\\
+The VAR regression results were exportet to a latex format by instaling and using the outreg2 package. The generated piece of latex code was then inserted into in the latex file of the paper. All other results were exported with an image software and used as .png files in latex\\
 	\begin{lstlisting}[language=bash]
 	ssc install outreg2
 	outreg2 using var_gegression_results.tex, replace
@@ -505,17 +516,16 @@ The Regression Results were exportet to a latex format by instaling and using th
 %************************** Declaration of Authorship **************************
 \section{Declaration of Authorship}
 We hereby declare,
+
 \begin{itemize}
-    \item that we have written this thesis without any help from others and without the use of documents and aids other than those stated above;
-    \item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
+	\item that we have written this thesis without any help from others and without the use of documents and aids other than those stated above;
+	\item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
     \item that we have acquired any immaterial rights to materials we may have used such as images or graphs, or that we have produced such materials ourself;
     \item that the topic or parts of it are not already the object of any work or examination of another course unless this has been explicitly agreed on with the faculty member in advance and is referred to in the thesis;
     \item that we will not pass on copies of this work to third parties or publish them without the University’s written consent if a direct connection can be established with the University of St.Gallen or its faculty members;
     \item that we are aware that our work can be electronically checked for plagiarism and that we hereby grant the University of St.Gallen copyright in accordance with the Examination Regulations in so far as this is required for administrative action;
     \item that we are aware that the University will prosecute any infringement of this declaration of authorship and, in particular, the employment of a ghostwriter, and that any such infringement may result in disciplinary and criminal consequences which may result in our expulsion from the University or us being stripped of our degree.
 \end{itemize}
-
-
 
 \begin{flushleft}
 ................................\\
@@ -528,8 +538,6 @@ Joël Sonderegger - 11-495-488\\\bigskip\bigskip
 Alen Stepic - 11-475-258\\\bigskip\bigskip
 ................................\\
 Chi Xu - XX-XXX-XXX
-
-
 
 By submitting this academic term paper, we confirm through my conclusive action that we are submitting the Declaration of Authorship, that we have read and understood it, and that it is true.
 

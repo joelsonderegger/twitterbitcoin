@@ -111,19 +111,19 @@ Bitcoin price\par}
     
     \clearpage
     
-    \listoffigures 	
+    \listoffigures\bigskip 
     \section*{List of Abbreviation} 
 	\begin{acronym}[ASECRETTT] 
 	\acro{API}{Application Programming Interface}
 	\acro{ATOKEN}{Access Token}
 	\acro{ASECRET}{Access Token Secret}
+	\acro{BPI}{Bitcoin Price Index}
+	\acro{BTC}{Bitcoin}
 	\acro{CKEY}{Consumer Key}
 	\acro{CSECRET}{Consumer Secret}
 	\acro{JSON}{Java Script Object Notation}
 	\acro{RPI}{Raspberry Pi}
 	\acro{SSH}{Secure Shell}
-	\acro{BPI}{Bitcoin Price Index}
-	\acro{BTC}{Bitcoin}
 	\acro{USD}{US Dollar}
 	\end{acronym}
     \clearpage
@@ -133,7 +133,7 @@ Bitcoin price\par}
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
-In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. (\cite{mccullough2013}) New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible (\cite{mccullough2013}). Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science and non-reproducable work can not be characterized as science or used as a basis for policy making (\cite{mccullough2013}). This explains why reproduction is of great relevance.
+In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much lager data sets can be proceeded. However this creates also new problems regarding to traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science and non-reproducable work can not be characterized as science or used as a basis for policy making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
 
 \subsection{Goal of the paper}
 The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
@@ -167,7 +167,7 @@ This section contains a detailed description of how the data for the sequential 
 \subsection{Tweets Data}
 Whit the python script real-time twitter data are streamed and stored. This happens with help of a raspberry pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days (\cite{twitterinc2017a}). On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
+Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
 Tweepy is installed very simply by running following commands in the command prompt. 
@@ -181,7 +181,7 @@ https://pypi.python.org/pypi/tweepy
 \end{lstlisting}
 
 \paragraph{Twitter Authentication}\mbox{}\\{}
-To access the twitter data, twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (CKEY), (2) consumer secret (CSECRET), (3) access token (ATOKEN) and (4) access token secret (ASECRET).(\cite{twitterinc2017b})
+To access the twitter data, twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (CKEY), (2) consumer secret (CSECRET), (3) access token (ATOKEN) and (4) access token secret (ASECRET). \parencite{twitterinc2017b}
 
 To obtain the mentioned keys and tokens a twitter account is needed. Once, a twitter account exist a application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
 \begin{lstlisting}[language=bash]
@@ -191,9 +191,9 @@ To obtain the mentioned keys and tokens a twitter account is needed. Once, a twi
 After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.
 \begin{figure}[H]
 \centering
-\includegraphics[scale=0.6]{twitteraccess}
-\caption{Twitter Keys and Access Tokens, based on \cite{twitterinc2017c}.}
-\label{figkeysandtokens}
+	\includegraphics[scale=0.6]{twitteraccess}
+\caption{Twitter Keys and Access Tokens, based on \textcite{twitterinc2017c}.}
+	\label{figkeysandtokens}
 \end{figure}
 
 \paragraph{Twitter Streaming API}\mbox{}\\{}
@@ -497,7 +497,42 @@ The Regression Results were exportet to a latex format by instaling and using th
 \clearpage
 
 %************************** Bibliography **************************
-\printbibliography
+\section{References}
+\printbibliography[heading=none]
+\clearpage
+
+%************************** Declaration of Authorship **************************
+\section{Declaration of Authorship}
+We hereby declare,
+\begin{itemize}
+    \item that we have written this thesis without any help from others and without the use of documents and aids other than those stated above;
+    \item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
+    \item that we have acquired any immaterial rights to materials we may have used such as images or graphs, or that we have produced such materials ourself;
+    \item that the topic or parts of it are not already the object of any work or examination of another course unless this has been explicitly agreed on with the faculty member in advance and is referred to in the thesis;
+    \item that we will not pass on copies of this work to third parties or publish them without the University’s written consent if a direct connection can be established with the University of St.Gallen or its faculty members;
+    \item that we are aware that our work can be electronically checked for plagiarism and that we hereby grant the University of St.Gallen copyright in accordance with the Examination Regulations in so far as this is required for administrative action;
+    \item that we are aware that the University will prosecute any infringement of this declaration of authorship and, in particular, the employment of a ghostwriter, and that any such infringement may result in disciplinary and criminal consequences which may result in our expulsion from the University or us being stripped of our degree.
+\end{itemize}
+
+
+
+\begin{flushleft}
+................................\\
+Dimitrios Koumnakes - 10-613-370\\\bigskip\bigskip 
+................................\\
+Severin Kranz - 13-606-355\\\bigskip\bigskip
+................................\\
+Joël Sonderegger - 11-495-488\\\bigskip\bigskip
+................................\\
+Alen Stepic - 11-475-258\\\bigskip\bigskip
+................................\\
+Chi Xu - XX-XXX-XXX
+
+
+
+By submitting this academic term paper, we confirm through my conclusive action that we are submitting the Declaration of Authorship, that we have read and understood it, and that it is true.
+
+\end{flushleft}
 \clearpage
 
 %************************** DOCUMENT-END **************************

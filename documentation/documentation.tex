@@ -133,12 +133,7 @@ The goal of this documentation is the provision of a description. This descripti
 This documentation consists out of four chapters. The first chapter contains a short introduction and provides the reader with an overview of the topic. Furthermore, it points out the relevance of documentation. The second chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The third chapter discusses how the data is aggregated by pointing out the core model and its parameters. Finally, the fifth chapter explains how the analysis has been conducted.
 
 \subsection{Scope}
-<<<<<<< HEAD
-The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper (Comment Joel: suggesting-> accompanying paper ). It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
-=======
-The scope of the documentation is the provision of an overview about the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper. It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, important lines of code are discussed. 
-
->>>>>>> 409aa92bdc75bd70455ddadc6eedc60395bcb0e7
+The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper (Comment Joel: suggesting-> accompanying paper ). It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, 
 \clearpage
 
 \section{Setup}
@@ -152,14 +147,11 @@ Before you go any further, make sure that at least Python version 3.0.0 is avail
 \begin{lstlisting}[language=bash]
     python --version
 \end{lstlisting}
-<<<<<<< HEAD
+
 You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.
 \newline \newline
 On top you need various Python packages. We created a  requirements file \verb|requirements.txt|, which contains all required packages to run the Python scripts of this project. You can find the  \verb|requirements.txt| in the root directory of our github repository. The list of packages can be installed using pip install like so:
-=======
-You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.\\
-On top you need various packages. We created a the requirements file \verb|requirements.txt|, which contains all required packages to run Python scripts of the project. The list of packages to be installed using pip install like so:
->>>>>>> 409aa92bdc75bd70455ddadc6eedc60395bcb0e7
+
 \begin{lstlisting}[language=bash]
     pip install -r requirements.txt
 \end{lstlisting}
@@ -214,23 +206,15 @@ By running the Python script \verb|collectTwitterData.py| real-time twitter data
 
 The Tweepy API provides the tweets data in a Java Script Object Notation (JSON) format. Tweets are only received in case a tweet contains the predefined key word \verb|bitcoin|. While a single tweet consists of many attributes we are only interested in two attributes:
 \begin{itemize}
-<<<<<<< HEAD
     \item created\_at: Timestamp of the created tweet (in UTC time)
     \item text: Text of the tweet
 \end{itemize}
-=======
-\item created at: Timestamp of the created tweet
-\item text: Text of the tweet
-\end{itemize}
-
-The timestamps are in UTC time.
->>>>>>> 409aa92bdc75bd70455ddadc6eedc60395bcb0e7
 
 An example for a response from the Tweepy API looks like this (of course this shows only the two attributes we are interested in):
 \begin{lstlisting}
     {
         "created_at": Tue Dec 19 20:40:49 +0000 2017, 
-        "text": "Singapore issues bitcoin warning after price rise - #BTC #Bitcoin #Crypto", 
+        "text": "Singapore issues bitcoin warning after price rise - #BTC #Bitcoin #Crypto"
     }
 \end{lstlisting}
 
@@ -239,7 +223,7 @@ The \verb|text| attribute needs to be encoded from the raw JSON format into the 
 Furthermore, to ensure a high quality data set it needs to be complete without missing any data points for the observed period. Thus, we have built in an exception handler into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Additionaly, any exception that occurs during the exectuing of the script will be added to the log file \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware Setup}
-As explained in the previous section the twitter API was used to filter tweets in real time based on the buzzword \"bitcoin\". The Python program was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient one compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
+As explained in the previous section the Tweepy API was used to gather tweets in real-time based on the buzzword "bitcoin". The Python script was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient option compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
 
 \begin{enumerate}
 
@@ -313,11 +297,11 @@ screen -r 'name'
 
 \item Download the collected data
 \begin{enumerate}
-\item Install FileZilla available from
+\item Install FileZilla on your local machine available from
 \begin{lstlisting}[language=bash] 
 https://filezilla-project.org/
 \end{lstlisting}
-\item Connect to rpi and navigate to data location \newline
+\item Connect to RPI and navigate to data location \newline
 \item Download data manually \newline \newline \end{enumerate}
 \end{enumerate}
 
@@ -414,7 +398,7 @@ The process of the script \verb|aggregateTwitterBpi.py| works as follows:
 \caption{Data aggregation and data wrangling process} \label{fig:dataaggregation}
 \end{figure}
 
-<<<<<<< HEAD
+
 Here a short description of what happens at the various steps: 
 \paragraph{Load BPI data set}\mbox{}\\
 The script takes the BPI data set that is located at \verb|data/bpi.csv|.
@@ -448,27 +432,6 @@ df_merged = df_tweets_per_hour.join(df_bpi, how='left')
     \centering
     \includegraphics[scale=0.52]{dfmerged.png}
 \end{figure}
-
-
-\paragraph{Generate and save CSV file}\mbox{}\\ Finally, a CSV file is generated with the merged data. 
-=======
-Here a short description of what happens at the various steps:
-\linebreak\linebreak
-\textbf{Load BPI data set} The script takes the BPI data set that is located at \verb|data/bpi.csv|.
-\linebreak\linebreak
-\textbf{Calculate first differences for BPI data} The first differences of the BPI closing prices and the natural logarithm of the first differences of the BPI closing prices are calculated. The reason for calculating these values is given in the data analysis section.
-\linebreak\linebreak
-\textbf{Load tweets data set} The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
-\linebreak\linebreak
-\textbf{Count number of tweets on an hourly basis} First, groups the tweets by hour. Second, counts the number of tweets for every hour.
-\linebreak\linebreak
-\textbf{Calculate first differences for number of tweets on an hourly basis} The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in the data analysis section.
-\linebreak\linebreak
-\textbf{Merge number of tweets with BPI data (incl. first differences)} 
-Insert Image
-\linebreak\linebreak
-\textbf{Generate and save CSV file} Finally, a CSV file is generated with the merged data. 
->>>>>>> 409aa92bdc75bd70455ddadc6eedc60395bcb0e7
 
 \subsection{Execution}
 By executing the Python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 

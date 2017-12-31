@@ -127,13 +127,13 @@ Fall Term 2017 \\
 In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. However, this creates also new challenges regarding traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science, and non-reproducible work can not be characterized as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
 
 \subsection{Goal of the paper}
-The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the separate (Comment Joel: suggesting-> accompanying paper ) paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
+The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the accompanying paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
 
 \subsection{Methodology}
-This documentation consists out of four chapters. The first chapter contains a short introduction and provides the reader with an overview of the topic. Furthermore, it points out the relevance of documentation. The second chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The third chapter discusses how the data is aggregated by pointing out the core model and its parameters. Finally, the fifth chapter explains how the analysis has been conducted.
+This documentation consists out of seven chapters. The first five chapters are going to be discussed, as they are relevant for the reproduction of the results. The first chapter contains a short introduction and provides the reader with an overview of the topic. Furthermore, it points out the relevance of the documentation. In the second chapter the requirements (setup) is discussed to enable the reproducibility and run the own written code scripts in Python. Python has been used as it was suggested in the course Software Engineering for Economists. The third chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The data have been gathered by using Application Programming Interfaces (API)to ensure high quality of the data. The fourth chapter discusses how the data is aggregated wrangled to enable the subsequent analysis. The fifth chapter explains how the analysis has been conducted whit STATA.
 
 \subsection{Scope}
-The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the separate paper (Comment Joel: suggesting-> accompanying paper ). It is not a deep description of the code as the code itself as the code is documented separately. Nevertheless, 
+The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the accompanying paper. It is not a deep description of the code as the code itself as the code is documented separately. 
 \clearpage
 
 \section{Setup}
@@ -167,9 +167,12 @@ This section contains a detailed description of how the data for the sequential 
 \subsection{Tweets Data}
 Whit the Python script real-time Twitter data are streamed and stored. This happens with help of a Raspberry Pi.
 \subsubsection{Python Script}
-Twitter offers different Application Programming Interfaces (API) for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script.
+Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script and enables to gather a broader number of tweets for free.
 
-(Comment Joel: I think we need a short paragraph about tweepy here. What is tweepy?)
+Tweepy is
+TBD
+TBD
+TBD
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
 Tweepy is installed very simply by running following commands in the command prompt. 
@@ -198,7 +201,7 @@ After the creation of a application, the keys and tokens can be extracted. Figur
 \label{figkeysandtokens}
 \end{figure}
 
-\paragraph{Running the Python Scrupt}\mbox{}\\{}
+\paragraph{Running the Python Script}\mbox{}\\{}
 By running the Python script \verb|collectTwitterData.py| real-time twitter data is gathered on an ongoing basis until you stop the script forcefully.
 \begin{lstlisting}[language=bash]
     $ python collectTwitterData.py
@@ -537,20 +540,19 @@ We hereby declare,
 	\item that we have mentioned all the sources used and that we have cited them correctly according to established academic citation rules;
     \item that we have acquired any immaterial rights to materials we may have used such as images or graphs, or that we have produced such materials ourself;
     \item that the topic or parts of it are not already the object of any work or examination of another course unless this has been explicitly agreed on with the faculty member in advance and is referred to in the thesis;
-    \item that we will not pass on copies of this work to third parties or publish them without the University’s written consent if a direct connection can be established with the University of St.Gallen or its faculty members;
     \item that we are aware that our work can be electronically checked for plagiarism and that we hereby grant the University of St.Gallen copyright in accordance with the Examination Regulations in so far as this is required for administrative action;
     \item that we are aware that the University will prosecute any infringement of this declaration of authorship and, in particular, the employment of a ghostwriter, and that any such infringement may result in disciplinary and criminal consequences which may result in our expulsion from the University or us being stripped of our degree.
 \end{itemize}
 
 \begin{flushleft}
 ................................\\
-Dimitrios Koumnakes - 10-613-370\\\bigskip\bigskip 
+Alen Stepic - 11-475-258\\\bigskip\bigskip  
+................................\\
+Dimitrios Koumnakes - 10-613-370\\\bigskip\bigskip
 ................................\\
 Severin Kranz - 13-606-355\\\bigskip\bigskip
 ................................\\
 Joël Sonderegger - 11-495-488\\\bigskip\bigskip
-................................\\
-Alen Stepic - 11-475-258\\\bigskip\bigskip
 ................................\\
 Chi Xu - XX-XXX-XXX
 

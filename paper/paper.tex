@@ -179,7 +179,7 @@ For the bitcoin prices, a publicly available API from CoinDesk was used (Source?
 %************************** Chapters 3 - Econometric Modelling and Results **************************
 \section{Econometric Modelling and Results}
 \label{sec:EconometricModellingandResults}
-As stated in the beginning, we want to examine the underlying relationship between twitter activity and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the VAR (Vector Autoregression) approach. In this approach the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (Lütkepohl, 2005, p. 4-5).\\
+As stated in the beginning, we want to examine the underlying relationship between twitter activity and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the VAR (Vector Autoregression) approach. In this approach the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{lütkepohl2007new}).\\
 To generate the econometric results that follow we used the statistical software STATA.
 
 \subsection{Stationarity}
@@ -205,7 +205,7 @@ Secondly, we have to check for stationarity for our second variable, the bitcoin
 These result also suggest to use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
 
 \subsection{Lag-Specification}
-To select the optimal number of lags in our VAR regression we check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving use the optimal number of lag to use (Brandt and Williams, 2007, p. 27). The calculations of these criteria for our given data set are shown in the following table.\\
+To select the optimal number of lags in our VAR regression we check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving use the optimal number of lag to use (\cite[p.~27]{brandt_williams_2007}). The calculations of these criteria for our given data set are shown in the following table.\\
 
 \begin{figure}[H]
 \centering

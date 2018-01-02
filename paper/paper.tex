@@ -87,7 +87,8 @@ This work was created in the context of a programming course for economists at t
 \clearpage
 
 %************************** List of Figures ************************** 	
-\listoffigures\bigskip\bigskip 
+\listoffigures\bigskip\bigskip
+\listoftables
  	   
 \section*{List of Abbreviation} 
 \begin{acronym}[ASECRETTT]
@@ -143,37 +144,45 @@ Comment Severin: This part will contain the following steps and will be mostly b
 For our dataset, we used 2 different sources.\\
 We first collected historical data on bitcoin prices to USD and secondly, we gathered twitter massages related to bitcoin. We fulfil this relationship by selecting tweets that contain the term “bitcoin” in the text message. The time period for both collected data sets was from 19.12.2017 20:00:00 UTC to 28.12.2017 10:00:00 in an hourly basis. We chose an hourly basis to be able to do a statistical analysis with a certain amount of observation for the restricted processing time of this homework.\\
 
+\begin{figure}[H]
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_nr_tweets.png}
+	\caption{Number of Tweets regarding bitcoin}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_df_nr_tweets.png}
+	\caption{First difference of number of Tweets}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_log_df_nr_tweets.png}
+	\caption{Log first difference of number of Tweets}
+	\end{subfigure}
+\caption{Twitter variables development}
+\end{figure}
+
 For the bitcoin prices, a publicly available API from CoinDesk was used (Source? See documentation?). The prices collected represent the final price level of bitcoin before every hour changes. For example, our first listed price of bitcoin was on 19.12.2017 at 19:59:59 and our last value on 28.12.2017 at 09:59:59. These values construct our first time series data set and are shown in the following graph.\\
 
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_nr_tweets.png}
-	\end{figure}
-	
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_df_nr_tweets.png}
-	\end{figure}
-	
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_log_df_nr_tweets.png}
-	\end{figure}
-	
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_bpi.png}
-	\end{figure}
-
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_df_bpi.png}
-	\end{figure}
-	
-	\begin{figure}[H]
-	\graphicspath{ {stata_export_graphs/} }
-	\includegraphics[scale=0.45]{graph_plot_log_df_bpi.png}
-	\end{figure}
+\begin{figure}[H]
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_bpi.png}
+	\caption{Hourly development of bitcoin prices}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_df_bpi.png}
+	\caption{First difference of bitcoin prices}
+	\end{subfigure}\hfill
+	\begin{subfigure}{.3\textwidth}
+	\centering
+	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_log_df_bpi.png}
+	\caption{Log first difference of bitcoin prices}
+	\end{subfigure}
+\caption{Bitcoin price development}
+\end{figure}
 	
 \clearpage
 
@@ -189,8 +198,9 @@ First, we check for stationarity of the number of tweets (variable name in data 
 
 \begin{figure}[H]
 \centering
-\graphicspath{ {stata_export_graphs/} }
-\includegraphics[scale=0.85]{ADF_twitter_variables.png}
+\includegraphics[scale=0.85]{stata_export_graphs/ADF_twitter_variables.png}
+\caption{Twitter variables stationarity test}
+\label{fig:3}
 \end{figure}
 	
 From these result we can see that only the first variable in not stationary. This is because the absolute value of the test statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475). The second variable is stationary (14.167 $>$ 3.475) and from here onwards we are going to continuous the analysis by using this first difference transformetion of the variable number of tweets, which fulfils stationarity.\\
@@ -199,8 +209,9 @@ Secondly, we have to check for stationarity for our second variable, the bitcoin
 
 \begin{figure}[H]
 \centering
-\graphicspath{ {stata_export_graphs/} }
-\includegraphics[scale=0.85]{ADF_bpi_variables.png}
+\includegraphics[scale=0.85]{stata_export_graphs/ADF_bpi_variables.png}
+\caption{Bitcoin variables stationarity test}
+\label{fig:4}
 \end{figure}
 	
 These result also suggest to use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
@@ -210,8 +221,9 @@ To select the optimal number of lags in our VAR regression we check for various 
 
 \begin{figure}[H]
 \centering
-\graphicspath{ {stata_export_graphs/} }
-\includegraphics[scale=0.85]{LAG_crit_df_nr_tweets_df_bpi.png}
+\includegraphics[scale=0.85]{stata_export_graphs/LAG_crit_df_nr_tweets_df_bpi.png}
+\caption{Lag Specification}
+\label{fig:5}
 \end{figure}
 
 As can be seen on the table, STATA calculates and presents various information criteria (AIC, HQIC, SBIC). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag lenght of 1.
@@ -231,21 +243,25 @@ This model shows that the current value of our endogenous variavles is determine
 
 After running the above VAR regression in STATA we get following results:
 	
-\begin{tabular}{lcc} \hline
- & (T\textsubscript{t}) & (B\textsubscript{t}) \\
-VARIABLES & df\_nr\_of\_tweets & df\_bpi\_closing\_price \\ \hline
- &  &  \\
-L.df\_nr\_of\_tweets (T\textsubscript{t-1}) & 0.00999 (a\textsubscript{11}) & 0.00463 (a\textsubscript{21}) \\
- & (0.0693) & (0.0104) \\
-L.df\_bpi\_closing\_price (B\textsubscript{t-1}) & -0.675 (a\textsubscript{12}) & -0.125* (a\textsubscript{22}) \\
- & (0.469) & (0.0707) \\
-Constant  & -88.34 (c\textsubscript{1}) & -18.48 (c\textsubscript{2}) \\
- & (177.9) & (26.79) \\
- &  &  \\
- Observations & 205 & 205 \\ \hline
-\multicolumn{3}{c}{ Standard errors in parentheses} \\
-\multicolumn{3}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
-\end{tabular}
+\begin{table}
+\centering
+	\begin{tabular}{lcc} \hline
+	 & (T\textsubscript{t}) & (B\textsubscript{t}) \\
+	VARIABLES & df\_nr\_of\_tweets & df\_bpi\_closing\_price \\ \hline
+	 &  &  \\
+	L.df\_nr\_of\_tweets (T\textsubscript{t-1}) & 0.00999 (a\textsubscript{11}) & 0.00463 (a\textsubscript{21}) \\
+	 & (0.0693) & (0.0104) \\
+	L.df\_bpi\_closing\_price (B\textsubscript{t-1}) & -0.675 (a\textsubscript{12}) & -0.125* (a\textsubscript{22}) \\
+	 & (0.469) & (0.0707) \\
+	Constant  & -88.34 (c\textsubscript{1}) & -18.48 (c\textsubscript{2}) \\
+	 & (177.9) & (26.79) \\
+	 &  &  \\
+	 Observations & 205 & 205 \\ \hline
+	\multicolumn{3}{c}{ Standard errors in parentheses} \\
+	\multicolumn{3}{c}{ *** p$<$0.01, ** p$<$0.05, * p$<$0.1} \\
+	\end{tabular}
+\caption{Var Regression}
+\end{table}
 
 The equation of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one and it is listed on the second column (B\textsubscript{t}) in the above table. The coefficient of 0.00463 (a\textsubscript{21}) implies that an increase of tweets by 1 increases the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This means that based on our data set the amount of tweets have no significant effect on the price development of bitcoin.
 		
@@ -254,8 +270,9 @@ To assess the reliability (causality) of the previous results we use the Granger
 
 \begin{figure}[H]
 \centering
-\graphicspath{ {stata_export_graphs/} }
-\includegraphics[scale=0.85]{granger_test.png}
+\includegraphics[scale=0.85]{stata_export_graphs/granger_test.png}
+\caption{Granger causality test}
+\label{fig:6}
 \end{figure}
 
 The Null hypothesis here is... In the second row the chi2 is greater then the Prob value which allows as to reject the Null hypothesis and conclude that the regression results are valid...\\

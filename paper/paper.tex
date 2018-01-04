@@ -269,7 +269,7 @@ After running the above VAR regression in STATA we get following results:
 The equations of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one which is listed on the right column (B\textsubscript{t}). The coefficient of 0.00463 (a\textsubscript{21}) implies that a change of tweets by 1 tweet, changes the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This answers our research question with the following statement:\\ The amount of tweets mentioning bitcoin has no significant effect on the price development of bitcoin.
 		
 \subsection{Granger Causality}
-To assess the reliability (causality) of the previous results we use the Granger causality test. This test confirms if the statements by the regression are valid. The following table shows the results of the Granger causality test\\
+To assess the reliability (causality) of the previous results we use the Granger causality test. This test confirms if the statements by an estimated regression are valid. The following table shows the results of the Granger causality test for our VAR regression:\\
 
 \begin{figure}[H]
 \centering
@@ -278,9 +278,7 @@ To assess the reliability (causality) of the previous results we use the Granger
 \label{fig:6}
 \end{figure}
 
-The Null hypothesis here is... In the second row the chi2 is greater then the Prob value which allows as to reject the Null hypothesis and conclude that the regression results are valid...\\
-
-...the Null hypothesis in our case is that lagged number of Tweets does not cause changes in bitcoin prices. As the Table shows, we can reject the Null hypothesis because the probability is around 1\%. Therefore, we accept the alternative hypothesis, which says that the lagged number of tweets does cause changes in bitcoin prices. How these changes look exactly we have discussed in the previous section. The granger causality confirmed that the effect is valid.
+The relevant results for our regression are displayed in the lower row. The Null hypothesis here is that the lagged (lag 1) values of the number of tweets does not cause a change in the bitcoin prices. The Alternative hypothesis would then be that the lagged values of the number of tweets does cause a change in bitcoin prices. As the results show, the Probability value is 65.7\% which is clearly more than 5\% and constrain us to accept the Null hypothesis and conclude that the regression results stated above are valid.\\
 
 \clearpage
 

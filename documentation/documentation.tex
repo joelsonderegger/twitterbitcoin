@@ -87,7 +87,7 @@
 \vspace{1.0cm}     
 {\Large Software Engineering for Economists \\ (7,610,1.00) \par}
 \vspace{1.2cm}
-{Alen Stepic - 11-475-258 \\ Dimitrios Koumnakes - 10-613-370 \\ Severin Kranz - 13-606-355 \\ Joël Sonderegger - 11-495-488 \\ Chi Xu - XX-XXX-XXX \par}
+{Alen Stepic - 11-475-258 \\ Dimitrios Koumnakes - 10-613-370 \\ Severin Kranz - 13-606-355 \\ Joël Sonderegger - 11-495-488 \\ Chi Xu - 16-300-915 \par}
 \vspace{1.2cm}
 Fall Term 2017 \\
 \vspace{1.2cm}
@@ -167,12 +167,16 @@ This section contains a detailed description of how the data for the sequential 
 \subsection{Tweets Data}
 Whit the Python script real-time Twitter data are streamed and stored. This happens with help of a Raspberry Pi.
 \subsubsection{Python Script}
-Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy. This package has been used for streaming the twitter data as it simplify the script and enables to gather a broader number of tweets for free.
+Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy.
 
-Tweepy is
-TBD
-TBD
-TBD
+\paragraph{Tweepy}\mbox{}\\{}
+Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. With this method all data of filtered tweets are gathered in real time. The main function \verb|def main()| manages the required authentication as follow:
+\begin{lstlisting}[language=bash]
+auth = OAuthHandler (ckey, csecret)
+auth.set_access_token(atoken, asecret)
+\end{lstlisting}
+Those authentications are demanded by twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword bitcoin by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free.
+
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
 Tweepy is installed very simply by running following commands in the command prompt. 
@@ -190,7 +194,7 @@ To access the twitter data, twitter requests an identification of the user. The 
 
 To obtain the mentioned keys and tokens a twitter account is needed. Once, a twitter account exist a application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
 \begin{lstlisting}[language=bash]
-%https://apps.twitter.com/
+https://apps.twitter.com/
 \end{lstlisting}
 
 After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.\\
@@ -545,16 +549,11 @@ We hereby declare,
 \end{itemize}
 
 \begin{flushleft}
-................................\\
 Alen Stepic - 11-475-258\\\bigskip\bigskip  
-................................\\
 Dimitrios Koumnakes - 10-613-370\\\bigskip\bigskip
-................................\\
 Severin Kranz - 13-606-355\\\bigskip\bigskip
-................................\\
 Joël Sonderegger - 11-495-488\\\bigskip\bigskip
-................................\\
-Chi Xu - XX-XXX-XXX
+Chi Xu - 16-300-915
 
 By submitting this academic term paper, we confirm through my conclusive action that we are submitting the Declaration of Authorship, that we have read and understood it, and that it is true.
 

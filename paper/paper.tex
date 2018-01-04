@@ -194,10 +194,10 @@ Next we display the time series data on bitcoin price development for the observ
 \section{Econometric Modelling and Results}
 \label{sec:EconometricModellingandResults}
 As stated in the beginning, our purpose is to examine the underlying relationship between twitter buzz and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
-To generate the econometric results that follow we used the statistical software STATA.
+To generate the following econometric results we used the statistical software STATA.
 
 \subsection{Stationarity}
-Before estimating a VAR model, the time series data must be checked for stationary. Accordingly, the means and variances are constant over time and the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate model which is undesirable. To test for stationarity, we use the Augmented Dickey-Fuller (ADF) test.\\
+Before estimating a VAR model, the time series data's stationarity must be confirmed. Namely, we need to demonstrate that the means and variances are constant over time and that the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate estimation with VAR model. To conduct stationarity test, we use the Augmented Dickey-Fuller (ADF) test.\\
 
 First, we check for stationarity for the twitter data (variable name: nr\_of\_tweets). Because this variable may not be stationary we also check for the first difference (df\_nr\_of\_tweets) and the logarithmic first difference of this variable (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the  following table:\\
 

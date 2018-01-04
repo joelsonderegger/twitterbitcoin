@@ -170,12 +170,12 @@ Whit the Python script real-time Twitter data are streamed and stored. This happ
 Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy.
 
 \paragraph{Tweepy}\mbox{}\\{}
-Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. With this method all data of filtered tweets are gathered in real time. The main function \verb|def main()| manages the required authentication as follow:
+Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. \parencite{tweepy} With this method all data of filtered tweets are gathered in real time. The main function \verb|def main()| manages the required authentication as follow:
 \begin{lstlisting}[language=bash]
 auth = OAuthHandler (ckey, csecret)
 auth.set_access_token(atoken, asecret)
 \end{lstlisting}
-Those authentications are demanded by twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword bitcoin by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free.
+Those authentications are demanded by twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword bitcoin by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free. 
 
 
 \paragraph{Installing Tweepy}\mbox{}\\{}

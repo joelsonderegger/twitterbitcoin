@@ -14,7 +14,7 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Bitcoin}{3}{subsection.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Twitter}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Twitter}{4}{subsection.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Data Collection}{4}{subsection.2.3}
 \defcounter {refsection}{0}\relax 

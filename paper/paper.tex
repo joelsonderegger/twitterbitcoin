@@ -24,8 +24,8 @@
 \usepackage{acronym}
 
 %************************** Specify bibliography package **************************
-\usepackage{csquotes}
-\usepackage[style=apa,backend=biber]{biblatex}
+\usepackage{csquotes}% Recommended
+\usepackage[style=apa]{biblatex}
 \DeclareLanguageMapping{american}{american-apa}
 \addbibresource{references.bib}
 
@@ -221,7 +221,7 @@ Secondly, we have to check for stationarity for the second variable, the bitcoin
 These result also suggest to use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
 
 \subsection{Lag-Specification}
-To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandt_williams_2007}). The calculations of these criteria for our specific data set are shown in the following table.\\
+To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandtwilliams2007}). The calculations of these criteria for our specific data set are shown in the following table.\\
 
 \begin{figure}[H]
 \centering

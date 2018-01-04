@@ -197,9 +197,9 @@ As stated in the beginning, our purpose is to examine the underlying relationshi
 To generate the following econometric results we used the statistical software STATA.
 
 \subsection{Stationarity}
-Before estimating a VAR model, the time series data's stationarity must be confirmed. Namely, we need to demonstrate that the means and variances are constant over time and that the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate estimation with VAR model. To conduct stationarity test, we use the Augmented Dickey-Fuller (ADF) test.\\
+Before estimating a VAR model, the time series data's stationarity must be confirmed. Namely, we need to demonstrate that the means and variances are constant over time, and that the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate estimation with VAR model. To conduct stationarity test, we use the Augmented Dickey-Fuller (ADF) test.\\
 
-First, we check for stationarity for the twitter data (variable name: nr\_of\_tweets). Because this variable may not be stationary we also check for the first difference (df\_nr\_of\_tweets) and the logarithmic first difference of this variable (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the  following table:\\
+We shall test the stationarity for the "crude" twitter data (variable name: nr\_of\_tweets), and since the variable may not pass the stationarity test, we also check for the stationarity of the first difference twitter data (df\_nr\_of\_tweets) and the logarithmic first difference one (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the following table:\\
 
 \begin{figure}[H]
 \centering
@@ -208,7 +208,7 @@ First, we check for stationarity for the twitter data (variable name: nr\_of\_tw
 \label{fig:3}
 \end{figure}
 	
-From these result we can see that only the first variable is not stationary. This is because the absolute value of the Test Statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475). The second variable is stationary (14.167 $>$ 3.475) and from here onwards we are going to continuous the analysis by using this first difference transformetion, which fulfils stationarity.\\
+From the results we can see that only the first variable (i.e. the untransformed tweet count) is non-stationary, since the absolute value of the Test Statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475), the null hypothesis of non-stationarity cannot be rejected as a consequence. The second variable is stationary (14.167 $>$ 3.475) and from here onwards we shall proceed the analysis by using the first difference tweet count, which fulfills the stationarity requirement.\\
 
 Secondly, we have to check for stationarity for the second variable, the bitcoin prices (variable name: bpi\_closing\_price). Here we also included the first difference (variable name: df\_bpi\_closing\_price) and the logarithmic first difference (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
 

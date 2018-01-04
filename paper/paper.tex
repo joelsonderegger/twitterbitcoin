@@ -196,7 +196,7 @@ Next we display the time series data on bitcoin price development for the observ
 As stated in the beginning, our purpose is to examine the underlying relationship between twitter buzz and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
 To generate the following econometric results we used the statistical software STATA.
 
-\subsection{Stationarity}
+\subsection{Preparing for VAR: Stationarity Test}
 Before estimating a VAR model, the time series data's stationarity must be confirmed. Namely, we need to demonstrate that the means and variances are constant over time, and that the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate estimation with VAR model. To conduct stationarity test, we use the Augmented Dickey-Fuller (ADF) test.\\
 
 We shall test the stationarity for the "crude" twitter data (variable name: nr\_of\_tweets), and since the variable may not pass the stationarity test, we also check for the stationarity of the first difference twitter data (df\_nr\_of\_tweets) and the logarithmic first difference one (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the following table:\\
@@ -221,8 +221,8 @@ Out of the similar concern stated above, we shall check for stationarity for the
 	
 Once again, the test result suggests we use the first difference transformation of the variable bitcoin prices, for it succeeds best the ADF test.
 
-\subsection{Lag-Specification}
-To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandtwilliams2007}). The calculations of these criteria for our specific data set are shown in the following table.\\
+\subsection{Preparing for VAR: Lag-Specification}
+To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria measure the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandtwilliams2007}). The calculations of these criteria for our specific data set are shown in the following table.\\
 
 \begin{figure}[H]
 \centering
@@ -231,7 +231,7 @@ To select the optimal number of lags to use for the VAR regression, we have to c
 \label{fig:5}
 \end{figure}
 
-As can be seen, STATA calculates and presents various information criteria (AIC, HQIC, SBIC). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag length of 1.
+As can be seen, STATA calculates and presents various information criteria (AIC: Akaike Information Criterion, HQIC: Hannan–Quinn information criterion, SBIC: Schwarz-Bayesian Information Criterion). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag length of 1.
 		
 \subsection{Regression Model}
 After determining the optimal lag length the next step is to build the vector autoregression model (VAR model).\\

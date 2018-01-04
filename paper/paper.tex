@@ -236,12 +236,10 @@ As can be seen, STATA calculates and presents various information criteria (AIC:
 After determining the optimal lag length the next step is to build the vector autoregression model (VAR model).\\
 For this analysis, we use a basic unrestricted VAR model which consists of two endogenous variables, T\textsubscript t which repesents the variable {\itshape df\_nr\_of\_tweets} in our data set and B\textsubscript t which represents {\itshape df\_bpi\_closing\_price}. As defined in the previous section the selected otpimal time lag is 1. Given these information, the model equations can be written as follows:
 
-\begin{equation}
-\begin{split}
+\begin{align}
 T_t = c_1 + a_{11}T_{t-1} + a_{12}B_{t-1} + \epsilon_1 \\
 B_t = c_2 + a_{21}T_{t-1} + a_{22}B_{t-1} + \epsilon_2
-\end{split}
-\end{equation}
+\end{align}
 
 This model shows that the current value of our endogenous variables is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning Bitcoin in the past, has an effect on the Bitcoin prices in the periods that follow. This question is reflected in the second equation of this model.\\
 

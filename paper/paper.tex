@@ -233,7 +233,7 @@ To select the optimal number of lags to use for the VAR regression, we have to c
 
 As can be seen, STATA calculates and presents various information criteria (AIC: Akaike Information Criterion, HQIC: Hannan–Quinn information criterion, SBIC: Schwarz-Bayesian Information Criterion). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag length of 1.
 		
-\subsection{Regression Model}
+\subsection{VAR Regression Model}
 After determining the optimal lag length the next step is to build the vector autoregression model (VAR model).\\
 For this analysis, we use a basic unrestricted VAR model which consists of two endogenous variables, T\textsubscript t which repesents the variable {\itshape df\_nr\_of\_tweets} in our data set and B\textsubscript t which represents {\itshape df\_bpi\_closing\_price}. As defined in the previous section the selected otpimal time lag is 1. Given these information, the model equations can be written as follows:
 

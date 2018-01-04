@@ -145,7 +145,7 @@ In relation to Bitcoin,researchers already showed that analysing investors senti
 
 		
 \subsection{Data Collection}
-For our data, we collected 2 separate time series datasets. One showing the twitter activity regarding bitcoin, with the second one showing the historic bitcoin price development. Both datasets were collected hourly for the period from the 19.12.2017 starting at 20:00:00 UTC and ending on the 28.12.2017 at 10:00:00 UTC. We chose the hourly basis to conduct statistical analysis with a limited amount of observations as demanded by the feasibility of such a complex project. For the twitter data we aggregated by each hour all tweets mentioning "bitcoin". We used prices at the last second of every hour to represent the hourly bitcoin price.\\
+For our data, we collected 2 separate time series datasets. One showing the twitter activity regarding bitcoin, with the second one showing the historical bitcoin price development. Both datasets were collected hourly for the period from the 19.12.2017 starting at 20:00:00 UTC and ending on the 28.12.2017 at 10:00:00 UTC. We chose the hourly basis to conduct statistical analysis with a limited amount of observations as demanded by the feasibility of such a complex project. For the twitter data we aggregated by each hour all tweets mentioning "bitcoin". We used prices at the last second of every hour to represent the hourly bitcoin price.\\
 The following figure displays the twitter activity with regard to bitcoin for the observed time period. The first plot shows the hourly change of the aggregate number of tweets containing "bitcoin". In the second and third plots we respectively did a first difference and a logarithmic first difference transformation of our main variable, in case it is needed in the later analysis. The graphs show overall a cyclical movement around 1200 tweets and a single outburst befalling on 22.12.2017 between 15:00:01 and 21:00:00, with highest value being 4622 tweets in one hour.\\
 
 \begin{figure}[H]
@@ -193,7 +193,7 @@ Next we display the time series data on bitcoin price development for the observ
 %************************** Chapters 3 - Econometric Modelling and Results **************************
 \section{Econometric Modelling and Results}
 \label{sec:EconometricModellingandResults}
-As stated in the beginning, we want to examine the underlying relationship between twitter price movement and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
+As stated in the beginning, our purpose is to examine the underlying relationship between twitter buzz and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
 To generate the econometric results that follow we used the statistical software STATA.
 
 \subsection{Stationarity}

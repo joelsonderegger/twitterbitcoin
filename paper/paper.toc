@@ -14,22 +14,22 @@
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.1}Bitcoin}{3}{subsection.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2}Twitter}{3}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.2}Twitter}{4}{subsection.2.2}
 \defcounter {refsection}{0}\relax 
 \contentsline {subsection}{\numberline {2.3}Data Collection}{4}{subsection.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3}Econometric Modelling and Results}{7}{section.3}
+\contentsline {section}{\numberline {3}Econometric Modelling and Results}{6}{section.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1}Stationarity}{7}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.1}Stationarity}{6}{subsection.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.2}Lag-Specification}{8}{subsection.3.2}
+\contentsline {subsection}{\numberline {3.2}Lag-Specification}{7}{subsection.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3}Regression Model}{9}{subsection.3.3}
+\contentsline {subsection}{\numberline {3.3}Regression Model}{8}{subsection.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.4}Granger Causality}{10}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.4}Granger Causality}{9}{subsection.3.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {4}Conclusion}{12}{section.4}
+\contentsline {section}{\numberline {4}Conclusion}{11}{section.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {5}References}{13}{section.5}
+\contentsline {section}{\numberline {5}References}{12}{section.5}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {6}Declaration of Authorship}{14}{section.6}
+\contentsline {section}{\numberline {6}Declaration of Authorship}{13}{section.6}

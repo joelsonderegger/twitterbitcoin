@@ -72,8 +72,8 @@
 %************************** Abstract ************************** 
 \begin{abstract}
 \pagenumbering{Roman}
-This paper, examines the dynamics between the amount of twitter activity regarding bitcoin and the actual price fluctuation of bitcoin. For the analysis two sets of data have been collected. One reflecting twitter activity and the other one showing the bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results.\\
-The evaluation of the model showed that changes in twitter activity on bitcoin have a minimal and insignificant effect on the future price development of bitcoin. Accordingly, aggregate twitter fees are not a good source to predict changes in bitcoin prices. This result must be understood with caution, because it only applies for the specific time interval of our observations, which is about 8 days and not for the past or future trend of cryptocurrencies. \\
+This paper, examines the dynamics between the amount of Twitter activity regarding Bitcoin and the actual price fluctuation of Bitcoin. For the analysis two sets of data have been collected. One reflecting Twitter activity and the other one showing the Bitcoin prices for the same period. Based on that an econometric model is used for the statistical analysis and the interpretation of the results.\\
+The evaluation of the model showed that changes in Twitter activity on Bitcoin have a minimal and insignificant effect on the future price development of Bitcoin. Accordingly, aggregate Twitter fees are not a good source to predict changes in Bitcoin prices. This result must be understood with caution, because it only applies for the specific time interval of our observations, which is about 8 days and not for the past or future trend of cryptocurrencies. \\
 This work was created in the context of a programming course for economists at the university of St. Gallen. To not exceed the framework of this study we require extensive knowledge in econometrics and take concepts as known. The underlying goal was to get familiar with software engineering tools and project management. Therefore, the academic content of this work is neither completed nor concluding.\\
 \end{abstract}
 
@@ -97,23 +97,23 @@ This work was created in the context of a programming course for economists at t
 
 \clearpage
 
-%************************** Chapters 1 - Introduction **************************
+%************************** Chapter 1 - Introduction **************************
 \begin{spacing}{1.2}
 \cleardoublepage\pagenumbering{arabic}
 \section{Introduction}
 \label{sec:intro}
 
-\textcite[p.~388]{malkiel1970efficient} introduced the Efficient Market Hypothesis (EMH), where they claim that under certain market conditions actual prices include all information. This hypothesis is broadly accepted in the financial world. The digitalisation leads to an increased network effect, where information can be shared over the globe. Based on \citeauthor{mao2015quantifying} (\citeyear[][p.~3]{mao2015quantifying}, as cited in \cite[][pp.~175--195]{shiller2015irrational}; \cite[][pp.~279]{kahneman2013prospect}) the EMH fails to address the behavioural and emotional role of investors. The large fluctuation of the bitcoin prices in the last year (mostly increasing) and the fact that Twitter has become a very popular social network, where people interact, led to different research in the field of sentimental analysis with the focus on bitcoin and twitter. \textcite[p.~18]{mao2015quantifying}, claim that sentiment analysis using twitter tweets which contain the buzzword bullishness can indeed be used as a sentiment indicator for stock prices. As modern economy becomes more digitized, crypotocurrencies as a financial asset draws more attention, our paper seeks to shed some light on whether the tweets can be used to predict bitcoin prices.
+\textcite[p.~388]{malkiel1970efficient} introduced the Efficient Market Hypothesis (EMH), where they claim that under certain market conditions actual prices include all information. This hypothesis is broadly accepted in the financial world. The digitalisation leads to an increased network effect, where information can be shared over the globe. Based on \citeauthor{mao2015quantifying} (\citeyear[][p.~3]{mao2015quantifying}, as cited in \cite[][pp.~175--195]{shiller2015irrational}; \cite[][pp.~279]{kahneman2013prospect}) the EMH fails to address the behavioural and emotional role of investors. The large fluctuation of the Bitcoin prices in the last year (mostly increasing) and the fact that Twitter has become a very popular social network, where people interact, led to different research in the field of sentimental analysis with the focus on Bitcoin and Twitter. \textcite[p.~18]{mao2015quantifying}, claim that sentiment analysis using Twitter tweets which contain the buzzword bullishness can indeed be used as a sentiment indicator for stock prices. As modern economy becomes more digitized, crypotocurrencies as a financial asset draws more attention, our paper seeks to shed some light on whether the tweets can be used to predict Bitcoin prices.
 
 \subsection{Research Question and Goal of the Paper}
 \label{sec:ResearchQandGoal}
 
-As existing research focus mostly on the sentimental analyses of tweet content, this paper aims to examine existence of a correlation between the price development of bitcoin and the frequency of bitcoin topics on twitter. The goal should be reached by answering the following research question: \\
-In what extend does the amount of twitter tweets about bitcoin has an effect on the price movement of bitcoin?
+As existing research focus mostly on the sentimental analyses of tweet content, this paper aims to examine existence of a correlation between the price development of Bitcoin and the frequency of Bitcoin topics on Twitter. The goal should be reached by answering the following research question: \\
+In what extent does the amount of Twitter tweets about Bitcoin has an effect on the price movement of Bitcoin?
 
 \subsection{Methodology}
 \label{sec:Methodology}
-To answer the above mentioned research question a scientific approach has been applied. The paper consists out of three parts. The first part contains an introduction into the topic by pointing out the relevance of the topic, the research question, methodology and the scope. This is conducted in chapter \ref{sec:intro}. The second part is characterized as the theory part. The theory aims to provide the reader with the necessary background information by introducing relevant bitcoin and twitter information in context of the paper. The conducted research is based on forward research and using relevant sources. Furthermore, it contains a short introduction into the Vector Autoregression (VAR) approach and its constrains in context with the paper. This is conducted in chapters \ref{sec:Background} and \ref{sec:EconometricModellingandResults}. The third part contains the discussion of the results and a conclusion. The conclusion is based on the theory and our mathematical computation. The computation is based on a data set, which was gathered by coded python scripts for the time period December 20th - 27th. Since the results are based on the observation of a short period, they have to be interpreted carefully. The data set consists of two data sources with the following characteristics: (1) twitter tweets which contain the buzzword "bitcoin" and (2) those containing historical bitcoin prices. The two sources has been aggregated with another python script. The output of aggregation was further processed with Stata to conduct the VAR on a daily basis. The third part of the paper is discussed in the chapters \ref{sec:EconometricModellingandResults} and \ref{sec:Conclustion}.
+To answer the above mentioned research question a scientific approach has been applied. The paper consists out of three parts. The first part contains an introduction into the topic by pointing out the relevance of the topic, the research question, methodology and the scope. This is conducted in chapter \ref{sec:intro}. The second part is characterized as the theory part. The theory aims to provide the reader with the necessary background information by introducing relevant Bitcoin and Twitter information in context of the paper. The conducted research is based on forward research and using relevant sources. Furthermore, it contains a short introduction into the Vector Autoregression (VAR) approach and its constrains in context with the paper. This is conducted in chapters \ref{sec:Background} and \ref{sec:EconometricModellingandResults}. The third part contains the discussion of the results and a conclusion. The conclusion is based on the theory and our mathematical computation. The computation is based on a data set, which was gathered by coded python scripts for the time period December 20th - 27th. Since the results are based on the observation of a short period, they have to be interpreted carefully. The data set consists of two data sources with the following characteristics: (1) Twitter tweets which contain the buzzword "Bitcoin" and (2) those containing historical Bitcoin prices. The two sources has been aggregated with another python script. The output of aggregation was further processed with Stata to conduct the VAR on a daily basis. The third part of the paper is discussed in the chapters \ref{sec:EconometricModellingandResults} and \ref{sec:Conclustion}.
 
 \subsection{Scope}
 \label{sec:Scope}
@@ -121,38 +121,37 @@ The paper's focus lies on the scientific discussion of empirical test results. T
 
 \clearpage
 
-%************************** Chapters 2 - Background and Data Collection **************************
+%************************** Chapter 2 - Background and Data Collection **************************
 \section{Background and Data Collection}
 \label{sec:Background}
 \subsection{Bitcoin}
-In the aftermath of the global financial crisis, Satoshi Nakamoto (2008, p. 1) claimed, that a purely peer-to-peer version of electronic cash could bypass financial institutions as third parties for commercial transactions. Starting from this whitepaper, Bitcoin – the first electronic payment system that relies on the cryptographic concatenation of ongoing transactions \footnote{blockchain} has been developed (Nakamoto, 2008, p. 1).\\
+In the aftermath of the global financial crisis, \textcite[p.~1]{Nakamoto2008Bitcoin} claimed, that a purely peer-to-peer version of electronic cash could bypass financial institutions as third parties for commercial transactions. Starting from this whitepaper, Bitcoin {-} the first electronic payment system that relies on the cryptographic concatenation of ongoing transactions \footnote{Blockchain} has been developed (\cite[p.~1]{Nakamoto2008Bitcoin}).\\
 
-Today, Bitcoin is the most popular of thousands of cryptocurrencies worldwide and increased in value over 1700 percent within the last year according to Coinmarketcap (https://coinmarketcap.com/). Even if the daily transaction volume increased rapidly over time (https://coinmarketcap.com/), this does not necessarily mean that Bitcoin is used for a means of payment. Even more, several authors argue that the Bitcoin price and transaction volumes are mainly driven by speculative investments rather than its actual use as a currency (Corbet, Lucey \& Yarovya, 2017; Forbes, 2017; Yermack, 2013). Kristoufek (2015) points out that there are other influencing factors such as its use in trade, the supply of currencies and price level, which all contribute to determining the Bitcoin price in the long term. However, according to the same author, evidence shows that investors’ interest plays an even greater role in bitcoin's price movements, and their correlation is even more evident in the long run, and during the periods of explosive increases or rapid declines of the price, investors’ interest accelerates the price movements (Kristoufek, 2015). These findings are in line with other research findings (see Garcia, Tessone, Mayrodiev \& Perony, 2014; Kondor, Posfai, Csabai, \&Vattay, 2014).\\
+Today, Bitcoin is the most popular of thousands of cryptocurrencies worldwide and increased in value over 1700 percent within the last year according to Coinmarketcap\footnote{https://coinmarketcap.com/}. Even if the \textit{daily transaction volume}\footnotemark[2] increased rapidly over time, this does not necessarily mean that Bitcoin is used for payment purposes. Even more, several authors argue that the Bitcoin price and transaction volumes are mainly pushed by speculative investments rather than actual usage as a currency (\cite{corbet2017datestamping}; \cite{Forbes2017}; \cite{yermack2013bitcoin}). \textcite{kristoufek2015main} points out that there are other influencing factors such as usage in trade, money supply and price level, that influence the Bitcoin price in the long term. However, evidence shows that the level of Bitcoin prices are clearly driven by investors’ interest in the digital currency. \textcite{kristoufek2015main} further explains the correlation is most evident in the long run.  During explosive increases or rapid declines of the price higher investors’ interest further boosts the movement in the direction (\cite{kristoufek2015main}). These findings are in line with other researchers (see \cite[]{garcia2014digital}; \cite[]{kondor2014rich}).\\
 
-In previous research Madan,Saluja, and Zhao (2015)applied \textit{machine learning} algorithms to predict Bitcoin prices. By using the \textit{Bayesian regression}, Shah, Devavrat and Zhang (2015) achieved a return on investment of 89 percent over an investment period of 50 days. However, research in this area is still limited and most of them do not take into consideration the individuals' sentiments (Colianni, Rosales \& Signorotti, 2015, p. 1).\\
+In previous research \textcite{madan2015automated} applied \textit{machine learning} algorithms to predict Bitcoin prices. By using the \textit{bayesian regression}, \textcite{shah2014bayesian} achieved a return on investment of 89 percent over an investment period of 50 days. However, research in this area is still limited and most of them do not take into consideration the individuals' sentiments (\cite[p.~1]{colianni2015algorithmic}).\\
 
-One core assumption of behavioural finance is that investors’ interests influence their behaviour and therefore stock prices(Mao et al., 2015, p. 3). A widely used approach to measure investors’ interests is done through sentiment analysis of Twitter data, which will be covered in the following section.\\
-		
+One core assumption of behavioural finance is that investors’ interests influence their behaviour and therefore stock prices (\cite[p.~3]{mao2015quantifying}). A widely used approach to measure investors’ interests is the sentiment analysis of Twitter data, which will be covered in the following section.\\
+
 \subsection{Twitter}
-With the current growth of social networks, the number of global social media users reached 2.46 billion and is expected to increase to 3.02 billion by 2021 according to Statista (2018). Gabriel and Röhrs (2017) define social networks as a loose connection of people in an online or internet community, respectively in a computer-based communication network (p. 12). This paper exploits the possibility to analyse shared “thoughts, views and opinions” (Stenqvist and Lönnö, 2017, p. 6) provided by such communities or communication networks.\\
+With the current growth of social networks, the number of global social media users reached 2.46 billion and is expected to increase to 3.02 billion by 2021 according to \textcite{Statista2018a}. \textcite[p.~12]{Gabriel2017socialmedia} define social networks as a loose connection of people in an online or internet community, respectively in a computer-based communication network. This paper exploits the possibility to analyse shared “thoughts, views and opinions” (\cite[p.~6]{stenqvist2017predicting}) provided by such communities or communication networks.\\
 
-Twitter was founded in 2006 and gained rapidly worldwide popularity (Twitter 2018). and reached 330 million active users in the third quarter of 2017 (Twitter 2017, Statista 2018). As a micro-blogging platform, Twitter suits the purpose of analysing investors’ interests due to its special characteristics. In comparison to other social networks, twitter limits its posts (tweets) to relatively short messages of 140 characters. Tweets can contain observations, thoughts, links to interesting content, websites, uploaded pictures or videos. Special conventions such as hashtags “\#” or mentions “@” are used to reference searchable content or user profiles.(Schmidt, 2017)\\
+Twitter was founded in 2006 and gained rapidly worldwide popularity and reached 330 million active users in the third quarter of 2017  (\cite[]{twitterinc2018}; \cite[]{Statista2018b}). As a micro-blogging platform, Twitter suits the purpose of analysing investors’ interests due to its special characteristics. In comparison to other social networks, twitter limits its posts (tweets) to relatively short messages of 140 characters. Tweets can contain observations, thoughts, links to interesting content, websites, uploaded pictures or videos. Special conventions such as hashtags “\#” or mentions “@” are used to reference searchable content or user profiles.(\cite{Schmidt2018socialmedia})\\
 
-In this way, Twitter users create millions of posts that contain interests, opinions and informations in both a private and professional context.  Due to the semi-structured form, the message length restriction and classifying nature, Stenqvist and Lönnö (2017, p. 6) argue, that “Twitter has become a gold mine for opinionated data”, which is further supported in the wide adoption of researchers to analyse sentiments.\\
+In this way, Twitter users create millions of posts that contain interests, opinions and informations in both a private and professional context.  Due to the semi-structured form, the message length restriction and classifying nature, \textcite[p.~6]{stenqvist2017predicting} argue, that “Twitter has become a gold mine for opinionated data”, which is further supported in the wide adoption of researchers to analyse sentiments.\\
 
-In relation to Bitcoin,researchers already showed that analysing investors sentiments can lead to reasonable correlations between Twitter sentiments and prices of cryptocurrencies (Stenqvist and Lönnö, 2017, p. 7), by either using a \textit{polarity classification} – classifying the language in tweets as either positive or negative (see Colianni et al., 2015) – or a \textit{lexicon based approach} – attributes predefined words to specific sentiment classifications (see Stenqvist and Lönnö, 2017). Hence, this paper choses a different focus area by limiting its scope to the number of daily tweets that contain the term “Bitcoin” without futher analysing investors interests implied in the semantics. Inspired by analysis of the influence of twitter bullishness on the stock market by Mao et al. (2015), this paper applies the similar method to Bitcoin prices.\\
-
+In relation to Bitcoin, researchers already showed that analysing investors sentiments can lead to reasonable correlations between Twitter sentiments and prices of cryptocurrencies \textcite[p.~7]{stenqvist2017predicting} , by either using a \textit{polarity classification} {-} classifying the language in tweets as either positive or negative (see \cite{colianni2015algorithmic}) {-} or a \textit{lexicon based approach} {-} attributes predefined words to specific sentiment classifications (see \cite{stenqvist2017predicting}). Hence, this paper choses a different focus area by limiting its scope to the number of daily tweets that contain the term “Bitcoin” without analysing investors interests any further. Based on analysis of the influence of twitter bullishness on the stock market by \textcite{mao2015quantifying}, this paper further elaborates on the concept by applying the approach to Bitcoin prices.\\
 
 		
 \subsection{Data Collection}
-For our data, we collected 2 separate time series datasets. One showing the twitter activity regarding bitcoin, with the second one showing the historical bitcoin price development. Both datasets were collected hourly for the period from the 19.12.2017 starting at 20:00:00 UTC and ending on the 28.12.2017 at 10:00:00 UTC. We chose the hourly basis to conduct statistical analysis with a limited amount of observations as demanded by the feasibility of such a complex project. For the twitter data we aggregated by each hour all tweets mentioning "bitcoin". We used prices at the last second of every hour to represent the hourly bitcoin price.\\
-The following figure displays the twitter activity with regard to bitcoin for the observed time period. The first plot shows the hourly change of the aggregate number of tweets containing "bitcoin". In the second and third plots we respectively did a first difference and a logarithmic first difference transformation of our main variable, in case it is needed in the later analysis. The graphs show overall a cyclical movement around 1200 tweets and a single outburst befalling on 22.12.2017 between 15:00:01 and 21:00:00, with highest value being 4622 tweets in one hour.\\
+For our data, we collected two separate time series datasets. One showing the Twitter activity regarding Bitcoin, with the second one showing the historical Bitcoin price development. Both datasets were collected hourly for the period from the 19.12.2017 starting at 20:00:00 UTC and ending on the 28.12.2017 at 10:00:00 UTC. We chose the hourly basis to conduct statistical analysis with a limited amount of observations as demanded by the feasibility of such a complex project. For the Twitter data we aggregated by each hour all tweets mentioning "Bitcoin". We used prices at the last second of every hour to represent the hourly Bitcoin price.\\
+The following figure displays the Twitter activity with regard to Bitcoin for the observed time period. The first plot shows the hourly change of the aggregate number of tweets containing "Bitcoin". In the second and third plots we respectively did a first difference and a logarithmic first difference transformation of our main variable, in case it is needed in the later analysis. The graphs show overall a cyclical movement around 1200 tweets and a single outburst befalling on 22.12.2017 between 15:00:01 and 21:00:00, with highest value being 4622 tweets in one hour.\\
 
 \begin{figure}[H]
 	\begin{subfigure}{.3\textwidth}
 	\centering
 	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_nr_tweets.png}
-	\caption{Number of Tweets regarding bitcoin}
+	\caption{Number of Tweets regarding Bitcoin}
 	\end{subfigure}\hfill
 	\begin{subfigure}{.3\textwidth}
 	\centering
@@ -167,39 +166,39 @@ The following figure displays the twitter activity with regard to bitcoin for th
 \caption{Twitter variables development}
 \end{figure}
 
-Next we display the time series data on bitcoin price development for the observed time period. The first plot shows the hourly changes of bitcoin prices. The second and third plots are once again first difference transormations of the main variable for later analysis. In this graph we observe a notably volatile movement with no spesific direction. This contradicts the general rising trend of bitcoin prices of the past months, but the problem may indeed arise if we happen to select a short period of one week when bitcoin price movement behaves less bullishly as usual, in other words, the lack of articulated trend may be attributed to \textit{selection bias}.\\
+Next we display the time series data on Bitcoin price development for the observed time period. The first plot shows the hourly changes of Bitcoin prices. The second and third plots are once again first difference transormations of the main variable for later analysis. In this graph we observe a notably volatile movement with no spesific direction. This contradicts the general rising trend of Bitcoin prices of the past months, but the problem may indeed arise if we happen to select a short period of one week when Bitcoin price movement behaves less bullishly as usual, in other words, the lack of articulated trend may be attributed to \textit{selection bias}.\\
 
 \begin{figure}[H]
 	\begin{subfigure}{.3\textwidth}
 	\centering
 	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_bpi.png}
-	\caption{Hourly development of bitcoin prices}
+	\caption{Hourly development of Bitcoin prices}
 	\end{subfigure}\hfill
 	\begin{subfigure}{.3\textwidth}
 	\centering
 	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_df_bpi.png}
-	\caption{First difference of bitcoin prices}
+	\caption{First difference of Bitcoin prices}
 	\end{subfigure}\hfill
 	\begin{subfigure}{.3\textwidth}
 	\centering
 	\includegraphics[width=1.12\textwidth]{stata_export_graphs/graph_plot_log_df_bpi.png}
-	\caption{Log first difference of bitcoin prices}
+	\caption{Log first difference of Bitcoin prices}
 	\end{subfigure}
 \caption{Bitcoin price development}
 \end{figure}
 	
 \clearpage
 
-%************************** Chapters 3 - Econometric Modelling and Results **************************
+%************************** Chapter 3 - Econometric Modelling and Results **************************
 \section{Econometric Modelling and Results}
 \label{sec:EconometricModellingandResults}
-As stated in the beginning, our purpose is to examine the underlying relationship between twitter buzz and bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
+As stated in the beginning, our purpose is to examine the underlying relationship between the number of tweets containing "Bitcoin" and Bitcoin price fluctuations. From our data collection, we are left with two time series datasets representing two variables. A broadly used statistical method to simultaneously analyze multiple time series is the Vector Autoregression (VAR) approach. In this method the endogenous variables are determined both by their own historical values and by the historical values of the other endogenous variables (\cite[pp.~4--5]{luetkepohl2007new}).\\
 To generate the following econometric results we used the statistical software STATA.
 
 \subsection{Stationarity}
 Before estimating a VAR model, the time series data's stationarity must be confirmed. Namely, we need to demonstrate that the means and variances are constant over time, and that the dataset does not show any trending behavior. Non-stationary data can lead to an inaccurate estimation with VAR model. To conduct stationarity test, we use the Augmented Dickey-Fuller (ADF) test.\\
 
-We shall test the stationarity for the "crude" twitter data (variable name: nr\_of\_tweets), and since the variable may not pass the stationarity test, we also check for the stationarity of the first difference twitter data (df\_nr\_of\_tweets) and the logarithmic first difference one (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the following table:\\
+We shall test the stationarity for the "crude" Twitter data (variable name: nr\_of\_tweets), and since the variable may not pass the stationarity test, we also check for the stationarity of the first difference Twitter data (df\_nr\_of\_tweets) and the logarithmic first difference one (log\_df\_nr\_of\_tweets). The results of the augmented Dickey-Fuller test are listed in the following table:\\
 
 \begin{figure}[H]
 \centering
@@ -210,7 +209,7 @@ We shall test the stationarity for the "crude" twitter data (variable name: nr\_
 	
 From the results we can see that only the first variable (i.e. the untransformed tweet count) is non-stationary, since the absolute value of the Test Statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475), the null hypothesis of non-stationarity cannot be rejected as a consequence. The second variable is stationary (14.167 $>$ 3.475) and from here onwards we shall proceed the analysis with only the first difference tweet count, whose test statistic falls furthest into the rejection zone.\\
 
-Out of the similar concern stated above, we shall check for stationarity for the second variable, the bitcoin prices (variable name: bpi\_closing\_price). As before, we also include the first difference bitcoin prices (variable name: df\_bpi\_closing\_price) and the logarithmic first difference ones (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
+Out of the similar concern stated above, we shall check for stationarity for the second variable, the Bitcoin prices (variable name: bpi\_closing\_price). As before, we also include the first difference Bitcoin prices (variable name: df\_bpi\_closing\_price) and the logarithmic first difference ones (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
 
 \begin{figure}[H]
 \centering
@@ -219,7 +218,7 @@ Out of the similar concern stated above, we shall check for stationarity for the
 \label{fig:4}
 \end{figure}
 	
-Once again, the test result suggests we use the first difference transformation of the variable bitcoin prices, for it succeeds best the ADF test.
+Once again, the test result suggests we use the first difference transformation of the variable Bitcoin prices, for it succeeds best the ADF test.
 
 \subsection{Lag-Specification}
 To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandtwilliams2007}). The calculations of these criteria for our specific data set are shown in the following table.\\
@@ -244,7 +243,7 @@ B_t = c_2 + a_{21}T_{t-1} + a_{22}B_{t-1} + \epsilon_2
 \end{split}
 \end{equation}
 
-This model shows that the current value of our endogenous variables is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning bitcoin in the past, has an effect on the bitcoin prices in the periods that follow. This question is reflected in the second equation of this model.\\
+This model shows that the current value of our endogenous variables is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning Bitcoin in the past, has an effect on the Bitcoin prices in the periods that follow. This question is reflected in the second equation of this model.\\
 
 After running the above VAR regression in STATA we get following results:
 	
@@ -268,7 +267,7 @@ After running the above VAR regression in STATA we get following results:
 \caption{Var Regression}
 \end{table}
 
-The equations of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one which is listed on the right column (B\textsubscript{t}). The coefficient of 0.00463 (a\textsubscript{21}) implies that a change of tweets by 1 tweet, changes the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This answers our research question with the following statement:\\ The amount of tweets mentioning bitcoin has no significant effect on the price development of bitcoin.
+The equations of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one which is listed on the right column (B\textsubscript{t}). The coefficient of 0.00463 (a\textsubscript{21}) implies that a change of tweets by 1 tweet, changes the Bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This answers our research question with the following statement:\\ The amount of tweets mentioning Bitcoin has no significant effect on the price development of Bitcoin.
 		
 \subsection{Granger Causality}
 To assess the reliability (causality) of the previous results we use the Granger causality test. This test confirms if the statements by an estimated regression are valid. The following table shows the results of the Granger causality test for our VAR regression:\\
@@ -280,16 +279,16 @@ To assess the reliability (causality) of the previous results we use the Granger
 \label{fig:6}
 \end{figure}
 
-The relevant results for our regression are displayed in the lower row. The Null hypothesis here is that the lagged (lag 1) values of the number of tweets does not cause a change in the bitcoin prices. The Alternative hypothesis would then be that the lagged values of the number of tweets does cause a change in bitcoin prices. As the results show, the Probability value is 65.7\% which is clearly more than 5\% and constrain us to accept the Null hypothesis and conclude that the regression results stated above are valid.\\
+The relevant results for our regression are displayed in the lower row. The Null hypothesis here is that the lagged (lag 1) values of the number of tweets does not cause a change in the Bitcoin prices. The Alternative hypothesis would then be that the lagged values of the number of tweets does cause a change in Bitcoin prices. As the results show, the Probability value is 65.7\% which is clearly more than 5\% and constrain us to accept the Null hypothesis and conclude that the regression results stated above are valid.\\
 
 \clearpage
 
-%************************** Chapters 4 - Conclusion **************************
+%************************** Chapter 4 - Conclusion **************************
 \section{Conclusion}
 \label{sec:Conclustion}
-Understanding, describing and predicting the current phenomenon of cryptocurrencies has been the objective of many researchers. A variety of methods and approaches have been applied und mixed results have been produced. Our goal for this seminar paper was to investigate the possibility of the existence of a correlation between twitter activity regarding bitcoin and the price evolution of bitcoin. After collecting hourly data for approximately 8 days we generated 2 time-series datasets and decided to perform a statistical analysis by using the Vector Autoregression (VAR) approach.\\
+Understanding, describing and predicting the current phenomenon of cryptocurrencies has been the objective of many researchers. A variety of methods and approaches have been applied und mixed results have been produced. Our goal for this seminar paper was to investigate the possibility of the existence of a correlation between Twitter activity regarding Bitcoin and the price evolution of Bitcoin. After collecting hourly data for approximately 8 days we generated 2 time-series datasets and decided to perform a statistical analysis by using the Vector Autoregression (VAR) approach.\\
 
-According to our regression results, changes in twitter activity due to more or less tweets about bitcoin have a very small and insignificant effect on future changes of bitcoin price. The validity of this statement was also verified and confirmed by the Granger causality test. At this point, however, it must be pointed out that only a small period of time has been considered in this analysis and the results cannot be generalized for the overall trend of cryptocurrencies in the recent time or for the future. We are also aware that we may have observed a period of abnormal behavior of bitcoin prices compared to the trend of the last months.\\
+According to our regression results, changes in Twitter activity due to more or less tweets about Bitcoin have a very small and insignificant effect on future changes of Bitcoin price. The validity of this statement was also verified and confirmed by the Granger causality test. At this point, however, it must be pointed out that only a small period of time has been considered in this analysis and the results cannot be generalized for the overall trend of cryptocurrencies in the recent time or for the future. We are also aware that we may have observed a period of abnormal behavior of Bitcoin prices compared to the trend of the last months.\\
 
 We encourage further research in the same direction as this paper and would be interested to see an analysis with observations over a longer period. 
 

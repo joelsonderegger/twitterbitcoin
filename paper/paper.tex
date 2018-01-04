@@ -208,9 +208,9 @@ We shall test the stationarity for the "crude" twitter data (variable name: nr\_
 \label{fig:3}
 \end{figure}
 	
-From the results we can see that only the first variable (i.e. the untransformed tweet count) is non-stationary, since the absolute value of the Test Statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475), the null hypothesis of non-stationarity cannot be rejected as a consequence. The second variable is stationary (14.167 $>$ 3.475) and from here onwards we shall proceed the analysis by using the first difference tweet count, which fulfills the stationarity requirement.\\
+From the results we can see that only the first variable (i.e. the untransformed tweet count) is non-stationary, since the absolute value of the Test Statistic (3.152) is smaller than the absolute value of the 1\% critical value (3.475), the null hypothesis of non-stationarity cannot be rejected as a consequence. The second variable is stationary (14.167 $>$ 3.475) and from here onwards we shall proceed the analysis with only the first difference tweet count, whose test statistic falls furthest into the rejection zone.\\
 
-Secondly, we have to check for stationarity for the second variable, the bitcoin prices (variable name: bpi\_closing\_price). Here we also included the first difference (variable name: df\_bpi\_closing\_price) and the logarithmic first difference (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
+Out of the similar concern stated above, we shall check for stationarity for the second variable, the bitcoin prices (variable name: bpi\_closing\_price). As before, we also include the first difference bitcoin prices (variable name: df\_bpi\_closing\_price) and the logarithmic first difference ones (variable name: log\_df\_bpi\_closing\_price) transformations. The ADF test for these variables gives the following results:\\
 
 \begin{figure}[H]
 \centering
@@ -219,7 +219,7 @@ Secondly, we have to check for stationarity for the second variable, the bitcoin
 \label{fig:4}
 \end{figure}
 	
-These result also suggest to use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
+Once again, the test result suggests we use the first difference transformation of the variable bitcoin prices, for stationarity to be fulfilled.
 
 \subsection{Lag-Specification}
 To select the optimal number of lags to use for the VAR regression, we have to check for various information criteria. Information criteria are measuring the tradeoff between model fit and parsimony, giving the optimal number of lags to use (\cite[p.~27]{brandtwilliams2007}). The calculations of these criteria for our specific data set are shown in the following table.\\

@@ -232,8 +232,8 @@ To select the optimal number of lags to use for the VAR regression, we have to c
 As can be seen, STATA calculates and presents various information criteria (AIC, HQIC, SBIC). The asterisk indicates the optimal lag lenght to use for the regression analysis. In this case all criteria suggest a lag length of 1.
 		
 \subsection{Regression Model}
-After determining the optimal lag gength the next step is to build the vector autoregression model (VAR model).
-For this analysis, we use a basic unrestricted VAR model which consists of two endogenous variables, T which repesents the variable df\_nr\_of\_tweets and B which represents bpi\_closing\_price. As defined in the previous section the selected otpimal time lag is 1. Given these information, the model equations can be written as follows:
+After determining the optimal lag length the next step is to build the vector autoregression model (VAR model).\\
+For this analysis, we use a basic unrestricted VAR model which consists of two endogenous variables, T\textsubscript t which repesents the variable {\itshape df\_nr\_of\_tweets} in our data set and B\textsubscript t which represents {\itshape df\_bpi\_closing\_price}. As defined in the previous section the selected otpimal time lag is 1. Given these information, the model equations can be written as follows:
 
 \begin{equation}
 \begin{split}
@@ -242,7 +242,7 @@ B_t = c_2 + a_{21}T_{t-1} + a_{22}B_{t-1} + \epsilon_2
 \end{split}
 \end{equation}
 
-This model shows that the current value of our endogenous variavles is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning bitcoin in the past, has an effect on the bitcoin prices in the periods that follow. This question is pictured in the second equation of this model.\\
+This model shows that the current value of our endogenous variables is determined by its own past values, the past values of the other variable and an error term. In our research approach we ask the question, if the amount of tweets mentioning bitcoin in the past, has an effect on the bitcoin prices in the periods that follow. This question is reflected in the second equation of this model.\\
 
 After running the above VAR regression in STATA we get following results:
 	
@@ -266,7 +266,7 @@ After running the above VAR regression in STATA we get following results:
 \caption{Var Regression}
 \end{table}
 
-The equation of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one and it is listed on the second column (B\textsubscript{t}) in the above table. The coefficient of 0.00463 (a\textsubscript{21}) implies that an increase of tweets by 1 increases the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This means that based on our data set the amount of tweets have no significant effect on the price development of bitcoin.
+The equations of our VAR model are displayed vertically in this table. As said before the relevant equation in the model is the second one which is listed on the right column (B\textsubscript{t}). The coefficient of 0.00463 (a\textsubscript{21}) implies that a change of tweets by 1 tweet, changes the bitcoin price by 0.005 \$. This effect is very small and statistically insignificant (p value $>$ 0.1). This answers our research question with the following statement:\\ The amount of tweets mentioning bitcoin has no significant effect on the price development of bitcoin.
 		
 \subsection{Granger Causality}
 To assess the reliability (causality) of the previous results we use the Granger causality test. This test confirms if the statements by the regression are valid. The following table shows the results of the Granger causality test\\

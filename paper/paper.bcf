@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bcf:controlfile version="3.4" bltxversion="3.9" xmlns:bcf="https://sourceforge.net/projects/biblatex">
+<bcf:controlfile version="3.4" bltxversion="3.10" xmlns:bcf="https://sourceforge.net/projects/biblatex">
   <!-- BIBER OPTIONS -->
   <bcf:options component="biber" type="global">
     <bcf:option type="singlevalued">
@@ -2079,8 +2079,33 @@
     <bcf:citekey order="4">shiller2015irrational</bcf:citekey>
     <bcf:citekey order="5">kahneman2013prospect</bcf:citekey>
     <bcf:citekey order="6">mao2015quantifying</bcf:citekey>
-    <bcf:citekey order="7">luetkepohl2007new</bcf:citekey>
-    <bcf:citekey order="8">brandtwilliams2007</bcf:citekey>
+    <bcf:citekey order="7">Nakamoto2008Bitcoin</bcf:citekey>
+    <bcf:citekey order="8">Nakamoto2008Bitcoin</bcf:citekey>
+    <bcf:citekey order="9">corbet2017datestamping</bcf:citekey>
+    <bcf:citekey order="10">Forbes2017</bcf:citekey>
+    <bcf:citekey order="11">yermack2013bitcoin</bcf:citekey>
+    <bcf:citekey order="12">kristoufek2015main</bcf:citekey>
+    <bcf:citekey order="13">kristoufek2015main</bcf:citekey>
+    <bcf:citekey order="14">kristoufek2015main</bcf:citekey>
+    <bcf:citekey order="15">garcia2014digital</bcf:citekey>
+    <bcf:citekey order="16">kondor2014rich</bcf:citekey>
+    <bcf:citekey order="17">madan2015automated</bcf:citekey>
+    <bcf:citekey order="18">shah2014bayesian</bcf:citekey>
+    <bcf:citekey order="19">colianni2015algorithmic</bcf:citekey>
+    <bcf:citekey order="20">mao2015quantifying</bcf:citekey>
+    <bcf:citekey order="21">Statista2018a</bcf:citekey>
+    <bcf:citekey order="22">Gabriel2017socialmedia</bcf:citekey>
+    <bcf:citekey order="23">stenqvist2017predicting</bcf:citekey>
+    <bcf:citekey order="24">twitterinc2018</bcf:citekey>
+    <bcf:citekey order="25">Statista2018b</bcf:citekey>
+    <bcf:citekey order="26">Schmidt2018socialmedia</bcf:citekey>
+    <bcf:citekey order="27">stenqvist2017predicting</bcf:citekey>
+    <bcf:citekey order="28">stenqvist2017predicting</bcf:citekey>
+    <bcf:citekey order="29">colianni2015algorithmic</bcf:citekey>
+    <bcf:citekey order="30">stenqvist2017predicting</bcf:citekey>
+    <bcf:citekey order="31">mao2015quantifying</bcf:citekey>
+    <bcf:citekey order="32">luetkepohl2007new</bcf:citekey>
+    <bcf:citekey order="33">brandtwilliams2007</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="apa">

@@ -1,4 +1,5 @@
-This is a short overview of the most important Git commands.
+### This is a short overview of the most important Git commands. ###
+
 
 ## Clone
 
@@ -21,11 +22,11 @@ Use git fetch to retrieve new work done by other people. Fetching from a reposit
 git fetch remotename
 # Fetches updates made to a remote repository
 ```
-
 Example:
 ```
 git fetch origin
 ```
+
 
 ## Merge
 
@@ -43,6 +44,7 @@ Example:
 git merge origin/master
 ```
 
+
 ## Pull
 git pull is a convenient shortcut for completing both git fetch and git mergein the same command:
 
@@ -55,6 +57,7 @@ Example:
 ```
 git pull origin master
 ```
+
 
 ## Push
 Use git push to push commits made on your local branch to a remote repository.
@@ -74,6 +77,7 @@ git push origin master
 ```
 
 Remember that you have to first commit changes before being able to push them.
+
 
 ## CD
 

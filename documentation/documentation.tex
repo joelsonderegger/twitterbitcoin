@@ -158,7 +158,7 @@ On top, you need various Python packages. We created a requirements file \verb|r
 \end{lstlisting}
 Now you should be ready to run the Python scripts.
 
-\subsection{Stata}
+\subsection{STATA}
 For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program you can follow the guidelines in chapter 5 (Data Analysis). 
 
 \clearpage
@@ -464,16 +464,16 @@ The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin P
 \clearpage
 
 \section{Data Analysis}
-The data analysis was performed with the statistical software STATA (version 14.2). The corresponding stata file and .do file are stored in the folder stata\_analysis. Following we describe all the commands used to produce our econometric model.
+The data analysis was performed with the statistical software STATA (version 14.2). The corresponding .dta file and .do file are stored in the folder stata\_analysis of the Git repository. Following, we describe all the commands used to produce our econometric model.
 
 Step 1:\\
-After starting stata the first step was to import the data file (.csv file) into stata. We did so by following command (be carefull your location of the .csv file will differ):\\
+After starting STATA the first step was to import the data file (.csv file) into STATA. We did so by following command (be careful, your location of the .csv file will differ):\\
 \begin{lstlisting}[language=bash]
     import delimited C:\Users\Dimi\Desktop\nr_of_tweets_bpi_closing_price.csv
 \end{lstlisting}
 
 Step 2:\\
-STATA is not recognizing our variable "time" as a date variable. Therefore we create a new variable "time2" and giving it the same values as "time" in the same format as "time". At the end we define "time2" to be a time series with an hourly progress\\
+STATA is not recognizing our variable "time" as a date variable. Therefore, we create a new variable "time2" and giving it the same values as "time" in the same format as "time". At the end, we define "time2" to be a time series with an hourly progress.\\
 	\begin{lstlisting}[language=bash]
 	gen double time2 = clock(time, "YMD hms")\\
 	format time2 %tcNN-DD-CCYY_HH:MM:SS\\
@@ -493,7 +493,7 @@ Next we plotted all variables by the following commands and exported the produce
 	\end{lstlisting}
 
 Step 4:\\
-To check for stationarity we run the Augmented Dickey-Fuller (ADF) test for all variables with a time delay of 0 periods (lag 0).\\
+To check for stationarity, we run the Augmented Dickey-Fuller (ADF) test for all variables with a time delay of 0 periods (lag 0).\\
 	\begin{lstlisting}[language=bash]
 	dfuller nr_of_tweets, lags(0)
 	dfuller df_nr_of_tweets, lags(0)
@@ -521,8 +521,8 @@ Calling the granger causality test with lag length 1.\\
 	Vargranger
 	\end{lstlisting}
 
-Additionally:\\
-The VAR regression results were exportet to a latex format by instaling and using the outreg2 package. The generated piece of latex code was then inserted into in the latex file of the paper. All other results were exported with an image software and used as .png files in latex\\
+Step 8:\\
+The VAR regression results were exported to a latex format by installing and using the outreg2 package. The generated piece of latex code was then inserted into in the latex file of the paper. All other results were exported with an image software and used as .png files in latex\\
 	\begin{lstlisting}[language=bash]
 	ssc install outreg2
 	outreg2 using var_gegression_results.tex, replace

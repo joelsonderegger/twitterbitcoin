@@ -103,7 +103,7 @@ Fall Term 2017 \\
 \clearpage
     
 \listoffigures\bigskip 
-\section*{List of Abbreviation} 
+\section*{List of Abbreviations} 
 \begin{acronym}[ASECRETTT]
 \acro{API}{Application Programming Interface}
 \acro{ATOKEN}{Access Token}
@@ -124,21 +124,21 @@ Fall Term 2017 \\
 \cleardoublepage\pagenumbering{arabic}
 
 \section{Introduction}
-In the academic environment accountability and reproducibility is important. However, the publishing process of papers and journals seem to be outdated as reproducability is not evaluated by many journals. \parencite[p.~888]{mccullough2003} New ways of data collection and data processing exist by using computational economics. The usage of algorithms can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. However, this creates also new challenges regarding traceability and reproducibility. Often cited academic paper exist, where the initial computation is not reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results do not provide any new knowledge at all. Nevertheless, the ability to reproduce is key in science, and non-reproducible work can not be characterized as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. This explains why reproduction is of great relevance.
+In the academic environment both accountability and reproducibility are important to ensure a high quality of research. However, the publishing process of scientific papers and journals seems to be outdated, as reproducibility is not evaluated by leading journals. \parencite[p.~888]{mccullough2003} Driven by digitisation, new ways of data collection and processing arise by using computational economics. On the one hand, the usage of scripts, automation or machine learning can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. On the other hand, this creates also new challenges to trace and reproduce data sets, procedures or analysis. There are often cited academic papers, where the initial computation is neither clearly documented nor reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results does not provide any new knowledge at all. Nevertheless, the ability to understand what researchers have done is key. Non-reproducible work cannot be characterised as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. Therefore, clear documentation of processes, used scripts and tools should be the basis of every scientific publication.
 
-\subsection{Goal of the paper}
-The goal of this documentation is the provision of a description. This description should enable the reader to reproduce the results discussed in the accompanying paper. Thus, it contains an explanation how the input data have been gathered, stored, aggregated and analysed. In other words, the input data, the model core, the model parameters and the applied math program are explained.
+\subsection{Goal}
+The objective of this documentation is the provision of a description of the research process, used hardware, software, procedures or tools of the accompanying paper in detail. This description enables the reader to reproduce the results discussed in our work. Thus, it contains an explanation of how  input data have been gathered, stored, aggregated and analysed. 
 
 \subsection{Methodology}
-This documentation consists out of seven chapters. The first five chapters are going to be discussed, as they are relevant for the reproduction of the results. The first chapter contains a short introduction and provides the reader with an overview of the topic. Furthermore, it points out the relevance of the documentation. In the second chapter the requirements (setup) are discussed to enable the reproducibility and run the own written code scripts in Python. Python has been used as it was suggested in the course Software Engineering for Economists. The third chapter discusses the input data. This includes the process of gathering and storing twitter tweets as well as the gathering of the bitcoin price data. The data have been gathered by using Application Programming Interfaces (API) to ensure high quality of the data. The fourth chapter discusses how the data is aggregated wrangled to enable the subsequent analysis. The fifth chapter explains how the analysis has been conducted whit STATA.
+After pointing out the relevance of this documentation, the second chapter is an explanation of the required set-up in order to reproduce our results by running our Python scripts available from Github. The programming language Python has been chosen, as it comes with a high variety of modules and is especially suitable for data science. The third chapter discusses the input data of our project. This includes the process of gathering and storing tweets from Twitter, as well as the collecting Bitcoin price data for the same time frame. Both Twitter and Bitcoin data have been gathered by using an Application Programming Interface (API), to ensure a high data quality. Further on, the fourth chapter explains, how the data has been aggregated and wrangled to enable the subsequent analysis. The analysis has been conducted with STATA and is discussed in detail the last chapter of this documentation.
 
 \subsection{Scope}
-The scope of the documentation is the provision of an overview of the different steps which have been conducted to obtain the results in the paper. It does not contain any discussions about the results of the accompanying paper. It is not a deep description of the code as the code itself as the code is documented separately. 
+The scope of the documentation is to provide an overview of the different steps that have been conducted to obtain the results of the paper. Therefore, this documentation includes all information necessary to understand and reproduce our findings from the accompanying paper. However, it does not contain any further information about the content and results of our research and is only meant as supportive material. Furthermore, it does not provide a detailed description of the code itself, in order to avoid redundancy of information with the existing code documentation within the scripts. 
 \clearpage
 
-\section{Setup}
-This section goes through the setup that you need for exectuing the code that is discussed in this documentation.
-\subsection{Github Repository}
+\section{Set-up}
+This section goes through the set-up that you need for executing the code that is discussed in this documentation.
+\subsection{Github ritepository}
 All code is available on the following github repository:
 \newline
 \verb|https://github.com/joelsonderegger/twitterbitcoin/|
@@ -167,7 +167,7 @@ This section contains a detailed description of how the data for the sequential 
 \subsection{Tweets Data}
 Whit the Python script real-time Twitter data are streamed and stored. This happens with help of a Raspberry Pi.
 \subsubsection{Python Script}
-Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different twitter libraries. Such as the open-source package tweepy.
+Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different Twitter libraries. Such as the open-source package tweepy.
 
 \paragraph{Tweepy}\mbox{}\\{}
 Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. \parencite{tweepy} With this method all data of filtered tweets are gathered in real time. The main function \verb|def main()| manages the required authentication as follow:
@@ -175,7 +175,7 @@ Tweepy is a open-source libary. It provides a simple way to gather real time twe
 auth = OAuthHandler (ckey, csecret)
 auth.set_access_token(atoken, asecret)
 \end{lstlisting}
-Those authentications are demanded by twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword bitcoin by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free. 
+Those authentications are demanded by Twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword Bitcon by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free. 
 
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
@@ -190,9 +190,9 @@ https://pypi.python.org/pypi/tweepy
 \end{lstlisting}
 
 \paragraph{Twitter Authentication}\mbox{}\\{}
-To access the twitter data, twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (CKEY), (2) consumer secret (CSECRET), (3) access token (ATOKEN) and (4) access token secret (ASECRET). \parencite{twitterinc2017b}
+To access the Twitter data, Twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (CKEY), (2) consumer secret (CSECRET), (3) access token (ATOKEN) and (4) access token secret (ASECRET). \parencite{twitterinc2017b}
 
-To obtain the mentioned keys and tokens a twitter account is needed. Once, a twitter account exist a application has to be created. This has to be conducted by login with the twitter account credentials under the following link: 
+To obtain the mentioned keys and tokens a Twitter account is needed. Once, a Twitter account exist a application has to be created. This has to be conducted by login with the Twitter account credentials under the following link: 
 \begin{lstlisting}[language=bash]
 https://apps.twitter.com/
 \end{lstlisting}
@@ -206,7 +206,7 @@ After the creation of a application, the keys and tokens can be extracted. Figur
 \end{figure}
 
 \paragraph{Running the Python Script}\mbox{}\\{}
-By running the Python script \verb|collectTwitterData.py| real-time twitter data is gathered on an ongoing basis until you stop the script forcefully.
+By running the Python script \verb|collectTwitterData.py| real-time Twitter data is gathered on an ongoing basis until you stop the script forcefully.
 \begin{lstlisting}[language=bash]
     $ python collectTwitterData.py
     \end{lstlisting}
@@ -229,8 +229,8 @@ The \verb|text| attribute needs to be encoded from the raw JSON format into the 
 
 Furthermore, to ensure a high quality data set it needs to be complete without missing any data points for the observed period. Thus, we have built in an exception handler into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Additionaly, any exception that occurs during the exectuing of the script will be added to the log file \verb|/data/tweet_collection_error_log.csv|.
 
-\subsubsection{Hardware Setup}
-As explained in the previous section the Tweepy API was used to gather tweets in real-time based on the buzzword "bitcoin". The Python script was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient option compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
+\subsubsection{Hardware set-up}
+As explained in the previous section the Tweepy API was used to gather tweets in real-time based on the buzzword "Bitcon". The Python script was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient option compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
 
 \begin{enumerate}
 
@@ -336,7 +336,7 @@ The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one mon
     \item open: Opening price (in USD)
 \end{itemize}
 
-\subsubsection{API: Bitcoinaverage.com}
+\subsubsection{API: bitcoinaverage.com}
 Bitcoinaverage.com offers a free API that provides real-time and historical price data for a range of crypto-currencies including Bitcoin. The following requests delivers data for an per hour monthly sliding window.
 
 \paragraph{Request}\mbox{}\\

@@ -124,13 +124,13 @@ Fall Term 2017 \\
 \cleardoublepage\pagenumbering{arabic}
 
 \section{Introduction}
-In the academic environment both accountability and reproducibility are important to ensure a high quality of research. However, the publishing process of scientific papers and journals seems to be outdated, as reproducibility is not evaluated by leading journals. \parencite[p.~888]{mccullough2003} Driven by digitisation, new ways of data collection and processing arise by using computational economics. On the one hand, the usage of scripts, automation or machine learning can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. On the other hand, this creates also new challenges to trace and reproduce data sets, procedures or analysis. There are often cited academic papers, where the initial computation is neither clearly documented nor reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results does not provide any new knowledge at all. Nevertheless, the ability to understand what researchers have done is key. Non-reproducible work cannot be characterised as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. Therefore, clear documentation of processes, used scripts and tools should be the basis of every scientific publication.
+In the academic environment both accountability and reproducibility are important to ensure a high quality of research. However, the publishing process of scientific papers and journals seems to be outdated, as reproducibility is not evaluated by leading journals. \parencite[p.~888]{mccullough2003} Driven by digitalization, new ways of data collection and processing arise by using high computational capacity and advanced econometric methods. On the one hand, the usage of scripts, automation or machine learning can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. On the other hand, this creates also new challenges to trace and reproduce data sets, procedures or analysis. There are often cited academic papers, where the initial computation is neither clearly documented nor reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results does not provide any new knowledge at all. Nevertheless, the ability to understand what researchers have done is key. Non-reproducible work cannot be characterised as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. Therefore, clear documentation of processes, used scripts and tools should be the basis of every scientific publication.
 
 \subsection{Goal}
-The objective of this documentation is the provision of a description of the research process, used hardware, software, procedures or tools of the accompanying paper in detail. This description enables the reader to reproduce the results discussed in our work. Thus, it contains an explanation of how  input data have been gathered, stored, aggregated and analysed. 
+The objective of this documentation is to provide a detailed description of the research process, used hardware, software, procedures and tools of the accompanying paper. This description enables the reader to reproduce the results discussed in our work. Thus, it contains an explanation of how  input data have been gathered, stored, aggregated and analyzed. 
 
 \subsection{Methodology}
-After pointing out the relevance of this documentation, the second chapter is an explanation of the required set-up in order to reproduce our results by running our Python scripts available from Github. The programming language Python has been chosen, as it comes with a high variety of modules and is especially suitable for data science. The third chapter discusses the input data of our project. This includes the process of gathering and storing tweets from Twitter, as well as the collecting Bitcoin price data for the same time frame. Both Twitter and Bitcoin data have been gathered by using an Application Programming Interface (API), to ensure a high data quality. Further on, the fourth chapter explains, how the data has been aggregated and wrangled to enable the subsequent analysis. The analysis has been conducted with STATA and is discussed in detail the last chapter of this documentation.
+After pointing out the relevance of this documentation, the second chapter is an explanation of the required set-up in order to reproduce our results by running our Python scripts available from Github. The programming language Python has been chosen, as it comes with a high variety of modules and is especially suitable for data science. The third chapter discusses the input data of our project. This includes the process of gathering and storing tweets from Twitter, as well as the collecting Bitcoin price data for the same time frame. Both Twitter and Bitcoin data have been gathered by using an Application Programming Interface (API), to ensure a high data quality. Further on, the fourth chapter explains, how the data has been aggregated and wrangled to enable the subsequent analysis. Finally, the statistical analysis has been conducted with STATA and is discussed in the last chapter of this documentation.
 
 \subsection{Scope}
 The scope of the documentation is to provide an overview of the different steps that have been conducted to obtain the results of the paper. Therefore, this documentation includes all information necessary to understand and reproduce our findings from the accompanying paper. However, it does not contain any further information about the content and results of our research and is only meant as supportive material. Furthermore, it does not provide a detailed description of the code itself, in order to avoid redundancy of information with the existing code documentation within the scripts. 
@@ -159,7 +159,7 @@ On top, you need various Python packages. We created a requirements file \verb|r
 Now you should be ready to run the Python scripts.
 
 \subsection{STATA}
-For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program you can follow the guidelines in chapter 5 (Data Analysis). 
+For the statistical analysis of our data, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program, you can follow the guidelines in chapter 5 (Data Analysis). 
 
 \clearpage
 
@@ -464,16 +464,16 @@ The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin P
 \clearpage
 
 \section{Data Analysis}
-The data analysis was performed with the statistical software STATA (version 14.2). The corresponding .dta file and .do file are stored in the folder stata\_analysis of the Git repository. Following, we describe all the commands used to produce our econometric model.
+The data analysis was performed with the statistical software STATA (version 14.2). The corresponding .dta file and .do file are stored in the folder stata\_analysis in the Github repository. Following, we describe all the commands used to produce our econometric model.
 
 Step 1:\\
-After starting STATA the first step was to import the data file (.csv file) into STATA. We did so by following command (be careful, your location of the .csv file will differ):\\
+After starting STATA the first step was to import the data file (.csv file). We did so by following command (be careful, your location of the .csv file will probably differ):\\
 \begin{lstlisting}[language=bash]
     import delimited C:\Users\Dimi\Desktop\nr_of_tweets_bpi_closing_price.csv
 \end{lstlisting}
 
 Step 2:\\
-STATA is not recognizing our variable "time" as a date variable. Therefore, we create a new variable "time2" and giving it the same values as "time" in the same format as "time". At the end, we define "time2" to be a time series with an hourly progress.\\
+STATA is not recognizing our variable "time" as a date variable. Therefore, we had to create a new variable "time2" and give it the same values as "time" in the same format as "time". At the end, we define "time2" to be a time series with an hourly progress.\\
 	\begin{lstlisting}[language=bash]
 	gen double time2 = clock(time, "YMD hms")\\
 	format time2 %tcNN-DD-CCYY_HH:MM:SS\\
@@ -510,7 +510,7 @@ Calling the lag-order selection criteria statistics for our VAR model. The maxim
 	\end{lstlisting}
 
 Step 6:\\
-Running the VAR regression for our two variables. With recommended lag of 1 (from Step 4).\\
+Running the VAR regression for our two variables. With recommended lag of 1 (from Step 5).\\
 	\begin{lstlisting}[language=bash]
 	var df_nr_of_tweets df_bpi_closing_price, lags(1/1)
 	\end{lstlisting}

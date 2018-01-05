@@ -8,7 +8,7 @@ This work was created in the context of a programming course for economists at t
 
 ## Built with
 * Python 3
-* STATA 4.2
+* STATA 14.2
 * LaTeX
 
 ## APIs

@@ -137,9 +137,10 @@ The scope of the documentation is to provide an overview of the different steps 
 \clearpage
 
 \section{Set-up}
-This section goes through the set-up that you need for executing the code that is discussed in this documentation.
-\subsection{Github ritepository}
-All code is available on the following github repository:
+This section goes through the set-up that is necessary in order to execute the code discussed in this documentation.
+
+\subsection{Github repository}
+All code is available on the following Github repository:
 \newline
 \verb|https://github.com/joelsonderegger/twitterbitcoin/|
 \subsection{Requirements to run Python scripts}
@@ -148,9 +149,9 @@ Before you go any further, make sure that at least Python version 3.0.0 is avail
     python --version
 \end{lstlisting}
 
-You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from python.org.
+You should get some output like Python 3.7.13. If you do not have at least Python version 3.0.0, please install the latest 3.x version from \verb|python.org|.
 \newline \newline
-On top you need various Python packages. We created a  requirements file \verb|requirements.txt|, which contains all required packages to run the Python scripts of this project. You can find the  \verb|requirements.txt| in the root directory of our github repository. The list of packages can be installed using pip install like so:
+On top, you need various Python packages. We created a requirements file \verb|requirements.txt|, which contains all required packages to run the Python scripts of this project. You can find the \verb|requirements.txt| in the root directory of our Github repository. The list of packages can be installed using pip install like so:
 
 \begin{lstlisting}[language=bash]
     pip install -r requirements.txt
@@ -158,33 +159,33 @@ On top you need various Python packages. We created a  requirements file \verb|r
 Now you should be ready to run the Python scripts.
 
 \subsection{Stata}
-For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed in your local computer and after starting the program you can follow the guidelines in chapter 4 (data analysis). 
+For the data analysis, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program you can follow the guidelines in chapter 5 (Data Analysis). 
 
 \clearpage
 
 \section{Data Collection}
-This section contains a detailed description of how the data for the sequential analysis is gathered and stored. Two separate data sets will be collected: (1) Tweets data and  (2) Bitcoin price index data.
+The following section contains a detailed description of how the data for the sequential analysis is gathered and stored. Two separate data sets will be collected: (1) Tweets data and (2) Bitcoin price index data.
 \subsection{Tweets Data}
-Whit the Python script real-time Twitter data are streamed and stored. This happens with help of a Raspberry Pi.
+With the Python script real-time Twitter data are streamed and stored using the Python library Tweepy. A Raspberry Pi can be used to gather Twitter data over a longer period.
 \subsubsection{Python Script}
-Twitter offers different API for collecting data. However, the time frame for gathering data on a freely base with full access is limited to 7 days \parencite{twitterinc2017a}. On the other hand, Python offers different Twitter libraries. Such as the open-source package tweepy.
+Twitter offers different APIs for the collection of Twitter data. However, the time frame to gather data from the past with full access is limited to seven days \parencite{twitterinc2017a}. To gather a data set over a longer period, without using payed services Twitter data therefore have to be streamed and saved in real-time. Python offers different Twitter libraries such as the package Tweepy.
 
 \paragraph{Tweepy}\mbox{}\\{}
-Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. With this method all data of filtered tweets are gathered in real time. \parencite{tweepy} The main function \verb|def main()| manages the required authentication as follow:
+Tweepy is a open-source libary. It provides a simple way to gather real time tweets, by managing authentication, connection and tweet information of Twitters streaming API. The Tweepy instance tweepy.streaming is used for the streaming session and forwards the data to the StreamListener instance. The \verb|class listener(StreamListener)| calls the method \verb|def on_data(self, data)|. With this method all data of filtered tweets are gathered in real-time. \parencite{tweepy} The main function \verb|def main()| manages the required authentication as follows:
 \begin{lstlisting}[language=bash]
 auth = OAuthHandler (ckey, csecret)
 auth.set_access_token(atoken, asecret)
 \end{lstlisting}
-Those authentications are demanded by Twitter and explained in more details in the next paragraph. Furthermore, the main function starts the running of the stream, while filtering for the buzzword Bitcon by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this assignment because it simplify the script and enables to gather a huge number of tweets for free. 
+Those authentications are demanded by Twitter and explained in more details in the next paragraph. Furthermore, the main function starts to run the stream, while filtering for the buzzword "Bitcoin" by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this project because it simplifies the script and enables its users to gather a huge number of tweets without any costs. 
 
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
-Tweepy is installed very simply by running following commands in the command prompt. 
+Tweepy is installed easily by running following commands in the command prompt. 
 \begin{lstlisting}[language=bash]
 pip install tweepy
 \end{lstlisting}
 
-If the previous downloaded python installation package does not contain the tweepy library, the tweepy package has to be downloaded. The package can be downloaded for free from the following link:
+If the previously downloaded Python installation package does not contain the tweepy library, the tweepy package has to be downloaded manually. The package can be downloaded for free from the following link:
 \begin{lstlisting}[language=bash]
 https://pypi.python.org/pypi/tweepy
 \end{lstlisting}
@@ -192,12 +193,12 @@ https://pypi.python.org/pypi/tweepy
 \paragraph{Twitter Authentication}\mbox{}\\{}
 To access the Twitter data, Twitter requests an identification of the user. The identification is assured by different keys and access tokens. Those are the (1) consumer key (CKEY), (2) consumer secret (CSECRET), (3) access token (ATOKEN) and (4) access token secret (ASECRET). \parencite{twitterinc2017b}
 
-To obtain the mentioned keys and tokens a Twitter account is needed. Once, a Twitter account exist a application has to be created. This has to be conducted by login with the Twitter account credentials under the following link: 
+To obtain the mentioned keys and tokens a Twitter account is needed. Once, a Twitter account exists, an application has to be created by logging in the developer area with the credentials under the following link: 
 \begin{lstlisting}[language=bash]
 https://apps.twitter.com/
 \end{lstlisting}
 
-After the creation of a application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.\\
+After the creation of an application, the keys and tokens can be extracted. Figure \ref{figkeysandtokens} illustrates how to retrieve the keys and tokens.\\
 \begin{figure}[H]
 \centering
 \includegraphics[scale=0.6]{twitteraccess}
@@ -211,7 +212,7 @@ By running the Python script \verb|collectTwitterData.py| real-time Twitter data
     $ python collectTwitterData.py
     \end{lstlisting}
 
-The Tweepy API provides the tweets data in a Java Script Object Notation (JSON) format. Tweets are only received in case a tweet contains the predefined key word \verb|bitcoin|. While a single tweet consists of many attributes we are only interested in two attributes:
+The Twitter API provides the tweets data in a Java Script Object Notation (JSON) format. Tweets are only received in case a tweet contains the predefined key word \verb|bitcoin|. While a single tweet consists of many attributes we are only interested in two attributes:
 \begin{itemize}
     \item created\_at: Timestamp of the created tweet (in UTC time)
     \item text: Text of the tweet
@@ -225,12 +226,12 @@ An example for a response from the Tweepy API looks like this (of course this sh
     }
 \end{lstlisting}
 
-The \verb|text| attribute needs to be encoded from the raw JSON format into the UTF-8 format for further analysis. After successfully encoding the \verb|text| attribute a tweet is appended to the \verb|twitterData.csv| file as a new row and saved in the fo
+The \verb|text| attribute needs to be encoded from the raw JSON format into the UTF-8 format for further analysis. After successfully encoding the \verb|text| attribute a tweet is appended to the \verb|twitterData.csv| file as a new row and saved in the data folder.
 
-Furthermore, to ensure a high quality data set it needs to be complete without missing any data points for the observed period. Thus, we have built in an exception handler into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Additionaly, any exception that occurs during the exectuing of the script will be added to the log file \verb|/data/tweet_collection_error_log.csv|.
+To ensure a high quality data set, without missing any data points for the observed period, we have built in an exception handler into the \verb|collectTwitterData.py| script. If an error occurs an email will be sent with the error message. Additionally, any exception that occurs during the execution of the script will be added to the log file \verb|/data/tweet_collection_error_log.csv|.
 
 \subsubsection{Hardware set-up}
-As explained in the previous section the Tweepy API was used to gather tweets in real-time based on the buzzword "Bitcon". The Python script was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI the method is also the most cost efficient option compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to setup the RPI 2, SSH, Git and Python3.\\
+As explained in the previous section the Twitter API was used to gather tweets in real-time based on the buzzword "Bitcoin" by using Tweepy. The Python script was running for seven days without interruption on a Raspberry Pi 2 (RPI) which was accessed with a Secure Shell (SSH) connection. This approach allowed us to ensure a continuous data stream while being able to access the program output regardless of time and location. Furthermore, due to a low energy consumption of the RPI, the method is also the most cost efficient option compared to a personal computer or NAS Server. The following section describes the different steps that have been taken in order to set up the RPI 2, SSH, Git and Python3.\\
 
 \begin{enumerate}
 
@@ -274,8 +275,10 @@ https://github.com/joelsonderegger/twitterbitcoin.git
 
 \item Setup Python3
 \begin{enumerate}
-\item Install Python3 using the command: sudo apt-get install Python3 \newline
-\item Install the tweepy module for python using the command
+\item Install Python3 using the command: \begin{lstlisting}[language=bash]
+sudo apt-get install Python3
+\end{lstlisting}
+\item Install the tweepy module for Python using the command
 \begin{lstlisting}[language=bash]
 pip install tweepy
 \end{lstlisting}
@@ -312,20 +315,20 @@ https://filezilla-project.org/
 \item Download data manually \newline \newline \end{enumerate}
 \end{enumerate}
 
-In summary, this approach worked well and ran smoothly. A clean setup is recommended to ensure a continuous data stream over a longer period.
+In summary, this approach worked well and ran smoothly. A clean set-up is recommended to ensure a continuous data stream over a longer period.
 
 
 \subsection{Bitcoin Price Data}
-We wrote a Python script which collects Bitcoin price data as there was no preexisting data set that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which sufficed our needs. An API description follows later.
+We wrote a Python script which collects Bitcoin price data as there was no pre-existing data set that satisfied our needs. The Bitcoin price is best expressed by the Bitcoin Price Index. The Bitcoin price index (BPI) is an index of the exchange rate between the Bitcoin (BTC) and the US dollar (USD) (\cite{kristoufek2015main}). The objective of the script was to gather hourly Bitcoin Price Index data for at least the time period in which we gather the tweets data. We found the an API by bitcoinaverage.com which was sufficed our needs. A detailed description of the API follows in section 3.2.3.
 
 \subsubsection{Execution}
-By executing the python script \verb|collectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
+By executing the Python script \verb|collectCryptocurrencyData.py| hourly data for the Bitcoin Price Index is retrieved.
 \begin{lstlisting}[language=bash]
     $ python collectCryptocurrencyData.py
 \end{lstlisting}
 
 \subsubsection{Output}
-After successfully running the python script \verb|CollectCryptocurrencyData.py| the file \verb|bpi.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|bpi.csv| file.
+After successfully running the Python script \verb|CollectCryptocurrencyData.py| the file \verb|bpi.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|bpi.csv| file.
 
 The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one month on an hourly basis. Each data point consists of the following parameters:
 \begin{itemize}
@@ -340,7 +343,7 @@ The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one mon
 Bitcoinaverage.com offers a free API that provides real-time and historical price data for a range of crypto-currencies including Bitcoin. The following requests delivers data for an per hour monthly sliding window.
 
 \paragraph{Request}\mbox{}\\
-The request to get the data for an per hour monthly sliding window looks as follows. This request require authentication that requires registration and the generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The collectCryptocurrencyData.py already contains the necessary keys. This means that you need no register or generate keys to execute the script collectCryptocurrencyData.py.  
+The request to get the data for an per hour monthly sliding window looks as follows. This request require authentication that requires registration and the generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The \verb|collectCryptocurrencyData.py| already contains the necessary keys. This means that you need no register or generate keys to execute the script \verb|collectCryptocurrencyData.py.| 
 \begin{lstlisting}[language=bash]
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
@@ -376,7 +379,7 @@ An excerpt of an example response looks like the following:
 \clearpage
 
 \section{Data Aggregation and Data Wrangling}
-After the tweets and BPI data set is generated needs to be aggregated before it can be analyzed. In addition, some data wrangling is necessary to bring the data in a format which than can be analyzed. The script \verb|aggregateTwitterBpi.py| does all this.
+After the tweets and BPI data set is generated needs to be aggregated before it can be analyzed. In addition, some data wrangling is necessary to bring the data in a format which than can be analysed. The script \verb|aggregateTwitterBpi.py| does all of these steps.
 
 \subsection{Process}
 The process of the script \verb|aggregateTwitterBpi.py| works as follows:
@@ -405,8 +408,7 @@ The process of the script \verb|aggregateTwitterBpi.py| works as follows:
 \caption{Data aggregation and data wrangling process} \label{fig:dataaggregation}
 \end{figure}
 
-
-Here a short description of what happens at the various steps: 
+Short description of what happens at the various steps: 
 \paragraph{Load BPI data set}\mbox{}\\
 The script takes the BPI data set that is located at \verb|data/bpi.csv|.
 
@@ -416,14 +418,13 @@ The first differences of the BPI closing prices and the natural logarithm of the
 \paragraph{Load tweets data set}\mbox{}\\ 
 The script takes the tweets data set that is located at \verb|data/twitterData.csv|.
 
-\paragraph{Count number of tweets on an hourly basis}\mbox{}\\ F
-irst, groups the tweets by hour. Second, counts the number of tweets for every hour.
+\paragraph{Count number of tweets on an hourly basis}\mbox{}\\ First, groups the tweets by hour. Second, counts the number of tweets for every hour.
 
 \paragraph{Calculate first differences for number of tweets on an hourly basis}\mbox{}\\ 
-The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in the data analysis section.
+The first differences of the number of tweets and the natural logarithm of the first differences of the number of tweets are calculated. Again, the reason for calculating these values is given in chapter 5 (Data Analysis).
 
 \paragraph{Merge number of tweets with BPI data (incl. first differences)}\mbox{}\\
-Up to this point there are the two seperate data frames df\_tweets\_per\_hour and df\_bpi.
+Up to this point, there are the two separate data frames df\_tweets\_per\_hour and df\_bpi.
 
 \begin{figure}[H]
     \centering
@@ -441,13 +442,13 @@ df_merged = df_tweets_per_hour.join(df_bpi, how='left')
 \end{figure}
 
 \subsection{Execution}
-By executing the Python script \verb|aggregateTwitterBpi.py| a aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
+By executing the Python script \verb|aggregateTwitterBpi.py| an aggregated data set that contains number of tweets and Bitcoin Price Index, both on an hourly basis, gets generated. 
 \begin{lstlisting}[language=bash]
     $ python aggregateTwitterBpi.py
 \end{lstlisting}
 
 \subsection{Output}
-After successfully running the Python script \verb|aggregateTwitterBpi.py| the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
+After successfully running the Python script \verb|aggregateTwitterBpi.py|, the file \verb|nr_of_tweets_bpi_closing_price.csv| is generated in the folder \verb|/data|. It is important to note that every execution of the script overwrites any existing \verb|nr_of_tweets_bpi_closing_price.csv| file.
 
 The file \verb|aggregateTwitterBpi.csv| contains historical tweets and Bitcoin Price Index data. Each data point consists of the following parameters:
 \begin{itemize}

@@ -124,13 +124,13 @@ Fall Term 2017 \\
 \cleardoublepage\pagenumbering{arabic}
 
 \section{Introduction}
-In the academic environment both accountability and reproducibility are important to ensure a high quality of research. However, the publishing process of scientific papers and journals seems to be outdated, as reproducibility is not evaluated by leading journals. \parencite[p.~888]{mccullough2003} Driven by digitalization, new ways of data collection and processing arise by using high computational capacity and advanced econometric methods. On the one hand, the usage of scripts, automation or machine learning can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. On the other hand, this creates also new challenges to trace and reproduce data sets, procedures or analysis. There are often cited academic papers, where the initial computation is neither clearly documented nor reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results does not provide any new knowledge at all. Nevertheless, the ability to understand what researchers have done is key. Non-reproducible work cannot be characterised as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. Therefore, clear documentation of processes, used scripts and tools should be the basis of every scientific publication.
+In the academic environment both accountability and reproducibility are important to ensure a high quality of research. However, the publishing process of scientific papers and journals seems to be outdated, as reproducibility is not evaluated by leading journals. \parencite[p.~888]{mccullough2003} Driven by digitalization, new ways of data collection and processing arise, by using high computational capacity and advanced econometric methods. On the one hand, the usage of scripts, automation or machine learning can increase effectiveness and efficiency. Hence, much larger data sets can be proceeded. On the other hand, this creates also new challenges to trace and reproduce data sets, procedures or analyses. There are often cited academic papers, where the initial computation is neither clearly documented, nor reproducible \parencite[pp.~874--887]{mccullough2003}. Replicating data or existing results does not provide any new knowledge at all. Nevertheless, the ability to understand what researchers have done is key. Non-reproducible work cannot be characterised as science or used as a basis for policy-making \parencite[p.~888]{mccullough2003}. Therefore, clear documentation of processes, used scripts and tools should be the basis of every scientific publication.
 
 \subsection{Goal}
 The objective of this documentation is to provide a detailed description of the research process, used hardware, software, procedures and tools of the accompanying paper. This description enables the reader to reproduce the results discussed in our work. Thus, it contains an explanation of how  input data have been gathered, stored, aggregated and analyzed. 
 
 \subsection{Methodology}
-After pointing out the relevance of this documentation, the second chapter is an explanation of the required set-up in order to reproduce our results by running our Python scripts available from Github. The programming language Python has been chosen, as it comes with a high variety of modules and is especially suitable for data science. The third chapter discusses the input data of our project. This includes the process of gathering and storing tweets from Twitter, as well as the collecting Bitcoin price data for the same time frame. Both Twitter and Bitcoin data have been gathered by using an Application Programming Interface (API), which allow to access real-life data by a set of explicitly defined and documented methods. Further on, the fourth chapter explains, how the data has been aggregated and wrangled to enable the subsequent analysis. Finally, the statistical analysis has been conducted with STATA and is discussed in the last chapter of this documentation.
+After pointing out the relevance of this documentation, the second chapter is an explanation of the required set-up in order to reproduce our results by running our Python scripts available from Github. The programming language Python has been chosen, as it comes with a high variety of modules and is especially suitable for data science. The third chapter discusses the input data of our project. This includes the process of gathering and storing tweets from Twitter, as well as the collecting Bitcoin price data for the same time frame. Both Twitter and Bitcoin data have been gathered by using an Application Programming Interface (API), which allows to access real-life data by a set of explicitly defined and documented methods. Further on, the fourth chapter explains, how the data has been aggregated and wrangled to enable the subsequent analysis. Finally, the statistical analysis has been conducted with STATA and is discussed in the last chapter of this documentation.
 
 \subsection{Scope}
 The scope of the documentation is to provide an overview of the different steps that have been conducted to obtain the results of the paper. Therefore, this documentation includes all information necessary to understand and reproduce our findings from the accompanying paper. However, it does not contain any further information about the content and results of our research and is only meant as supportive material. Furthermore, it does not provide a detailed description of the code itself, in order to avoid redundancy of information with the existing code documentation within the scripts. 
@@ -159,7 +159,7 @@ On top, you need various Python packages. We created a requirements file \verb|r
 Now you should be ready to run the Python scripts.
 
 \subsection{STATA}
-For the statistical analysis of our data, we used the statistical software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program, you can follow the guidelines in chapter 5 (Data Analysis). 
+For the statistical analysis of our data, we used the statistic software STATA (version 14.2). When seeking for statistical analysis, regression analysis or data management, STATA is a capable tool. To reproduce our results, you need to have the STATA software installed on your local computer. After starting the program, you can follow the guidelines in chapter 5 (Data Analysis). 
 
 \clearpage
 
@@ -176,7 +176,7 @@ Tweepy is a open-source libary. It provides a simple way to gather real time twe
 auth = OAuthHandler (ckey, csecret)
 auth.set_access_token(atoken, asecret)
 \end{lstlisting}
-Those authentications are demanded by Twitter and explained in more details in the next paragraph. Furthermore, the main function starts to run the stream, while filtering for the buzzword "Bitcoin" by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this project because it simplifies the script and enables its users to gather a huge number of tweets without any costs. 
+Those authentications are demanded by Twitter and explained in more details in the next paragraph. Furthermore, the main function starts to run the stream, while filtering for the buzzword "bitcoin" by processing \verb|twitterStream.filter(track=["bitcoin"]|. Tweepy has been applied for this project because it simplifies the script and enables its users to gather a huge number of tweets without any costs. 
 
 
 \paragraph{Installing Tweepy}\mbox{}\\{}
@@ -317,7 +317,7 @@ https://filezilla-project.org/
 \item Download data manually \newline \newline \end{enumerate}
 \end{enumerate}
 
-In summary, this approach worked well and ran smoothly. A clean set-up is recommended to ensure a continuous data stream over a longer period.
+In summary, this approach worked well and ran smoothly. A clean set-up is recommended to ensure a continuous data stream over a longer period. The final data set used for our analysis is available through the link provided in the data folder on Github. 
 
 
 \subsection{Bitcoin Price Data}
@@ -345,7 +345,7 @@ The file \verb|bpi.csv| contains historical Bitcoin Price Index data for one mon
 Bitcoinaverage.com offers a free API that provides real-time and historical price data for a range of crypto-currencies including Bitcoin. The following requests delivers data for an per hour monthly sliding window.
 
 \paragraph{Request}\mbox{}\\
-The request to get the data for an per hour monthly sliding window looks as follows. This request require authentication that requires registration and the generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The \verb|collectCryptocurrencyData.py| already contains the necessary keys. This means that you need not to register or generate keys to execute the script \verb|collectCryptocurrencyData.py.| 
+The request to get the data for an per hour monthly sliding window looks as follows. This request requires an authentication that therefore the registration and generation of an API key. The registration and generation of an API key is freely available on bitcoinaverage.com. The \verb|collectCryptocurrencyData.py| already contains the necessary keys. This means that you do not need to register or generate keys to execute the script \verb|collectCryptocurrencyData.py.| 
 \begin{lstlisting}[language=bash]
 https://apiv2.bitcoinaverage.com/indices/global/history/BTCUSD?period=monthly&?format=json
 \end{lstlisting}
